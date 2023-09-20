@@ -1,0 +1,92 @@
+INFO    : PreTeXt project found in `/Users/seanlaverty/GitHub/mfg`.
+DEBUG   : CLI version 1.7.5 matches requirements.txt 1.7.5.
+INFO    : No change in assets requiring generating detected.  To force regeneration of assets, use `-g` flag.
+
+DEBUG   : XML syntax appears well formed.
+DEBUG   : PreTeXt document did not pass schema validation; unexpected output may result. See .error_schema.log for hints.  Continuing with build.
+INFO    : Preparing to build into /Users/seanlaverty/GitHub/mfg/output/web.
+INFO    : 
+Now building HTML into /Users/seanlaverty/GitHub/mfg/output/web
+
+DEBUG   : Now working in directory .
+INFO    : discovering source file's directory name: /Users/seanlaverty/GitHub/mfg/source
+INFO    : verifying and expanding input directory: /Users/seanlaverty/GitHub/mfg/source/../generated-assets
+INFO    : input directory expanded to absolute path: /Users/seanlaverty/GitHub/mfg/generated-assets
+INFO    : verifying and expanding input directory: /Users/seanlaverty/GitHub/mfg/source/../assets
+INFO    : input directory expanded to absolute path: /Users/seanlaverty/GitHub/mfg/assets
+INFO    : Runestone Services (via PreTeXt repository): version 6.5.0
+INFO    : Runestone Services (using newer, via online CDN query): version 7.1.2
+INFO    : converting /Users/seanlaverty/GitHub/mfg/source/mfg.ptx to HTML in /var/folders/cv/57f7pbds3y7_pq476q9b438r0000gn/T/tmpfy2w16ys
+INFO    : XSL conversion of /Users/seanlaverty/GitHub/mfg/source/mfg.ptx by /Users/seanlaverty/.ptx/xsl/pretext-html.xsl
+DEBUG   : XSL conversion via /Users/seanlaverty/.ptx/xsl/pretext-html.xsl of /Users/seanlaverty/GitHub/mfg/source/mfg.ptx to None and/or into directory /var/folders/cv/57f7pbds3y7_pq476q9b438r0000gn/T/tmpfy2w16ys with parameters {'altrs-js': 'prefix-runtime.e5cf8b79afad4f14.bundle.js:prefix-347.8328b60515045466.bundle.js:prefix-runestone.3a5641c4e1fe869e.bundle.js', 'altrs-css': 'prefix-347.f9add1ca35d5ad93.css:prefix-runestone.cec40a61180efd41.css', 'altrs-cdn-url': 'https://runestone.academy/cdn/runestone/', 'altrs-version': '7.1.2', 'publisher': '/Users/seanlaverty/GitHub/mfg/publication/publication.ptx'}
+INFO    : comprehensive messages, warnings, and errors:
+INFO    :     * PTX:ERROR: the @xml:id value "cube-of-x-minus-y" should be unique, but is authored 3 times.
+INFO    :     *            Results will be unpredictable, and likely incorrect.  Information on the locations follows:
+INFO    :     *              located within: "cube-of-x-minus-y" (xml:id)
+INFO    :     *              located within: "cube-of-x-minus-y" (xml:id)
+INFO    :     *              located within: "cube-of-x-minus-y" (xml:id)
+INFO    :     * PTX:ERROR: the @xml:id value "sum-of-cubes" should be unique, but is authored 3 times.
+INFO    :     *            Results will be unpredictable, and likely incorrect.  Information on the locations follows:
+INFO    :     *              located within: "sum-of-cubes" (xml:id)
+INFO    :     *              located within: "sum-of-cubes" (xml:id)
+INFO    :     *              located within: "sum-of-cubes" (xml:id)
+INFO    :     * PTX:ERROR: the @xml:id value "difference-of-cubes" should be unique, but is authored 3 times.
+INFO    :     *            Results will be unpredictable, and likely incorrect.  Information on the locations follows:
+INFO    :     *              located within: "difference-of-cubes" (xml:id)
+INFO    :     *              located within: "difference-of-cubes" (xml:id)
+INFO    :     *              located within: "difference-of-cubes" (xml:id)
+INFO    :     * PTX:DEPRECATE: (2022-04-25) a "@label" attribute (on a "ul" or "ol" element) has been deprecated and should be replaced by the functionally equivalent "@marker".  We will attempt to honor your request (27 times)
+INFO    :     *              located within: "section-1-1-exercises" (xml:id), "Linear Models (Homework 1.1)" (title)
+INFO    :     *              located within: "section-1-1-exercises" (xml:id), "Linear Models (Homework 1.1)" (title)
+INFO    :     *              located within: "section-1-1-exercises" (xml:id), "Linear Models (Homework 1.1)" (title)
+INFO    :     *              located within: "section-1-1-exercises" (xml:id), "Linear Models (Homework 1.1)" (title)
+INFO    :     *              located within: "section-1-1-exercises" (xml:id), "Linear Models (Homework 1.1)" (title)
+INFO    :     *              located within: "section-1-1-exercises" (xml:id), "Linear Models (Homework 1.1)" (title)
+INFO    :     *              located within: "section-1-1-exercises" (xml:id), "Linear Models (Homework 1.1)" (title)
+INFO    :     *              located within: "section-1-1-exercises" (xml:id), "Linear Models (Homework 1.1)" (title)
+INFO    :     *              located within: "example-evaluate-function" (xml:id)
+INFO    :     *              located within: "example-evaluate-function" (xml:id)
+INFO    :     *              located within: "section-1-2-exercises" (xml:id), "Functions (Homework 1.2)" (title)
+INFO    :     *              located within: "section-1-2-exercises" (xml:id), "Functions (Homework 1.2)" (title)
+INFO    :     *              located within: "SKILLS" (title)
+INFO    :     *              located within: "Powers of the Form a^{m/n}" (title)
+INFO    :     *              located within: "Radical Notation" (title)
+INFO    :     *              located within: "Radical Notation" (title)
+INFO    :     *              located within: "Exponential Growth" (title)
+INFO    :     *              located within: "Growth Factors" (title)
+INFO    :     *              located within: "The Natural Exponential Function" (title)
+INFO    :     *              located within: "section-6-3-exercises" (xml:id), "Graphing Parabolas (Homework 6.3)" (title)
+INFO    :     *              located within: "section-6-3-exercises" (xml:id), "Graphing Parabolas (Homework 6.3)" (title)
+INFO    :     *              located within: "section-6-3-exercises" (xml:id), "Graphing Parabolas (Homework 6.3)" (title)
+INFO    :     *              located within: "section-6-3-exercises" (xml:id), "Graphing Parabolas (Homework 6.3)" (title)
+INFO    :     *              located within: "Modeling with Polynomials" (title)
+INFO    :     *              located within: "Common Factors" (title)
+INFO    :     *              located within: "Reducing Fractions" (title)
+INFO    :     *              located within: "Simplifying Radicals" (title)
+INFO    :     * --------------
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "troubleshooting") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "Troubleshooting" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "assemblage-zero-factor-principle") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "zero-factor principle" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "troubleshooting") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "Troubleshooting" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "troubleshooting") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "Troubleshooting" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "troubleshooting") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "Troubleshooting" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "troubleshooting") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "Troubleshooting" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "assemblage-zero-factor-principle") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "zero-factor principle" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "assemblage-zero-factor-principle") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "zero-factor principle" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "assemblage-zero-factor-principle") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "zero-factor principle" (title)
+INFO    :     * PTX:WARNING:    An <xref> wants to build text using a number to identify the target, but the target (which has @xml:id "assemblage-zero-factor-principle") does not have a number. You could try 'text="title"' or 'text="custom"' on the "xref".
+INFO    :     *              located within: "zero-factor principle" (title)
+INFO    : successful application of /Users/seanlaverty/.ptx/xsl/pretext-html.xsl
+DEBUG   : Successfully changed directory back to .
+DEBUG   : Temporary directories left behind for inspection: ['/var/folders/cv/57f7pbds3y7_pq476q9b438r0000gn/T/tmpfy2w16ys']
+INFO    : 
+Success! Run `pretext view web` to see the results.
+
