@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<h4 class="heading"><span class="type">Paragraph</span></h4>
+<div class="para logical">
+<div class="para">Suppose we wanted to run the following small program and store the results for later use and do some work with the output.</div>
+<pre class="code-display tex2jax_ignore">
+prog &lt;- function(N){ ## function 'prog' has argument N
+output &lt;- NULL       ## initialize storage
+for(i in 1:N){
+  if(i%%2==1){       ## sample logic
+       output &lt;- c(output, f(i))  ## sample storage
+  }else{
+       output &lt;- c(output, 2*f(i))
+  }
+}
+return(output)       ## return result
+}
+
+out &lt;- prog(100)     ## execute program, store result
+head(out)
+tail(out)
+min(out)
+max(out)
+plot(out, type='l', col=2)
+</pre>
+</div>
+<span class="incontext"><a href="section-R-intro.html#p-18" class="internal">in-context</a></span>
+</body>
+</html>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<section xml:id="continuous-case-8_2-pg495">
+	<title>Continuous case (i.e., 8.2, pg. 495)</title>
+
+<p>
+	Consider the last term <me>\int_a^b \left(\sum_{k=0}^n
+a_k x^k\right)^2</me> in the definition of the error <m>E = E_2(a_0,
+a_1, \dots, a_n)</m> for least squares polynomial approximation. We
+have, <me>\begin{aligned}
+\int_a^b \left(\sum_{k=0}^n a_k x^k\right)^2\,dx %&amp; = \int_a^b
+\left(\sum_{k=0}^n a_k x^k\right)^2\,dx\\
+&amp; = \int_a^b (a_0 + a_1x + \dots + a_n x^n)(a_0 + a_1x + \dots + a_n
+x^n)\,dx\\\end{aligned}</me> Our goal is the partial derivative of this
+term with respect to <m>a_j</m>. Notice the following, where key steps
+are moving differentiation under the integral, applying the product
+rule, and rearranging the sum, <me>\begin{aligned}
+\dfrac{\partial}{\partial a_j}\int_a^b \left(\sum_{k=0}^n a_k
+x^k\right)^2\,dx &amp; = \dfrac{\partial}{\partial a_j} \int_a^b (a_0 +
+a_1x + \dots + a_n x^n)(a_0 + a_1x + \dots + a_n x^n)\,dx\\
+&amp; = \int_a^b \dfrac{\partial}{\partial a_j} \Big((a_0 + a_1x + \dots
++ a_n x^n)(a_0 + a_1x + \dots + a_n x^n)\Big)\,dx\\
+&amp; = \int_a^b \left(x^j(a_0 + a_1x + \dots + a_n x^n) + (a_0 + a_1x +
+\dots + a_n x^n) x^j\right)\,dx\\
+&amp; = \int_a^b 2x^j(a_0 + a_1x + \dots + a_n x^n)\,dx\\
+&amp; = 2\int_a^b x^j\sum_{k=0}^n a_k x^k\,dx\\
+&amp; = 2\int_a^b \sum_{k=0}^n a_k x^{j+k}\,dx\\
+&amp; = 2\sum_{k=0}^n a_k \int_a^b x^{j+k}\,dx\end{aligned}</me>
+</p>
+
+	</section>
+
+<!-->	<section xml:id="least-squares-function-approximation">
+	<title>Least squares function approximation</title>
+
+
+	<subsection xml:id="legendre-polynomials">
+	<title>Legendre polynomials</title>
+
+	<p>
+	The standard monomials for function approximation,
+shown as the familiar unlabeled gray curves in Figure <xref ref="fig-legendre" />, 
+are <m>\phi_i(x) = x^i</m> for <m>i=0, 1, \dots,
+n</m>. These lack the property of orthogonality that is achieved by the
+Legendre polynomials, also shown Figure <xref ref="fig-legendre" />, but in
+black and labeled. The first few Legendre polynomials are
+	</p>
+
+	<figure xml:id="fig-legendre">
+
+	<image source="3_approximation/legendre_funs.png"/>
+	<caption>In gray the intuitive monomials
+<m>\phi_i(x) = x^i</m> with the Legendre polynomials <m>P_i(x)</m> in
+black.</caption>
+</figure>
+
+	<p>
+	<me>\begin{aligned}
+P_0(x) &amp; = 1\\
+P_1(x) &amp; = x\\
+P_2(x) &amp; = x^2-\dfrac{1}{3}\\
+P_3(x) &amp; = x^3-\dfrac{3}{5}x\\
+ &amp; \dots\\
+P_n(x) &amp; = (x-B_k)P_{n-1}(x)-C_kP_{x-2}(x)\end{aligned}</me>
+	</p>
+
+	<p>
+	where <me>\begin{aligned}
+B_k &amp; = \dfrac{\int_{-1}^1 x \cdot 1 \cdot
+[P_{k-1}(x)]^2\,dx}{\int_{-1}^1 1 \cdot [P_{k-1}(x)]^2\,dx}\\
+C_k &amp; = \dfrac{\int_{-1}^1 x \cdot 1 \cdot [P_{k-1}(x)
+P_{k-2}(x)]\,dx}{\int_{-1}^1 1 \cdot
+[P_{k-2}(x)]^2\,dx}\end{aligned}</me>
+	</p>
+
+	</subsection>
+
+	<subsection xml:id="chebyshev-polynomials">
+	<title>Chebyshev polynomials</title>
+
+	<p>
+	The standard monomials for function approximation,
+shown as the familiar unlabeled gray curves in Figure <xref ref="fig-chebyshev" />, 
+are <m>\phi_i(x) = x^i</m> for <m>i=0, 1, \dots,
+n</m>. These lack the property of orthogonality that is achieved by the
+Chebyshev polynomials, also shown Figure <xref ref="fig-chebyshev" />, but
+in black and labeled. The first few Chebyshev polynomials are
+	</p>
+
+	<figure xml:id="fig-chebyshev">
+	<image source="3_approximation/cheb_funs.png"/>
+	<caption>In gray the intuitive monomials
+<m>\phi_i(x) = x^i</m> with the Chebyshev polynomials <m>T_i(x)</m> in
+black.</caption>
+</figure>
+
+	<p>
+	<me>\begin{aligned}
+T_0(x) &amp; = 1\\
+T_1(x) &amp; = x\\
+T_2(x) &amp; = 2x^2-1\\
+T_3(x) &amp; = 4x^3-3x\\
+ &amp; \dots\\
+T_n(x) &amp; = 2xT_{n-1}(x) - T_{n-2}(x)\end{aligned}</me>
+	</p>
+
+	<p>
+	Since the alternate definition of the Chebyshev
+polynomials is <m>T_n(x) = \cos(n\arccos(x))</m> for <m>n\geq0</m>, it
+should seem reasonable that these functions are bounded in magnitude by
+one, as illustrated in Figure <xref ref="fig-chebyshev" />. The monic
+Chebyshev polynomials (not illustrated, but handy for Chebyshev
+economization of power series), with leading coefficient <m>1</m>, are
+defined by <me>\tilde T_n(x) = \dfrac{1}{2^{n-1}}T_n(x)</me> For these
+polynomials the extrema, which occur <em>at</em> the same points, are
+those of <m>T_n(x)</m> but reduced in value by a factor of
+<m>\dfrac{1}{2^{n-1}}</m>, that is, the extrema are, for <m>k=0, 1,
+\dots, n</m> <me>\tilde T'_n(\bar x_k) = \dfrac{(-1)^k}{2^{n-1}}</me>
+	</p>
+
+	</subsection>
+
+	<subsection xml:id="chebyshev-points-and-lagrange-nodes">
+	<title>Chebyshev points and Lagrange nodes</title>
+
+	<p>
+	By a theorem, we have that the optimal choice of
+nodes for polynomial approximation by a degree <m>n</m> polynomial is
+given by the zeros of of the <m>(n+1)^\text{st}</m> Chebyshev polynomial
+<m>T_{n+1}(x)</m>. For example, as given in Figure <xref ref="fig-cheb-pts" />, 
+we take the approximation of <m>f(x) = e^x</m>
+on <m>[0, 1]</m> with three points. We expect to to take, <m>\tilde x_0
+= 0</m>, <m>\tilde x_1 = 0.5</m>, and <m>\tilde x_2 = 1.0</m>, but
+achieve better performance with Chebyshev nodes <m>\bar x_i</m>. The
+nodes for interpolation are given by the zeros of the Chebyshev
+polynomial <m>T_3(x)</m>, which in turn are given by <m>\bar x_k =
+\cos\left(\dfrac{2k-1}{2n}\pi\right)</m> for <m>k=1, 2, 3</m>.
+<me>\begin{aligned}
+\bar x_1 &amp;= \cos\left(\dfrac{2(1)-1}{2(3)}\cdot\pi\right) =
+\cos\left(\dfrac{1\cdot\pi}{6}\right)= \dfrac{\sqrt{3}}{2} ~\approx~
+0.866\\
+\bar x_2 &amp;= \cos\left(\dfrac{2(2)-1}{2(3)}\cdot\pi\right) =
+\cos\left(\dfrac{3\cdot\pi}{6}\right)= 0\\
+\bar x_3 &amp;= \cos\left(\dfrac{2(3)-1}{2(3)}\cdot\pi\right) =
+\cos\left(\dfrac{5\cdot\pi}{6}\right)= -\dfrac{\sqrt{3}}{2} ~\approx~
+-0.866 \end{aligned}</me>
+	</p>
+
+	<p>
+	From <m>\tilde x_i \in [a,b]</m> we can compute
+<m>\bar x_i \in [-1, 1]</m> by <me>x_i = \dfrac{2\tilde x_i - a -
+b}{b-a}</me> and in the reverse we can use <me>\tilde x_i =
+\dfrac{1}{2}\left((b-a)\bar x_i + a + b\right)</me> As an example,
+	</p>
+
+
+	<table xml:id="tab-cheb-pts">
+	<title>Locations of Chebyshev points.</title>
+	<tabular>
+	<row header="yes">
+	<cell halign="center"><m>i</m></cell>
+	<cell halign="left"><m>\phantom{-}\bar
+x_i</m></cell>
+	<cell halign="left"><m>\tilde x_i</m></cell>
+	</row>
+	<row class="odd">
+	<cell halign="center"></cell>
+	<cell halign="left"></cell>
+	<cell halign="left"></cell>
+	</row>
+	<row class="even">
+	<cell halign="center">1</cell>
+	<cell
+halign="left"><m>\phantom{-}0.866</m></cell>
+	<cell halign="left">0.933</cell>
+	</row>
+	<row class="odd">
+	<cell halign="center">2</cell>
+	<cell halign="left"><m>\phantom{-}0.0</m></cell>
+	<cell halign="left">0.500</cell>
+	</row>
+	<row class="even">
+	<cell halign="center">3</cell>
+	<cell halign="left"><m>-0.866</m></cell>
+	<cell halign="left">0.067</cell>
+	</row>
+	</tabular>
+	</table>
+
+	<p>
+	The näively chosen nodes that include the endpoints
+(red) are illustrated in the left-hand panel of Figure <xref ref="fig-cheb-pts" />,
+ and as shown give a reasonable approximate. Yet,
+the approximation is improved by use of the Chebyshev points (blue).
+	</p>
+
+	<figure xml:id="fig-cheb-pts">
+	<image source="3_approximation/cheb_pts_lagr.png"/>
+	<caption>Lagrange interpolation of <m>f(x) = e^x</m>
+on <m>[0,1]</m>, but with Chebyshev points instead of equispaced
+points.</caption>
+</figure>
+
+	<figure xml:id="fig-cheb-pts-err">
+	<image source="3_approximation/cheb_pts_lagr_err.png"/>
+	<caption>Lagrange interpolation of <m>f(x) = e^x</m>
+on <m>[0,1]</m>, but with Chebyshev points instead of equispaced
+points.</caption>
+</figure>
+
+	<p>
+	Notice, from Figure <xref ref="fig-cheb-zeros" />,
+that the zeros accumulate or cluster near the boundary of the interval.
+This helps to <sq>clamp down</sq> the polynomial interpolation near the
+boundary.
+	</p>
+
+	<figure xml:id="fig-cheb-zeros">
+	<image source="3_approximation/cheb_zeros.png"/>
+	<caption>Location of zeros to <m>T_n(x)</m> in the
+interval <m>[0, 1]</m> for Chebyshev functions of orders from <m>n=2, 3,
+\dots, 15</m>.</caption>
+</figure>
+
+	</subsection>
+
+	<subsection xml:id="chebyshev-economization">
+	<title>Chebyshev economization</title>
+
+	<p>
+	As we will soon see, the <sq>best</sq> reduced order
+polynomial approximation <m>P_{n-1}</m> to a polynomial <m>P_n(x)</m> is
+given by <me>P_{n-1}(x) = P_{n}(x) - a_n\tilde T_n(x)</me> where
+<m>\tilde T_n(x)</m> is the <m>n^\text{th}</m> order monic Chebyshev
+polynomial and <m>a_n</m> is the coefficient of the highest order term
+in <m>P_n(x)</m>. To economize the polynomial approximation to <m>f(x) =
+e^x</m> given by a <m>4^\text{th}</m> order Maclaurin polynomial, we can
+subtract <m>\dfrac{1}{24}\tilde T_4(x)</m> from the original
+<m>P_4(x)</m> (note that <m>a_4=\dfrac{1}{24}</m> in the original
+polynomial representation). This alters coefficients of all powers of
+<m>x</m> of lower orders that are present in <m>T_4(x)</m> and
+eliminates the <m>4^\text{th}</m> order term entirely. Notice in
+Figure <xref ref="fig-cheb-order" /> that the maximum error for the third
+order function is only slightly worse for <m>x=1.0</m> than for the
+fourth order function.
+	</p>
+
+	<figure xml:id="fig-cheb-order">
+	<image source="3_approximation/cheb_order_lagr.png"/>
+	<caption>Left: Full- and reduced-order
+approximations of <m>f(x) = e^x</m> on <m>[0, 1]</m> by
+<m>P_3(x)~=~P_4(x)~-~a_4 \tilde T_4(x)</m>. Right: Error in
+approximations of <m>f(x) = e^x</m> by full- and reduced-order
+polynomials.</caption>
+</figure>
+
+	<figure xml:id="fig-cheb-order-error">
+	<image source="3_approximation/cheb_order_lagr_err.png"/>
+	<caption>Left: Full- and reduced-order
+approximations of <m>f(x) = e^x</m> on <m>[0, 1]</m> by
+<m>P_3(x)~=~P_4(x)~-~a_4 \tilde T_4(x)</m>. Right: Error in
+approximations of <m>f(x) = e^x</m> by full- and reduced-order
+polynomials.</caption>
+</figure>
+
+	</subsection>
+	</section>
+-->

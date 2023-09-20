@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Special probability distributions</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Applied Numerical Analysis">
+<meta property="book:author" content="Sean M. Laverty">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "https://pretextbook.org/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="https://pretextbook.org/js/0.3/pretext_search.js"></script><link href="https://pretextbook.org/css/0.7/pretext_search.css" rel="stylesheet" type="text/css">
+<script>js_version = 0.3</script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.3/pretext.js"></script><script>miniversion=0.1</script><script src="https://pretextbook.org/js/0.3/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/0.3/user_preferences.js"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link href="https://pretextbook.org/css/0.7/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/shell_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/setcolors.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" href="http://www.math.uco.edu" target="_blank"><img src="external/images/cover.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ana.html"><span class="title">Applied Numerical Analysis:</span> <span class="subtitle"></span></a></h1>
+<p class="byline">Sean M. Laverty</p>
+</div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<button id="closesearchresults" class="closesearchresults" onclick="document.getElementById('searchresultsplaceholder').style.display = 'none'; return false;">x</button><h2>Search Results: <span id="searchterms" class="searchterms"></span>
+</h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" aria-label="Show or hide table of contents"><span class="icon">☰</span><span class="name">Contents</span></button><a class="index-button button" href="index-1.html" title="Index"><span class="name">Index</span></a><button id="user-preferences-button" class="user-preferences-button button" title="Modify user preferences"><span id="avatarbutton" class="avatarbutton name">You!</span><div id="preferences_menu_holder" class="preferences_menu_holder hidden"><ol id="preferences_menu" class="preferences_menu" style="font-family: 'Roboto Serif', serif;">
+<li data-env="avatar" tabindex="-1">Choose avatar<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden avatar">
+<li data-val="You!" tabindex="-1">
+<span id="theYou!" class="avatarcheck">✔️</span>You!</li>
+<li data-val="😺" tabindex="-1">
+<span id="the😺" class="avatarcheck"></span>😺</li>
+<li data-val="👤" tabindex="-1">
+<span id="the👤" class="avatarcheck"></span>👤</li>
+<li data-val="👽" tabindex="-1">
+<span id="the👽" class="avatarcheck"></span>👽</li>
+<li data-val="🐶" tabindex="-1">
+<span id="the🐶" class="avatarcheck"></span>🐶</li>
+<li data-val="🐼" tabindex="-1">
+<span id="the🐼" class="avatarcheck"></span>🐼</li>
+<li data-val="🌈" tabindex="-1">
+<span id="the🌈" class="avatarcheck"></span>🌈</li>
+</ol>
+</li>
+<li data-env="fontfamily" tabindex="-1">Font family<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden fontfamily">
+<li data-val="face" data-change="OS" tabindex="-1" style="font-family: 'Open Sans'">
+<span id="theOS" class="ffcheck">✔️</span><span class="name">Open Sans</span><span class="sample">AaBbCc 123 PreTeXt</span>
+</li>
+<li data-val="face" data-change="RS" tabindex="-1" style="font-family: 'Roboto Serif'">
+<span id="theRS" class="ffcheck"></span><span class="name">Roboto Serif</span><span class="sample">AaBbCc 123 PreTeXt</span>
+</li>
+</ol>
+</li>
+<li data-env="font" tabindex="-1">Adjust font<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden fonts">
+<li>Size</li>
+<li><span id="thesize">12</span></li>
+<li data-val="size" data-change="-1" tabindex="-1" style="font-size: 80%">Smaller</li>
+<li data-val="size" data-change="1" tabindex="-1" style="font-size: 110%">Larger</li>
+<li>Width</li>
+<li><span id="thewdth">100</span></li>
+<li data-val="wdth" data-change="-5" tabindex="-1" style="font-variation-settings: 'wdth' 60">narrower</li>
+<li data-val="wdth" data-change="5" tabindex="-1" style="font-variation-settings: 'wdth' 150">wider</li>
+<li>Weight</li>
+<li><span id="thewght">400</span></li>
+<li data-val="wght" data-change="-50" tabindex="-1" style="font-weight: 200">thinner</li>
+<li data-val="wght" data-change="50" tabindex="-1" style="font-weight: 700">heavier</li>
+<li>Letter spacing</li>
+<li>
+<span id="thelspace">0</span><span class="byunits">/200</span>
+</li>
+<li data-val="lspace" data-change="-1" tabindex="-1">closer</li>
+<li data-val="lspace" data-change="1" tabindex="-1">f a r t h e r</li>
+<li>Word spacing</li>
+<li>
+<span id="thewspace">0</span><span class="byunits">/50</span>
+</li>
+<li data-val="wspace" data-change="-1" tabindex="-1">smaller gap </li>
+<li data-val="wspace" data-change="1" tabindex="-1">larger gap</li>
+<li>Line Spacing</li>
+<li>
+<span id="theheight">135</span><span class="byunits">/100</span>
+</li>
+<li data-val="height" data-change="-5" tabindex="-1" style="line-height: 1">closer<br>together</li>
+<li data-val="height" data-change="5" tabindex="-1" style="line-height: 1.75">further<br>apart</li>
+</ol>
+</li>
+<li data-env="atmosphere" tabindex="-1">Light/dark mode<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden atmosphere">
+<li data-val="default" tabindex="-1">
+<span id="thedefault" class="atmospherecheck">✔️</span>default</li>
+<li data-val="pastel" tabindex="-1">
+<span id="thepastel" class="atmospherecheck"></span>pastel</li>
+<li data-val="darktwilight" tabindex="-1">
+<span id="thedarktwilight" class="atmospherecheck"></span>twilight</li>
+<li data-val="dark" tabindex="-1">
+<span id="thedark" class="atmospherecheck"></span>dark</li>
+<li data-val="darkmidnight" tabindex="-1">
+<span id="thedarkmidnight" class="atmospherecheck"></span>midnight</li>
+</ol>
+</li>
+<li data-env="ruler" tabindex="-1">Reading ruler<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden ruler">
+<li data-val="none" tabindex="-1">
+<span id="thenone" class="rulercheck">✔️</span>none</li>
+<li data-val="underline" tabindex="-1">
+<span id="theunderline" class="rulercheck"></span>underline</li>
+<li data-val="lunderline" tabindex="-1">
+<span id="thelunderline" class="rulercheck"></span>L-underline</li>
+<li data-val="greybar" tabindex="-1">
+<span id="thegreybar" class="rulercheck"></span>grey bar</li>
+<li data-val="lightbox" tabindex="-1">
+<span id="thelightbox" class="rulercheck"></span>light box</li>
+<li data-val="sunrise" tabindex="-1">
+<span id="thesunrise" class="rulercheck"></span>sunrise</li>
+<li data-val="sunriseunderline" tabindex="-1">
+<span id="thesunriseunderline" class="rulercheck"></span>sunrise underline</li>
+<li class="moveQ">Motion by:</li>
+<li data-val="mouse" tabindex="-1">
+<span id="themouse" class="motioncheck">✔️</span>follow the mouse</li>
+<li data-val="arrow" tabindex="-1">
+<span id="thearrow" class="motioncheck"></span>up/down arrows - not yet</li>
+<li data-val="eye" tabindex="-1">
+<span id="theeye" class="motioncheck"></span>eye tracking - not yet</li>
+</ol>
+</li>
+</ol></div></button><span class="treebuttons"><a class="previous-button button" href="chap-calculus.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-calculus.html" title="Up"><span class="icon">^</span><span class="name">Up</span></a><a class="next-button button" href="section-probability-distributions.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a></span><div class="searchbox"><div class="searchwidget">
+<input id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search" onchange="doSearch()"><button id="searchbutton" class="searchbutton" type="button" onclick="doSearch()">🔍</button>
+</div></div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\newcommand{\sfrac}[2]{{#1}/{#2}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2"><ul class="structural">
+<li>
+<div class="toc-item"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="front-colophon.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li><div class="toc-item"><a href="author-bio-SML.html" class="internal"><span class="title">Author Biography</span></a></div></li>
+<li><div class="toc-item"><a href="dedication.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li><div class="toc-item"><a href="acknowledgement.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li><div class="toc-item"><a href="preface.html" class="internal"><span class="title">Preface</span></a></div></li>
+<li>
+<div class="toc-item"><a href="contributors.html" class="internal"><span class="title">Contributors to the 0<span class="process-math">\(^\mathrm{th}\)</span> Edition</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="contributors.html#contributors-1" class="internal"><span class="title"></span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-basics.html" class="internal"><span class="codenumber">1</span> <span class="title">Counting</span></a></div>
+<ul class="structural"><li>
+<div class="toc-item"><a href="section-R-intro.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Introduction to R programming</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-R-intro.html#sub-calculator" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Calculator functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-date" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Generating data</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-functions" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Defining and using functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-basic" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Basic programming</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-less-basic" class="internal"><span class="codenumber">1.1.5</span> <span class="title">Putting it all together</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-more-advanced" class="internal"><span class="codenumber">1.1.6</span> <span class="title">Putting it all together (and more)</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-buildin" class="internal"><span class="codenumber">1.1.7</span> <span class="title">Built-in functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-challenge-arithmetic" class="internal"><span class="codenumber">1.1.8</span> <span class="title">Challenges - Arithmetic</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-root" class="internal"><span class="codenumber">1.1.9</span> <span class="title">Rootfinding</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-RMarkdown" class="internal"><span class="codenumber">1.1.10</span> <span class="title">RMarkdown</span></a></div></li>
+</ul>
+</li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-rootfinding.html" class="internal"><span class="codenumber">2</span> <span class="title">Root-finding and fixed-point problems</span></a></div>
+<ul class="structural"><li>
+<div class="toc-item"><a href="section-continuous-expectation.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Expectation of continuous random variables</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-expectation" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-1" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-moments-cont" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Moments</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-2" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-chebyshev" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Chebyshev’s Theorem</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-3" class="internal"><span class="codenumber">2.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-mgf-cont" class="internal"><span class="codenumber">2.1.7</span> <span class="title">Moment-generating functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-4" class="internal"><span class="codenumber">2.1.8</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-interpolation.html" class="internal"><span class="codenumber">3</span> <span class="title">Interpolation</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="sec-multi-cont.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Multivariate continuous densities</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-cont-multi-variable" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Multivariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-product-moments-cont" class="internal"><span class="codenumber">3.1.2</span> <span class="title">Product moments</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#exercises-5" class="internal"><span class="codenumber">3.1.3</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-conditional-expectation" class="internal"><span class="codenumber">3.1.4</span> <span class="title">Conditional expectation</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Special probability densities</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-continuous-unif" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Continuous uniform</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-6" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-exponential" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Exponential family</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-7" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-beta" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Beta distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-8" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-normal" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Normal distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-9" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-normal-approx" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Normal approximation to the binomial distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-10" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-approximation.html" class="internal"><span class="codenumber">4</span> <span class="title">Approximation</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="section-discrete-expectation.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Mathematical expectation of discrete random variables</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-expectation" class="internal"><span class="codenumber">4.1.1</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-11" class="internal"><span class="codenumber">4.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-moments" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-12" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-mgf" class="internal"><span class="codenumber">4.1.5</span> <span class="title">Moment-generating functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-13" class="internal"><span class="codenumber">4.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-product-moments" class="internal"><span class="codenumber">4.1.7</span> <span class="title">Product moments</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-14" class="internal"><span class="codenumber">4.1.8</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-moments-linear-combinations" class="internal"><span class="codenumber">4.1.9</span> <span class="title">Moments of linear combinations of random variables</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-15" class="internal"><span class="codenumber">4.1.10</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-conditional-expectation" class="internal"><span class="codenumber">4.1.11</span> <span class="title">Conditional expectation</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-probability-densities.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Probability densities</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-probability-densities.html#sub-single-variable-cont" class="internal"><span class="codenumber">4.2.1</span> <span class="title">Univariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-densities.html#exercises-16" class="internal"><span class="codenumber">4.2.2</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-calculus.html" class="internal"><span class="codenumber">5</span> <span class="title">Numerical calculus</span></a></div>
+<ul class="structural">
+<li class="active">
+<div class="toc-item"><a href="section-special-distributions.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Special probability distributions</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-unif" class="internal"><span class="codenumber">5.1.1</span> <span class="title">Discrete uniform</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-17" class="internal"><span class="codenumber">5.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-bern-bin" class="internal"><span class="codenumber">5.1.3</span> <span class="title">Bernoulli and Binomial distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-18" class="internal"><span class="codenumber">5.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-negbin-geom" class="internal"><span class="codenumber">5.1.5</span> <span class="title">Negative Binomial and Geometric distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-19" class="internal"><span class="codenumber">5.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-hypergeom" class="internal"><span class="codenumber">5.1.7</span> <span class="title">Hypergeometric distribution</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-20" class="internal"><span class="codenumber">5.1.8</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-poisson" class="internal"><span class="codenumber">5.1.9</span> <span class="title">Poisson distribution</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-21" class="internal"><span class="codenumber">5.1.10</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-multivariate" class="internal"><span class="codenumber">5.1.11</span> <span class="title">Multivariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-22" class="internal"><span class="codenumber">5.1.12</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-probability-distributions.html" class="internal"><span class="codenumber">5.2</span> <span class="title">Probability distributions</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-probability-distributions.html#sub-single-variable-disc" class="internal"><span class="codenumber">5.2.1</span> <span class="title">Random variables and probability distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#exercises-23" class="internal"><span class="codenumber">5.2.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#sub-multi-variable" class="internal"><span class="codenumber">5.2.3</span> <span class="title">Multivariate, marginal, and conditional distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#exercises-24" class="internal"><span class="codenumber">5.2.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="appendix-def.html" class="internal"><span class="codenumber">A</span> <span class="title">Definitions</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-thm.html" class="internal"><span class="codenumber">B</span> <span class="title">Theorems</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-ex.html" class="internal"><span class="codenumber">C</span> <span class="title">Examples</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-gfdl.html" class="internal"><span class="codenumber">D</span> <span class="title">GNU Free Documentation License</span></a></div></li>
+<li><div class="toc-item"><a href="index-1.html" class="internal"><span class="title">Index</span></a></div></li>
+<li><div class="toc-item"><a href="back-colophon.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content">
+<section class="section" id="section-special-distributions"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">5.1</span> <span class="title">Special probability distributions</span>
+</h2>
+<section class="introduction" id="introduction-19"><div class="para" id="p-255">Now we look at a collection of formulas for probability distributions. These describe how probabilities are assigned across a range of discrete values of a random variable. It turns out to be the case that values of random variables associated with certain kinds of experiments follow certain formulas. In this chapter, we will look at the formulas that describe certain discrete random variables.</div> <div class="para" id="p-256">For the purposes of generality we will emphasize that certain formulas include one or more parameters, these are symbols to which we will associate particular numerical values, much like we do <span class="process-math">\(m\)</span> and <span class="process-math">\(b\)</span> in the formula <span class="process-math">\(y = f(x) = mx+b\text{.}\)</span> We should have a general understanding of something that follows this relationship and an understanding of the roles of both <span class="process-math">\(m\)</span> and <span class="process-math">\(b\)</span> in specifying that relationship.</div></section><section class="subsection" id="sub-discrete-unif"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.1</span> <span class="title">Discrete uniform</span>
+</h3>
+<article class="definition definition-like" id="def-discrete-unif"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">discrete uniform distribution.</span>
+</h4> <div class="para logical" id="p-257">
+<div class="para">A discrete random variable <span class="process-math">\(\displaystyle X\)</span> has a <dfn class="terminology">discrete uniform distribution</dfn> and is referred to as a <dfn class="terminology">discrete uniform random variable</dfn> if and only if its probability distribution is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \frac{1}{k} \text{ for }
+x = x_1, x_2, \dots, x_k \text{ where }x_i\ne x_j \text{ for } i \ne
+j\text{.}
+\end{equation*}
+</div>
+</div></article><div class="para" id="p-258">This is sometimes written as <span class="process-math">\(\operatorname{DU}(k)\text{,}\)</span> where <span class="process-math">\(k\)</span> is the parameter of the distribution.</div>
+<article class="example example-like" id="ex-disc-unif-mean"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-disc-unif-mean"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">mean of a discrete uniform distribution.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-disc-unif-mean"><article class="example example-like"><div class="para" id="p-259">Find the mean of a discrete uniform random variable (or of the discrete uniform distribution).</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-11" id="solution-11"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-11"><div class="solution solution-like"><div class="para logical" id="p-260">
+<div class="para">Recall that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \frac{1}{k} \text{ for } x = x_1, x_2, \dots,
+x_k \text{ where }x_i\ne x_j \text{ for } i \ne j
+\end{equation*}
+</div>
+<div class="para">and that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu
+= \sum_x x\cdot f(x)\text{.}
+\end{equation*}
+</div>
+<div class="para">This becomes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu = \sum_{i=1}^k
+x_i\left(\frac{1}{k}\right)\text{.}
+\end{equation*}
+</div>
+<div class="para">This is about as far as we can go in general without knowing more about <span class="process-math">\(k\)</span> or the values of <span class="process-math">\(x_i\text{.}\)</span>
+</div>
+</div></div></div></article></div>
+<div class="para logical" id="p-261">
+<div class="para">Similar to the previous "Example", the variance of a discrete uniform random variable (or of the discrete uniform distribution) is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sigma^2 = \sum_x (x-\mu)^2\cdot f(x)= \sum_x (x-\mu)^2
+\left(\frac{1}{k}\right)\text{.}
+\end{equation*}
+</div>
+<div class="para">Once again, this is about as far as we can go in general.</div>
+</div>
+<article class="example example-like" id="ex-disc-unif-simple"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-disc-unif-simple"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">simple discrete uniform distribution.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-disc-unif-simple"><article class="example example-like"><div class="para" id="p-262">Find the mean of a discrete uniform random variable (or of the discrete uniform distribution) for which <span class="process-math">\(x_i = i\text{.}\)</span>
+</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-12" id="solution-12"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-12"><div class="solution solution-like"><div class="para logical" id="p-263">
+<div class="para">Recall that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \frac{1}{k} \text{ for } x = 1, 2, \dots,
+k
+\end{equation*}
+</div>
+<div class="para">and that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu = \sum_x x\cdot f(x)\text{.}
+\end{equation*}
+</div>
+<div class="para">This becomes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+\mu \amp = \sum_{i=1}^k i\left(\frac{1}{k}\right)\\
+\amp = \frac{1}{k}\left(\sum_{i=1}^k i\right)\\
+\amp = \frac{1}{k}\left(\dfrac{k(k+1)}{2}\right)\\
+\mu	\amp = \dfrac{k+1}{2}
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+<div class="para">Now, verify our earlier work on the mean number of dots to show on a balanced, 6-sided die.</div>
+</div></div></div></article></div></section><section class="exercises" id="exercises-17"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">5.1.2</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-28"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">5.2.</span>
+</h4>
+<div class="para logical" id="p-264">
+<div class="para">If <span class="process-math">\(X\)</span> has a discrete uniform distribution <span class="process-math">\(f(x) =
+\dfrac{1}{k}\)</span> for <span class="process-math">\(x = 1, 2, \dots, k\text{,}\)</span> show that its moment-generating function is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M_x(t) =
+\dfrac{e^t(1-e^{kt})}{k(1-e^t)}\text{.}
+\end{equation*}
+</div>
+</div></article></section><section class="subsection" id="sub-discrete-bern-bin"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.3</span> <span class="title">Bernoulli and Binomial distributions</span>
+</h3>
+<section class="introduction" id="introduction-20"><div class="para" id="p-265">Consider an experiment with two possible outcomes, flipping a coin for example. We consider one of those outcomes, say ’heads’ as a success, and the other of those outcomes, in this case ’tails` as a failure. We allow these outcomes to each occur with a given probability. Here <span class="process-math">\(\theta\)</span> gives the probability of ’success’ and <span class="process-math">\(1-\theta\)</span> is the corresponding probability of ’failure’.</div> <div class="para" id="p-266">Though the outcome of a single event may be useful, the Bernoulli distribution is perhaps most useful as a building block to describe the results of more complex experiments.</div> <div class="para" id="p-267">You will find tools for visualization at the following <a class="external" href="https://buddy.uco.edu/shiny/slaverty/mathstat/Binomial/" target="_blank">link</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-2" id="fn-2"><sup> 1 </sup></a>.</div></section><article class="definition definition-like" id="def-bern"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.4</span><span class="period">.</span><span class="space"> </span><span class="title">Bernoulli distribution.</span>
+</h4> <div class="para logical" id="p-268">
+<div class="para">A discrete random variable <span class="process-math">\(\displaystyle X\)</span> has a <dfn class="terminology">Bernoulli distribution</dfn> and is referred to as a <dfn class="terminology">Bernoulli random variable</dfn> if and only if its probability distribution is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x; \theta) = \theta^x(1-\theta)^{1-x}
+\text{ for }x = 0, 1\text{.}
+\end{equation*}
+</div>
+</div></article><article class="example example-like" id="ex-bern-mean-var"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-bern-mean-var"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.5</span><span class="period">.</span><span class="space"> </span><span class="title">mean and variance of a Bernoulli distribution.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-bern-mean-var"><article class="example example-like"><div class="para" id="p-269">Find the mean and variance of a Bernoulli random variable (or of the Bernoulli distribution).</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-13" id="solution-13"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-13"><div class="solution solution-like">
+<div class="para logical" id="p-270">
+<div class="para">Generally we calculate the mean as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu = \sum_x x\cdot f(x)\text{.}
+\end{equation*}
+</div>
+<div class="para">Specifically this becomes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+\mu \amp = \sum_{i=0}^1 x f(x; \theta)\\
+\amp = 0\left(\theta^0(1-\theta)^1\right) +
+1\left(\theta^1(1-\theta)^0\right)\\
+\mu \amp = \theta
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+</div> <div class="para" id="p-271">We calculate the variance as <span class="process-math">\(\sigma^2 =
+E[X^2]-\left(E[X]\right)^2\text{.}\)</span> Keep in mind that we now know that <span class="process-math">\(E[X] = \theta\text{,}\)</span> so we know that <span class="process-math">\(\left(E[X]\right)^2 =
+\theta^2\)</span>
+</div> <div class="para logical" id="p-272">
+<div class="para">Now</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+E[X^2] \amp = \sum_{i=0}^1 x^2 f(x; \theta)\\
+\amp = 0^2\left(\theta^0(1-\theta)^1\right) +
+1^2\left(\theta^1(1-\theta)^0\right)\\
+E[X^2] \amp = \theta
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">Given this,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+\sigma^2 \amp = E[X^2]-\left(E[X]\right)^2\\
+\amp = \theta - \theta^2 \\
+\sigma^2 \amp = \theta(1-\theta)
+\end{aligned}
+\end{equation*}
+</div>
+</div>
+</div></div></article></div>
+<article class="example example-like" id="ex-bern-mgf"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-bern-mgf"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">moment-generating function of a Bernoulli distribution.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-bern-mgf"><article class="example example-like"><div class="para" id="p-273">Find the moment-generating function of a Bernoulli random variable (or of the Bernoulli distribution).</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-14" id="solution-14"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-14"><div class="solution solution-like"><div class="para logical" id="p-274">
+<div class="para">Recall that <span class="process-math">\(\displaystyle M_X(t) = E[e^{tx}] = \sum_x e^{tx} f(x;
+\theta)\text{.}\)</span> This becomes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+M_X(t) \amp = \sum_{x=0}^1 e^{tx} f(x; \theta)\\
+\amp = e^{0\cdot t}\left(\theta^0(1-\theta)^1\right) + e^{1\cdot
+t}\left(\theta^1(1-\theta)^0\right)\\
+\amp = (1-\theta) + \theta e^t\\
+M_X(t) \amp = 1 + \theta (e^t-1)
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+</div></div></div></article></div>
+<div class="para" id="p-275">You could use the moment-generating function and the earlier theorem to calculate moments about the origin used to find the mean and variance.</div>
+<div class="para" id="p-276">Consider now a new random variable <span class="process-math">\(Y\)</span> whose value is the sum of independent Bernoulli trials. This new variable has a ’binomial distribution’ as defined below.</div>
+<article class="definition definition-like" id="def-bin"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">binomial distribution.</span>
+</h4> <div class="para logical" id="p-277">
+<div class="para">A discrete random variable <span class="process-math">\(\displaystyle X\)</span> has a <dfn class="terminology">binomial distribution</dfn> and is referred to as a <dfn class="terminology">binomial random variable</dfn> if and only if its probability distribution is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+b(x; n, \theta) = {n\choose
+x}\theta^x(1-\theta)^{n-x} \text{ for }x = 0, 1, \dots, n\text{.}
+\end{equation*}
+</div>
+</div></article><div class="para" id="p-278">In the definition, the term <span class="process-math">\(\displaystyle {n \choose x}\)</span> gives the number of ways to select the order of the <span class="process-math">\(x\)</span> successes in <span class="process-math">\(n\)</span> trials. The values of <span class="process-math">\(b(x; n, \theta)\)</span> give the coefficients of terms in the expansion of <span class="process-math">\(\displaystyle
+\left((1-\theta) + \theta\right)^n\text{.}\)</span>
+</div>
+<article class="example example-like" id="ex-bin-coins"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-bin-coins"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.8</span><span class="period">.</span><span class="space"> </span><span class="title">Binomial coin flips.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-bin-coins"><article class="example example-like"><div class="para logical" id="p-279">
+<div class="para">Find the probability of 5 heads in 9 coin flips under each of the following situations.</div>
+<ol class="decimal">
+<li id="li-33"><div class="para" id="p-derived-li-33">The coin is balanced and <span class="process-math">\(P(\text{success}) = P(\text{failure}) =
+0.5\)</span>
+</div></li>
+<li id="li-34"><div class="para" id="p-derived-li-34">The coin is unbalanced and <span class="process-math">\(P(\text{success})\)</span> is <span class="process-math">\(3\)</span> times larger than <span class="process-math">\(P(\text{failure})\)</span>
+</div></li>
+</ol>
+</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-15" id="solution-15"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-15"><div class="solution solution-like">This problem can be done by evaluating the binomial using ’Table 1’ of the ’Statistical Tables Appendix’ (see book), or by using the definition of probability distribution of the binomial random variable. <ol class="decimal">
+<li id="li-35"><div class="para logical" id="p-280">
+<div class="para">The coin is balanced and <span class="process-math">\(P(\text{success}) = P(\text{failure})
+= 0.5\text{.}\)</span> We are looking to evaluate the binomial probability, sometimes written <span class="process-math">\(\operatorname{Bin}(n=9, \theta=0.5)\text{,}\)</span> specifically <span class="process-math">\(b(5; 9,
+0.5)\text{.}\)</span> This is,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+b(5; 9, 0.5) = {9 \choose 5}0.5^5(1-0.5)^{9-5} \approx
+0.2461 
+\end{equation*}
+</div>
+</div></li>
+<li id="li-36"><div class="para logical" id="p-281">
+<div class="para">The coin is unbalanced and <span class="process-math">\(P(\text{success})\)</span> is <span class="process-math">\(3\)</span> times larger than <span class="process-math">\(P(\text{failure})\text{.}\)</span> We first have to figure out the value for <span class="process-math">\(P(\text{success}) =
+\theta\text{.}\)</span> We have said that <span class="process-math">\(P(\text{success}) = 3\cdot P(\text{failure})\)</span> or <span class="process-math">\(\theta = 3\cdot (1-\theta)\text{.}\)</span> This gives <span class="process-math">\(\theta = 0.75\)</span> and, as above,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+b(5; 9, 0.75) = {9
+\choose 5}0.75^5(1-0.75)^{9-5} \approx 0.1168 
+\end{equation*}
+</div>
+</div></li>
+</ol>
+</div></div></article></div>
+<article class="example example-like" id="ex-bin-bball"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-bin-bball"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.9</span><span class="period">.</span><span class="space"> </span><span class="title">Free throws.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-bin-bball"><article class="example example-like"><div class="para" id="p-282">What is the probability of making <span class="process-math">\(2\)</span> in <span class="process-math">\(5\)</span> free throws if the probability of making one is <span class="process-math">\(0.86\text{?}\)</span>
+</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-16" id="solution-16"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-16"><div class="solution solution-like"><div class="para logical" id="p-283">
+<div class="para">We need to calculate</div>
+<div class="displaymath process-math">
+\begin{equation*}
+b(2; 5, 0.86) = {5\choose2}0.86^2(1-0.86)^{5-2}
+= 10(0.86)^2(0.14)^3 \approx 0.0203\text{.}
+\end{equation*}
+</div>
+<div class="para">This calculation corresponds to the ten possible orderings of 2 makes in 5 shot attempts, the probabilities associated with 2 ’makes’, and the probabilities associated with 3 ’misses’.</div>
+</div></div></div></article></div>
+<div class="para" id="p-284">Switching focus from <span class="process-math">\(x\)</span> successes in <span class="process-math">\(n\)</span> trials with a probability of success <span class="process-math">\(\theta\text{,}\)</span> we have <span class="process-math">\(n-x\)</span> failures in <span class="process-math">\(n\)</span> trials with a probability of failure <span class="process-math">\(1-\theta\text{.}\)</span>
+</div>
+<article class="theorem theorem-like" id="thm-bin-param"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.1.10</span><span class="period">.</span><span class="space"> </span><span class="title">reparameterizing a binomial.</span>
+</h4>
+<div class="para logical" id="p-285"><div class="displaymath process-math">
+\begin{equation*}
+b(x; n, \theta) = b(n-x; n, 1-\theta)
+\end{equation*}
+</div></div></article><article class="example example-like" id="ex-bin-bball2"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-bin-bball2"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.11</span><span class="period">.</span><span class="space"> </span><span class="title">Free throws - revisited.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-bin-bball2"><article class="example example-like"><div class="para" id="p-286">Using theorem <a href="" class="xref" data-knowl="./knowl/thm-bin-param.html" title="Theorem 5.1.10: reparameterizing a binomial">Theorem 5.1.10</a>, find the probability of making <span class="process-math">\(2\)</span> in <span class="process-math">\(5\)</span> free throws if the probability of making one is <span class="process-math">\(0.86\text{?}\)</span>
+</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-17" id="solution-17"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-17"><div class="solution solution-like"><div class="para logical" id="p-287">
+<div class="para">We need to calculate</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+b(5-2; 5, 1-0.86) \amp = b(3; 5, 0.14)\\
+\amp = {5\choose3}0.14^3(1-0.14)^{5-3}\\
+\amp = 10(0.14)^3(0.86)^2\\
+\amp \approx 0.020
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+<div class="para">This calculation corresponds to the ten possible orderings of 2 makes in 5 shot attempts, the probabilities associated with 2 ’makes’, and the probabilities associated with 3 ’misses’.</div>
+</div></div></div></article></div>
+<div class="para" id="p-288">For certain calculations, it is helpful to use the theorem to reduce the sizes of numbers used in the factorial or to find parameterizations for which the probabilities are known by a table.</div>
+<article class="theorem theorem-like" id="thm-bin-mean-var"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.1.12</span><span class="period">.</span><span class="space"> </span><span class="title">Mean and variance of binomial distribution.</span>
+</h4>
+<div class="para logical" id="p-289">
+<div class="para">The mean and variance of a binomial random variable (or of the binomial distribution) are</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu = n\theta \text{ and } \sigma^2 =
+n\theta(1-\theta)\text{.}
+\end{equation*}
+</div>
+</div> <article class="hiddenproof" id="proof-2"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-2"><h5 class="heading"><span class="type">Proof<span class="period">.</span></span></h5></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-2"><article class="hiddenproof"><div class="para" id="p-290">These can be proved using the expectation and some clever re-indexing in evaluating the sum.</div></article></div></article><article class="theorem theorem-like" id="thm-bin-successes"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.1.13</span><span class="period">.</span><span class="space"> </span><span class="title">Proportion of binomial successes.</span>
+</h4>
+<div class="para logical" id="p-291">
+<div class="para">If <span class="process-math">\(X\)</span> is a binomially-distributed random variable with parameters <span class="process-math">\(n\text{,}\)</span> <span class="process-math">\(\theta\text{,}\)</span> and <span class="process-math">\(Y = \dfrac{X}{n}\)</span> gives the proportion of successes,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+E[Y] = \theta \text{ and } \sigma_Y^2 =
+\dfrac{\theta(1-\theta)}{n}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="exercise exercise-like" id="exer-bin-dice"><a href="" data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exer-bin-dice"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">5.1.14</span><span class="period">.</span><span class="space"> </span><span class="title">probabilities of dice rolls.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-exer-bin-dice"><article class="exercise exercise-like"><div class="para" id="p-292">Find the expected value of the number of times a 2 or 3 shows in 15 rolls of a standard 6-sided die.</div> <a href="" data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-9" id="hint-9"><span class="type">Hint</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-9"><div class="hint solution-like">What is the probability of ’success’?</div></div></article></div>
+<article class="example example-like" id="ex-bin-mgf"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-bin-mgf"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.15</span><span class="period">.</span><span class="space"> </span><span class="title">moment-generating function of a binomial distribution.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-bin-mgf"><article class="example example-like"><div class="para" id="p-293">Find the moment-generating function of a binomial random variable (or of the binomial distribution).</div>
+<a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-18" id="solution-18"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-18"><div class="solution solution-like"><div class="para logical" id="p-294">
+<div class="para">Recall that <span class="process-math">\(\displaystyle M_X(t) = E[e^{tx}] = \sum_x e^{tx} f(x;
+\theta)\text{.}\)</span> This becomes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+M_X(t) \amp = \sum_{x=0}^n e^{tx} b(x; n, \theta)\\
+\amp = \sum_{x=0}^n e^{tx} {n \choose x} \theta^x (1-\theta)^{n-x}\\
+\amp = \sum_{x=0}^n {n \choose x} \left(\theta e^t\right)^x
+(1-\theta)^{n-x}\\
+\amp = \sum_{x=0}^n {n \choose x} (1-\theta)^{n-x}\left(\theta
+e^t\right)^x\\
+M_X(t) \amp = \left((1-\theta) + \theta e^t\right)^n
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+<div class="para">That last step, though a big leap in print, comes from applying the binomial theorem in reverse, that is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sum_{k=0}^n {n \choose
+r}a^{n-r} b^r = (a+b)^n
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(a=1-\theta\)</span> and <span class="process-math">\(b = \theta
+e^t\text{.}\)</span>
+</div>
+</div></div></div></article></div>
+<div class="para" id="p-295">You might recognize this as <span class="process-math">\(n\)</span> factors of the moment-generating function of a Bernoulli random variable.</div>
+<div class="para" id="p-296">You could use the moment-generating function and <a href="" class="xref" data-knowl="./knowl/thm-4-9.html" title="Theorem 4.1.14: moments via differentiation">Theorem 4.1.14</a> to calculate moments about the origin used to find the mean and variance as a mechanism to prove <a href="" class="xref" data-knowl="./knowl/thm-bin-mean-var.html" title="Theorem 5.1.12: Mean and variance of binomial distribution">Theorem 5.1.12</a>.</div></section><section class="exercises" id="exercises-18"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">5.1.4</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-30"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 5.7.</span>
+</h4>
+<div class="para" id="p-297">Verify <a href="" class="xref" data-knowl="./knowl/thm-bin-successes.html" title="Theorem 5.1.13: Proportion of binomial successes">Theorem 5.1.13</a>.</div></article><article class="exercise exercise-like" id="exercise-31"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 5.10.</span>
+</h4>
+<div class="para" id="p-298">If <span class="process-math">\(X\)</span> is a binomial random variable, for what value of <span class="process-math">\(\theta\)</span> is the probability <span class="process-math">\(b(x; n, \theta)\)</span> a maximum? In other words, maximize <span class="process-math">\(b(x; n, \theta)\)</span> with respect to <span class="process-math">\(\theta\text{.}\)</span>
+</div></article></section><section class="subsection" id="sub-discrete-negbin-geom"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.5</span> <span class="title">Negative Binomial and Geometric distributions</span>
+</h3>
+<section class="introduction" id="introduction-21"><div class="para" id="p-299">The binomial distribution describes the probability of a certain number of successes in a certain amount of trials. Sometimes, instead, we are interested in the trial on which a particular success occurs.  This is described by the negative binomial distribution.</div> <div class="para" id="p-300">This situation requires obtaining <span class="process-math">\(k-1\)</span> successes across the first <span class="process-math">\(x-1\)</span> trials, with the <span class="process-math">\(k^{\text{th}}\)</span> and final success to occur on the <span class="process-math">\(x^{\text{th}}\)</span> trial.</div> <div class="para" id="p-301">You will find tools for visualization at the following <a class="external" href="https://buddy.uco.edu/shiny/slaverty/mathstat/NegBin/" target="_blank">link</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-3" id="fn-3"><sup> 2 </sup></a>.</div></section><article class="definition definition-like" id="def-neg-bin"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.16</span><span class="period">.</span><span class="space"> </span><span class="title">negative binomial distribution.</span>
+</h4> <div class="para logical" id="p-302">
+<div class="para">A discrete random variable <span class="process-math">\(\displaystyle X\)</span> has a <dfn class="terminology">negative binomial distribution</dfn> and is referred to as a <dfn class="terminology">negative binomial random variable</dfn> if and only if its probability distribution is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+b^*(x; k, \theta) = {x-1\choose
+k-1}\theta^k(1-\theta)^{x-k} \text{ for }x = k, k+1, \dots\text{.}
+\end{equation*}
+</div>
+</div></article><div class="para" id="p-303">Sometimes we refer to the random variable as being distributed according to <span class="process-math">\(\operatorname{NegBin}(k, \theta)\)</span> or <span class="process-math">\(\operatorname{NB}(k, \theta)\text{.}\)</span>   The values of the random variable describe <em class="emphasis">binomial waiting-times</em>, since the result is the number of trials until arriving at a particular outcome of interest.</div>
+<article class="theorem theorem-like" id="thm-bin-negbin"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.1.17</span><span class="period">.</span><span class="space"> </span><span class="title">negative binomial probability as a binomial probability.</span>
+</h4>
+<div class="para logical" id="p-304"><div class="displaymath process-math">
+\begin{equation*}
+b^*(x; k, \theta) = \frac{k}{x}b(k; x, \theta)\text{.}
+\end{equation*}
+</div></div></article><article class="hiddenproof" id="proof-3"><a href="" data-knowl="" class="id-ref proof-knowl original" data-refid="hk-proof-3"><h4 class="heading"><span class="type">Proof<span class="period">.</span></span></h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-proof-3"><article class="hiddenproof"><div class="para" id="p-305">This can be shown, relatively quickly by relatively simple manipulation of the definitions. Notice that we are equating on the left the negative binomial and on the right the binomial.</div></article></div>
+<article class="exercise exercise-like" id="exer-negbin-bball"><a href="" data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exer-negbin-bball"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">5.1.18</span><span class="period">.</span><span class="space"> </span><span class="title">Free throws with the negative binomial.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-exer-negbin-bball"><article class="exercise exercise-like"><div class="para" id="p-306">A player makes a free throw with probability <span class="process-math">\(0.86\text{.}\)</span> What is the probability that the shooter makes her <span class="process-math">\(3^{\text{rd}}\)</span> shot on her <span class="process-math">\(5^{\text{th}}\)</span> attempt?</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-19" id="solution-19"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-19"><div class="solution solution-like"><div class="para logical" id="p-307">
+<div class="para">We need to calculate</div>
+<div class="displaymath process-math">
+\begin{equation*}
+b^*(5; 3, 0.86) =
+{5-1\choose3-1}0.86^3(1-0.86)^{5-3}
+= 6(0.86)^3(0.14)^2\text{.}
+\end{equation*}
+</div>
+<div class="para">This means <span class="process-math">\(2\)</span> shots were made in the first <span class="process-math">\(4\)</span> attempts, followed by the <span class="process-math">\(3^{\text{rd}}\)</span> make on the <span class="process-math">\(5^{\text{th}}\)</span> attempt.</div>
+</div></div></div></article></div>
+<article class="theorem theorem-like" id="theorem-31"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.1.19</span><span class="period">.</span><span class="space"> </span><span class="title">Mean and variance of the negative binomial distribution.</span>
+</h4>
+<div class="para logical" id="p-308">
+<div class="para">The mean and variance of the negative binomial distribution are</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu
+= \frac{k}{\theta}
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sigma^2 =
+\frac{k}{\theta}\left(\frac{1}{\theta}-1\right)\text{.}
+\end{equation*}
+</div>
+</div></article><article class="example example-like" id="ex-negbin-mgf"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-negbin-mgf"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.20</span><span class="period">.</span><span class="space"> </span><span class="title">moment generating function of the negative binomial distribution.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-negbin-mgf"><article class="example example-like"><div class="para" id="p-309">Find the moment-generating function of a negative binomial random variable (or of the negative binomial distribution).</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-20" id="solution-20"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-20"><div class="solution solution-like"><div class="para logical" id="p-310">
+<div class="para">Recall that <span class="process-math">\(\displaystyle M_X(t) = E[e^{tx}] = \sum_x e^{tx} f(x;
+\theta)\text{.}\)</span> This becomes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M_X(t) = \left(\dfrac{\theta e^t}{1-(1-\theta)e^t}\right)^k\text{.}
+\end{equation*}
+</div>
+</div></div></div></article></div>
+<div class="para" id="p-311">The question about when the first success occurs is a common one. So common, in fact, that it gets its own name, the <em class="emphasis">geometric distribution</em>.  Now it should first be noted that we sometimes view ’success’ strangely. Often we are instead thinking of a particular ’outcome of interest’ rather than the traditional interpretation of ’success’ as ’a good thing’.</div>
+<article class="definition definition-like" id="def-geom"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.21</span><span class="period">.</span><span class="space"> </span><span class="title">geometric distribution.</span>
+</h4> <div class="para logical" id="p-312">
+<div class="para">A discrete random variable <span class="process-math">\(\displaystyle X\)</span> has a <dfn class="terminology">geometric distribution</dfn> and is referred to as a <dfn class="terminology">geometric random variable</dfn> if and only if its probability distribution is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+g(x; \theta) = \theta(1-\theta)^{x-1}
+\text{ for }x = 1, 2, \dots\text{.}
+\end{equation*}
+</div>
+</div></article><div class="para" id="p-313">The geometric distribution answers the age-old question "if at first you don’t succeed, how many times did you fail?"</div>
+<article class="theorem theorem-like" id="theorem-32"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.1.22</span><span class="period">.</span><span class="space"> </span><span class="title">Mean and variance of the geometric distribution.</span>
+</h4>
+<div class="para logical" id="p-314">
+<div class="para">The mean and variance of the geometric distribution are</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu =
+\frac{1}{\theta}
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sigma^2 =
+\frac{1}{\theta}\left(\frac{1}{\theta}-1\right)\text{.}
+\end{equation*}
+</div>
+</div></article><div class="para" id="p-315">Sometimes we refer to the random variable as being distributed according to <span class="process-math">\(\operatorname{Geom}(\theta)\text{.}\)</span>
+</div></section><section class="exercises" id="exercises-19"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">5.1.6</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-33"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 5.18.</span>
+</h4>
+<div class="para" id="p-316">Prove <a href="" class="xref" data-knowl="./knowl/thm-bin-negbin.html" title="Theorem 5.1.17: negative binomial probability as a binomial probability">Theorem 5.1.17</a>.</div></article><article class="exercise exercise-like" id="exercise-34"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 5.20.</span>
+</h4>
+<div class="para logical" id="p-317">
+<div class="para">Show that the moment-generating function of the geometric distribution is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M_X(t) = \dfrac{\theta
+e^t}{1-e^t(1-\theta)}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="exercise exercise-like" id="exercise-35"><h4 class="heading">
+<span class="codenumber">3<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 5.21.</span>
+</h4>
+<div class="para logical" id="p-318">
+<div class="para">Use <a href="" class="xref" data-knowl="./knowl/thm-4-9.html" title="Theorem 4.1.14: moments via differentiation">Theorem 4.1.14</a> and</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/thm-4-9.html">
+\begin{equation*}
+M_X(t) = \dfrac{\theta
+e^t}{1-e^t(1-\theta)}
+\end{equation*}
+</div>
+<div class="para">to find <span class="process-math">\(\mu\)</span> and <span class="process-math">\(\sigma^2\)</span> by differentiation.</div>
+</div></article></section><section class="subsection" id="sub-discrete-hypergeom"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.7</span> <span class="title">Hypergeometric distribution</span>
+</h3>
+<section class="introduction" id="introduction-22"><div class="para" id="p-319">The Hypergeometric distribution describes the probabilities of sampling from a finite population without replacement.  Unlike the binomial where it is assumed that the probability of success is a constant, with the hypergeometric distribution, the probability of success changes with the selection process.</div> <div class="para" id="p-320">You will find tools for visualization at the following <a class="external" href="https://buddy.uco.edu/shiny/slaverty/mathstat/Hyper/" target="_blank">link</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-4" id="fn-4"><sup> 3 </sup></a>.</div></section><article class="definition definition-like" id="def-hyper"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.23</span><span class="period">.</span><span class="space"> </span><span class="title">hypergeometric distribution.</span>
+</h4> <div class="para logical" id="p-321">
+<div class="para">A discrete random variable <span class="process-math">\(\displaystyle X\)</span> has a <dfn class="terminology">hypergeometric distribution</dfn> and is referred to as a <dfn class="terminology">hypergeometric random variable</dfn> if and only if its probability distribution is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+h(x; n, N, M) = \dfrac{{M \choose x}{N-M
+\choose{n-x}}}{{N \choose n}}
+\text{ for }x = 1, 2, \dots, n; x \le M \text{ and } n-x \le N-M\text{.}
+\end{equation*}
+</div>
+</div></article><article class="theorem theorem-like" id="theorem-33"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.1.24</span><span class="period">.</span><span class="space"> </span><span class="title">Mean and variance of the hypergeometric distribution.</span>
+</h4>
+<div class="para logical" id="p-322">
+<div class="para">The mean and variance of the hypergeometric distribution are</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu =
+\frac{nM}{N}
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sigma^2 =
+\frac{nM(N-M)(N-n)}{N^2(N-1)}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="remark remark-like" id="typo-hyper"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">5.1.25</span><span class="period">.</span>
+</h4>
+<div class="para" id="p-323">There is a typo in the printed book for the class in the second numerator term.</div></article><article class="example example-like" id="ex-hyper"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-hyper"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">5.1.26</span><span class="period">.</span><span class="space"> </span><span class="title">hypergeometric distribution for truck inspections.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-hyper"><article class="example example-like"><div class="para" id="p-324">You randomly choose 6 out of 24 trucks for a new fleet of work trucks.  It is known that 4 of the 24 trucks have failed a recent emissions inspection. What is the probability that none of the trucks in your fleet are "polluters"?</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-21" id="solution-21"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-21"><div class="solution solution-like"><div class="para logical" id="p-325">
+<div class="para">Let <span class="process-math">\(x = \text{# of polluters selected}\text{.}\)</span>  Then, we are looking for</div>
+<div class="displaymath process-math">
+\begin{equation*}
+h(0; 6, 24, 4) = \dfrac{{4 \choose 0}{24-4 \choose{6-0}}}{{24 \choose
+6}}\text{.}
+\end{equation*}
+</div>
+<div class="para">Notice the denominator is the total number of ways that we can choose <span class="process-math">\(6\)</span> of <span class="process-math">\(24\)</span> trucks.  The first term in the numerator is the number of ways that we can choose <span class="process-math">\(0\)</span> trucks from the collection of <span class="process-math">\(4\)</span> defective trucks.   The second term in the numerator is the number of ways that we can choose <span class="process-math">\(6-0\)</span> trucks from the <span class="process-math">\(24-4\)</span> non-defective trucks.</div>
+</div></div></div></article></div>
+<article class="remark remark-like" id="re-mean-var-hyper"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">5.1.27</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="p-326">
+<div class="para">Below let <span class="process-math">\(\theta = \dfrac{M}{N}\)</span> (think through this). The mean and variance of the hypergeometric distribution can be written</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu =
+\frac{nM}{N} = n\theta
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sigma^2 =
+\frac{nM(N-M)(N-n)}{N^2(N-1)} =
+n\theta(1-\theta)\left(\dfrac{N-n}{N-1}\right)\text{.}
+\end{equation*}
+</div>
+<div class="para">Above, the term <span class="process-math">\(\left(\dfrac{N-n}{N-1}\right)\)</span> is called the "finite population correction factor".</div>
+</div> <div class="para" id="p-327">With this we might interpret the fraction <span class="process-math">\(\theta = \dfrac{M}{N}\)</span> as the "probability of success", given that we are choosing <span class="process-math">\(M\)</span> successes from <span class="process-math">\(N\)</span> objects.</div></article><div class="para" id="p-328">As indicated at the beginning of this section, the binomial and hypergeometric are related. The binomial describes a situation where sampling is done with replacement, while the hypergeometric describes a situation where sampling is done without replacement.</div>
+<div class="para" id="p-329">You will find tools for visualization at the following <a class="external" href="https://buddy.uco.edu/shiny/slaverty/mathstat/HyperBin/" target="_blank">link</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-5" id="fn-5"><sup> 4 </sup></a>.</div></section><section class="exercises" id="exercises-20"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">5.1.8</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-36"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">4.xx.</span>
+</h4>
+<div class="para" id="p-330">xx</div></article></section><section class="subsection" id="sub-discrete-poisson"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.9</span> <span class="title">Poisson distribution</span>
+</h3>
+<section class="introduction" id="introduction-23"><div class="para" id="p-331">The Poisson distribution describes the occurrence of events taking place at a constant rate in time or over space.  For example, if car accidents take place at a rate of 3 per 100 miles, we would use a Poisson distribution to describe the probabilities of certain numbers of accidents occurring along a known distance of highway.</div> <div class="para" id="p-332">You will find tools for visualization at the following <a class="external" href="https://buddy.uco.edu/shiny/slaverty/mathstat/Poisson/" target="_blank">link</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-6" id="fn-6"><sup> 5 </sup></a>.</div></section><article class="definition definition-like" id="def-poiss"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">5.1.28</span><span class="period">.</span><span class="space"> </span><span class="title">Poisson distribution.</span>
+</h4> <div class="para logical" id="p-333">
+<div class="para">A discrete random variable <span class="process-math">\(\displaystyle X\)</span> has a <dfn class="terminology">Poisson distribution</dfn> and is referred to as a <dfn class="terminology">Poisson random variable</dfn> if and only if its probability distribution is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+p(x; \lambda) = \dfrac{\lambda^x
+e^{-\lambda}}{x!}\text{.}
+\end{equation*}
+</div>
+</div></article><article class="theorem theorem-like" id="theorem-34"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">5.1.29</span><span class="period">.</span><span class="space"> </span><span class="title">Mean, variance, and MGF of the Poisson distribution.</span>
+</h4>
+<div class="para logical" id="p-334">
+<div class="para">The mean and variance of the Poisson distribution are</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu =
+\lambda
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sigma^2 = \lambda\text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="p-335">
+<div class="para">The moment-generating function of the Poisson distribution is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M_X(t)
+= e^{\lambda(t-1)}
+\end{equation*}
+</div>
+</div></article><div class="para" id="p-336">The Poisson distribution is derived from the binomial distribution (see pgs. 81-82 in Hogg, Tanis, Zimmerman, 10th ed. for a very good derivation).  Though this is the case, and though the Poisson can be used to approximate the binomial under certain circumstances when the binomial probabilities would be numerically challenging to calculate, many applications of the Poisson distribute have absolutely nothing to do with an underlying binomial process.</div>
+<div class="para" id="p-337">You will find tools for visualization at the following <a class="external" href="https://buddy.uco.edu/shiny/slaverty/mathstat/BinPoi/" target="_blank">link</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-7" id="fn-7"><sup> 6 </sup></a>.</div>
+<div class="para" id="p-338">As described above, it is generally regarded as safe to use the Poisson as a means of approximating binomial probabilities when <span class="process-math">\(n \ge
+20\)</span> and <span class="process-math">\(\theta \le 0.05\)</span> or if <span class="process-math">\(n \gt 100\)</span> and <span class="process-math">\(\theta
+\lt 0.10\text{.}\)</span>  In some cases the approximation will work quite well even in violation of these bounds. Approximation may be slightly less important in modern times than it was in the past due to the ubiquity of computers and software, though the connection is still worth remembering.</div>
+<div class="para" id="p-339">Beyond its use in approximation, the Poisson distribution has numerous applications for calculation probabilities of events occurring over time or across space.</div></section><section class="exercises" id="exercises-21"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">5.1.10</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-37"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">4.xx.</span>
+</h4>
+<div class="para" id="p-340">xx</div></article></section><section class="subsection" id="sub-discrete-multivariate"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">5.1.11</span> <span class="title">Multivariate distributions</span>
+</h3>
+<div class="para" id="p-341">See Sec. 5.8, 5.9</div>
+<section class="introduction" id="introduction-24"><div class="para" id="p-342">The multinomial distribution is an extension of the binomial distribution that tracks the occurrence in number of multiple types of outcomes.</div> <div class="para" id="p-343">The multivariate hypergeometric distribution is an extension of the hypergeometric distribution that tracks the occurrence in number of multiple types of outcomes.</div></section></section><section class="exercises" id="exercises-22"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">5.1.12</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-38"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">4.xx.</span>
+</h4>
+<div class="para" id="p-344">xx</div></article></section></section><div class="hidden-content tex2jax_ignore" id="hk-fn-2"><div class="fn"><code class="code-inline tex2jax_ignore">buddy.uco.edu/shiny/slaverty/mathstat/Binomial/</code></div></div>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-3"><div class="fn"><code class="code-inline tex2jax_ignore">buddy.uco.edu/shiny/slaverty/mathstat/NegBin/</code></div></div>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-4"><div class="fn"><code class="code-inline tex2jax_ignore">buddy.uco.edu/shiny/slaverty/mathstat/Hyper/</code></div></div>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-5"><div class="fn"><code class="code-inline tex2jax_ignore">buddy.uco.edu/shiny/slaverty/mathstat/HyperBin/</code></div></div>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-6"><div class="fn"><code class="code-inline tex2jax_ignore">buddy.uco.edu/shiny/slaverty/mathstat/Poisson/</code></div></div>
+<div class="hidden-content tex2jax_ignore" id="hk-fn-7"><div class="fn"><code class="code-inline tex2jax_ignore">buddy.uco.edu/shiny/slaverty/mathstat/BinPoi/</code></div></div>
+</div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="chap-calculus.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon">^</span><span class="name">Top</span></a><a class="next-button button" href="section-probability-distributions.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<h4 class="heading"><span class="type">Paragraph</span></h4>
+<div class="para logical">
+<div class="para">Try a few steps of the bisection method by hand.  Define <code class="code-inline tex2jax_ignore">a</code> and <code class="code-inline tex2jax_ignore">b</code> and your function <span class="process-math">\(f\text{.}\)</span>  Start by storing approximations manually, <code class="code-inline tex2jax_ignore">p0, p1, ... </code>, but consider how you might streamline your scratchwork by using a loop.  After that you might wrap a function on the outside that accepts parameters, or you might practice using print statements to return information to the screen.  This might be a good place to review the script posted to D2L.</div>
+<pre class="code-display tex2jax_ignore">
+for(i in 1:5){
+  ##print(c(i,i^2)) ## unformatted
+  print(paste("For i=",i,", the value i^2=", i^2, ".", sep=''))
+}
+</pre>
+<pre class="code-display tex2jax_ignore">
+for(i in 1:5){
+  ##print(c(i, i^2)) ## unformatted
+  cat("For i=",i,", the value i^2=", i^2, ".\n",sep='')
+</pre>
+</div>
+<span class="incontext"><a href="section-R-intro.html#p-21" class="internal">in-context</a></span>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math"><div class="solution solution-like">
+<div class="para logical">
+<div class="para">Generally we calculate the mean as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu = \sum_x x\cdot f(x)\text{.}
+\end{equation*}
+</div>
+<div class="para">Specifically this becomes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+\mu \amp = \sum_{i=0}^1 x f(x; \theta)\\
+\amp = 0\left(\theta^0(1-\theta)^1\right) +
+1\left(\theta^1(1-\theta)^0\right)\\
+\mu \amp = \theta
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+</div> <div class="para">We calculate the variance as <span class="process-math">\(\sigma^2 =
+E[X^2]-\left(E[X]\right)^2\text{.}\)</span> Keep in mind that we now know that <span class="process-math">\(E[X] = \theta\text{,}\)</span> so we know that <span class="process-math">\(\left(E[X]\right)^2 =
+\theta^2\)</span>
+</div> <div class="para logical">
+<div class="para">Now</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+E[X^2] \amp = \sum_{i=0}^1 x^2 f(x; \theta)\\
+\amp = 0^2\left(\theta^0(1-\theta)^1\right) +
+1^2\left(\theta^1(1-\theta)^0\right)\\
+E[X^2] \amp = \theta
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">Given this,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+\sigma^2 \amp = E[X^2]-\left(E[X]\right)^2\\
+\amp = \theta - \theta^2 \\
+\sigma^2 \amp = \theta(1-\theta)
+\end{aligned}
+\end{equation*}
+</div>
+</div>
+</div></body>
+</html>

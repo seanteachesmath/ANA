@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+	<section xml:id="cubic-spline-interpolation">
+	<title>Cubic spline interpolation</title>
+
+<p>
+Before you begin, please note that there is a typo
+in the clamped spline example in the book (Example 2, page 148, eighth
+edition), the correct solution will be given below.
+	</p>
+	<p>
+	When computing a cubic spline with <m>n+1</m> grid
+points, keep in mind that we have <m>n</m> intervals, <m>n</m> spline
+segments, and an <m>(n+1)\times (n+1)</m> matrix. For example, if the
+data is known at the grid points <m>x_0, x_1, x_2, x_3, x_4</m> we have
+<m>5</m> points, <m>4</m> intervals, <m>4</m> spline segments, and a
+<m>5\times5</m> matrix. The spacings between grid points, defined <m>h_j
+= x_{j+1} - x_j</m>, are used below.
+	</p>
+	
+<p><title>General approach</title>
+	We can verify the conditions of the spline by
+definition, but ultimately the way to implement this, even for small
+datasets, is to use matrix algebra. Let’s use the vector
+<m>\mathbf{r}</m> (as in <m>\textbf{A}\textbf{x} = \textbf{r}</m>,
+rather than <m>\textbf{A}\textbf{x} = \textbf{b}</m>) for the right-hand
+side to avoid likely confusion between entries of the right-hand side
+vector and the coefficients <m>b_j</m> of the splines. The first and
+last rows of <m>\mathbf{A}</m> and <m>\mathbf{r}</m> depend on the
+choice of boundary conditions, but the interior rows are illustrated
+below. On the interior rows of the main diagonal, <m>\mathbf{A}</m> has
+entries <me>2(h_0+h_1), 2(h_1 + h_2), \cdots, 2(h_{n-3} + h_{n-2}),
+2(h_{n-2} + h_{n-1})</me> On the interior rows of the sub-diagonal
+(below main), <m>\mathbf{A}</m> has entries <me>h_0, h_1, \cdots,
+h_{n-3}, h_{n-2}</me> On the interior rows of the super-diagonal (above
+main), <m>\mathbf{A}</m> has entries <me>h_1, h_2, \cdots, h_{n-2},
+h_{n-1}</me>
+	</p>
+
+	<p>
+	<me>\begin{aligned}
+\mathbf{A} &amp; = 
+\begin{bmatrix}
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp;
+\cdot &amp; \cdot &amp; \cdot &amp;\cdot &amp; \cdot \\
+h_0 &amp; 2(h_0+h_1) &amp; h_1 &amp; 0 &amp; \cdot &amp; \cdot &amp;
+\cdot&amp; \cdot &amp; \cdot &amp;\cdot &amp; 0\\
+\cdot &amp; \ddots &amp; \ddots &amp; \ddots &amp; \cdot &amp; \cdot
+&amp; \cdot &amp; \cdot &amp; \cdot &amp;\cdot &amp; \cdot \\
+0 &amp; \cdot &amp; \cdot &amp; 0 &amp; h_{j-1} &amp; 2(h_{j-1}+h_{j})
+&amp; h_{j} &amp; 0 &amp; \cdot &amp; \cdot &amp; 0\\
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp;
+\cdot &amp; \cdot &amp; \cdot &amp;\cdot &amp; \cdot \\
+0 &amp; \cdot &amp; \cdot &amp; \cdot&amp; \cdot &amp; \cdot &amp;\cdot
+&amp; 0 &amp; h_{n-2} &amp; 2(h_{n-2}+h_{n-1}) &amp; h_{n-1}\\
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp;
+\cdot &amp; \cdot &amp; \cdot &amp;\cdot &amp; \cdot \\
+\end{bmatrix}\\
+\mathbf{x} &amp; = 
+\left[\begin{array}{c}
+c_0 \\
+c_1 \\
+\vdots \\
+c_{n-1} \\
+c_n \\
+\end{array}\right]\\
+\mathbf{r} &amp; = 
+\left[\begin{array}{c}
+\cdots \\
+3\left(\dfrac{a_2-a_1}{h_1} - \dfrac{a_1-a_0}{h_0}\right) \\
+\vdots \\
+3\left(\dfrac{a_n-a_{n-1}}{h_{n-1}} -
+\dfrac{a_{n-1}-a_{n-2}}{h_{n-2}}\right) \\
+\cdots \\
+\end{array}\right]\end{aligned}</me>
+	</p>
+	
+	<p>	<title>Natural BCs:</title>
+	The interior rows of <m>\mathbf{A}</m> are as
+described above, but the first row begins with <m>1, 0, \dots</m> and
+the last row ends with <m>\dots, 0, 1</m>. To satisfy the boundary
+condition, the first and last rows of of <m>\mathbf{r}</m> are exactly
+<m>0</m>. <me>\begin{aligned}
+\mathbf{A} &amp; = 
+\begin{bmatrix}
+1 &amp; 0 &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot
+&amp; \cdot &amp; \cdot &amp;\cdot &amp; \cdot \\
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp;
+\cdot &amp; \cdot &amp; \cdot &amp;\cdot &amp; \cdot \\
+\vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots
+&amp; \vdots &amp; \vdots &amp; \vdots &amp;\vdots &amp; \vdots \\
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp;
+\cdot &amp; \cdot &amp; \cdot &amp;\cdot &amp; \cdot \\
+\cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp; \cdot &amp;
+\cdot &amp; \cdot &amp; \cdot &amp;0 &amp; 1 \\
+\end{bmatrix}\\
+\mathbf{r} &amp; = 
+\left[\begin{array}{c}
+0 \\
+\vdots \\
+\vdots \\
+\vdots\\
+0 \\
+\end{array}\right]\end{aligned}</me>
+	</p>
+	<p>	<title>Clamped BCs:</title>
+	The interior rows of <m>\mathbf{A}</m> are as
+described above, but the first row begins with <m>2h_0, h_0, 0,
+\dots</m> and the last row ends with <m>\dots, 0, h_{n-1}, 2h_{n-1}</m>.
+To satisfy the boundary condition, the first and last rows of of
+<m>\mathbf{r}</m> are exactly <m>3\left(\dfrac{a_1-a_0}{h_0}
+-f'(a)\right)</m> and <m>3\left(f'(b) -
+\dfrac{a_n-a_{n-1}}{h_{n-1}}\right)</m>, respectively.
+	</p>
+
+	<p>
+	<me>\begin{aligned}
+\mathbf{A} &amp; = %\setcounter{MaxMatrixCols}{20}
+\begin{bmatrix}
+2h_0 &amp; h_0 &amp; 0 &amp;\cdot &amp; \cdot &amp; \cdot &amp;\cdot
+&amp; 0 \\
+\cdot &amp; \ddots &amp; \ddots &amp; \ddots &amp; \cdots &amp; \cdots
+&amp;\cdots &amp; \vdots \\
+%\vdots &amp; \ddots &amp; \vdots &amp; \vdots &amp; \vdots &amp; \vdots
+%&amp;\vdots &amp; \vdots \\
+\vdots &amp; \cdots &amp; \cdots &amp; \cdots &amp; \ddots &amp; \ddots
+&amp;\ddots &amp; \cdot \\
+\cdot &amp; \cdots &amp; \cdot &amp; \cdot &amp; \cdot &amp; 0
+&amp;h_{n-1} &amp; 2h_{n-1} \\
+\end{bmatrix}\\
+\mathbf{r} &amp; = 
+\left[\begin{array}{c}
+3\left(\dfrac{a_1-a_0}{h_0} -f'(a)\right) \\
+\vdots \\
+\vdots \\
+\vdots\\
+3\left(f'(b) - \dfrac{a_n-a_{n-1}}{h_{n-1}}\right) \\
+\end{array}\right]\end{aligned}</me>
+	</p>
+	
+	<p>
+	<title>Parameterizing the spline:</title>	
+	Once the <m>c_j</m>’s have been solved, the
+<m>b_j</m>’s and <m>d_j</m>’s can be specified <em>in reverse order</em>
+from <m>j=n-1,n-2,\dots,0</m> (see Alg. 3.4 (Step 6) or Alg. 3.5 (Step
+7)). <me>\begin{aligned}
+b_j &amp; = \dfrac{a_{j+1} - a_j}{h_j} - \dfrac{h_j(c_{j+1} +
+2c_j)}{3}\\
+d_j &amp; = \dfrac{c_{j+1} - c_j}{3h_j}\end{aligned}</me> Notice that
+<m>c_n</m> (from <m>\mathbf{x}</m>) is used in the calculation of
+<m>d_{n-1}</m>, but is never actually used in a spline. Regardless of
+the boundary condition, the calculated coefficients will appear in the
+spline of the form <me>S(t) = \left\{\begin{alignedat}{2}
+&amp;\phantom{a_j + b_j(x-x_j) + } \cdots \phantom{(x-x_j)^2 +
+d_j(x-x_j)^3}, &amp;&amp;\cdots\\
+S_j(t) &amp;= a_j + b_j(x-x_j) + c_j(x-x_j)^2 + d_j(x-x_j)^3, \quad
+&amp;&amp;x_j\leq x &lt; x_{j+1}\\
+&amp;\phantom{a_j + b_j(x-x_j) + } \cdots \phantom{(x-x_j)^2 +
+d_j(x-x_j)^3}, &amp;&amp;\cdots\\
+\end{alignedat}\right.</me> Note that <m>x_0=a</m> and <m>x_n=b</m>.
+	</p>
+	
+	<p> <title>Example</title>
+	
+	A natural spline: 	See Example 1 on page 143.
+	
+	Consider the data <m>x_0 = 0, x_1=1, x_2, =2,
+x_3=3</m> and <m>f(x) = e^x</m>.
+
+	</p>
+
+<!-- div attr= class="center"-->
+	<table xml:id="tab-nat-cubic">
+	<title>Coefficients of a natural cubic spline.</title>
+	<tabular>
+	<row header="yes">
+	<cell halign="center"><m>j</m></cell>
+	<cell halign="center"><m>a_j</m></cell>
+	<cell halign="center"><m>b_j</m></cell>
+	<cell halign="center"><m>c_j</m></cell>
+	<cell halign="center"><m>d_j</m></cell>
+	</row>
+	<row class="odd">
+	<cell halign="center">0</cell>
+	<cell halign="center">1.000000</cell>
+	<cell halign="center">1.465998</cell>
+	<cell halign="center">0.0000000</cell>
+	<cell halign="center">0.2522842</cell>
+	</row>
+	<row class="even">
+	<cell halign="center">1</cell>
+	<cell halign="center">2.718282</cell>
+	<cell halign="center">2.222850</cell>
+	<cell halign="center">0.7568526</cell>
+	<cell halign="center">1.6910714</cell>
+	</row>
+	<row class="odd">
+	<cell halign="center">2</cell>
+	<cell halign="center">7.389056</cell>
+	<cell halign="center">8.809770</cell>
+	<cell halign="center">5.8300668</cell>
+	<cell halign="center">-1.9433556</cell>
+	</row>
+	</tabular>
+	</table>
+
+	<figure xml:id="fig-cubic-natural">
+	<image source="2_interpolation/natural.png"/>
+	<caption>A clamped spline: 
+	See Example 2 on page 148.</caption>
+</figure><!--</div attr= class="center">-->
+
+<!-- div attr= class="center"-->
+	<table xml:id="tab-clamped-cubic">
+	<title>Coefficients of a clamped cubic spline.</title>
+	<tabular>
+	<row header="yes">
+	<cell halign="center"><m>j</m></cell>
+	<cell halign="center"><m>a_j</m></cell>
+	<cell halign="center"><m>b_j</m></cell>
+	<cell halign="center"><m>c_j</m></cell>
+	<cell halign="center"><m>d_j</m></cell>
+	</row>
+	<row class="odd">
+	<cell halign="center">0</cell>
+	<cell halign="center">1.000000</cell>
+	<cell halign="center">1.000000</cell>
+	<cell halign="center">0.4446825</cell>
+	<cell halign="center">0.2735993</cell>
+	</row>
+	<row class="even">
+	<cell halign="center">1</cell>
+	<cell halign="center">2.718282</cell>
+	<cell halign="center">2.710163</cell>
+	<cell halign="center">1.2654805</cell>
+	<cell halign="center">0.6951308</cell>
+	</row>
+	<row class="odd">
+	<cell halign="center">2</cell>
+	<cell halign="center">7.389056</cell>
+	<cell halign="center">7.326516</cell>
+	<cell halign="center">3.3508729</cell>
+	<cell halign="center">2.0190916</cell>
+	</row>
+	</tabular>
+	</table>
+
+	<figure xml:id="fig-cubic-clamped">
+	<image source="2_interpolation/clamped.png"/>
+	<caption>image</caption>
+</figure><!--</div attr= class="center">-->
+
+	</section>

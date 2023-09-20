@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<h5 class="heading"><span class="type">Paragraph</span></h5>
+<div class="para logical">
+<div class="para">Recall that <span class="process-math">\(\displaystyle M_X(t) = E[e^{tx}] = \sum_x e^{tx} f(x;
+\theta)\text{.}\)</span> This becomes</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+M_X(t) \amp = \sum_{x=0}^n e^{tx} b(x; n, \theta)\\
+\amp = \sum_{x=0}^n e^{tx} {n \choose x} \theta^x (1-\theta)^{n-x}\\
+\amp = \sum_{x=0}^n {n \choose x} \left(\theta e^t\right)^x
+(1-\theta)^{n-x}\\
+\amp = \sum_{x=0}^n {n \choose x} (1-\theta)^{n-x}\left(\theta
+e^t\right)^x\\
+M_X(t) \amp = \left((1-\theta) + \theta e^t\right)^n
+\end{aligned}\text{.}
+\end{equation*}
+</div>
+<div class="para">That last step, though a big leap in print, comes from applying the binomial theorem in reverse, that is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sum_{k=0}^n {n \choose
+r}a^{n-r} b^r = (a+b)^n
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(a=1-\theta\)</span> and <span class="process-math">\(b = \theta
+e^t\text{.}\)</span>
+</div>
+</div>
+<span class="incontext"><a href="section-special-distributions.html#p-294" class="internal">in-context</a></span>
+</body>
+</html>

@@ -1,0 +1,266 @@
+	<section xml:id="root-finding-and-fixed-point-problems">
+	<title>Root-finding and fixed-point problems</title>
+
+
+	<subsection xml:id="fixed-point-iteration">
+	<title>Fixed-point iteration</title>
+
+<p>
+	Consider the function <me>g(x) = 2^{-x} =
+e^{-\ln(2)x}</me> and the associated fixed-point problem <m>g(x) =
+x</m>. The result obtained by cobwebbing (graphically) is shown in the
+figure below, with the iterates marked in ticks on the bottom axis.
+Beyond <m>n=4</m> things get pretty crowded near the fixed point.
+</p>
+
+	<figure xml:id="fig-basic-fp">
+	<image source="1_basics/fixedpoint.png"/>
+	<caption>A fixed-point problem.</caption>
+</figure>
+
+<p>
+	As tabular output we have the first few steps as well.
+Note that <m>p_n</m> are approximates to the root <m>p</m>.
+</p>
+
+<!-- div attr= class="center"-->
+	<table xml:id="tab-fp-result">
+	<title>Results of a fixed-point iteration method.</title>
+	<tabular>
+	<row header="yes">
+	<cell halign="center"><m>n</m></cell>
+	<cell halign="center"><m>p_n</m></cell>
+	</row>
+	<row class="odd">
+	<cell halign="center">0</cell>
+	<cell halign="center">0.5000000</cell>
+	</row>
+	<row class="even">
+	<cell halign="center">1</cell>
+	<cell halign="center">0.7071068</cell>
+	</row>
+	<row class="odd">
+	<cell halign="center">2</cell>
+	<cell halign="center">0.6125473</cell>
+	</row>
+	<row class="even">
+	<cell halign="center">3</cell>
+	<cell halign="center">0.6540409</cell>
+	</row>
+	<row class="odd">
+	<cell halign="center">4</cell>
+	<cell halign="center">0.6354978</cell>
+	</row>
+	</tabular>
+	</table><!--</div attr= class="center">-->
+
+<p>
+	Now, for a given degree of accuracy, how many iterations
+do we actually need? Consider <me>2^{-x}=x\text{ on }\left[\frac{1}{3},
+1\right]</me> The bounds are given by <me>|p_n-p|\leq k^n \max(p_0-a, b
+- p_0)</me> using the initial guess, and by
+<me>|p_n-p|\leq\frac{k^n}{1-k}|p_1-p_0|</me> using the initial guess and
+first iteration. We will look at a few applications of the bounds to the
+problem above. First notice that <m>g'(x) = -\ln(2)2^{-x}</m> and
+<m>|g'(x)| \leq \ln(2)2^{-{1}/{3}} &lt; k = 0.551</m>, where <m>k =
+0.551</m> is a bound on the magnitude of <m>g'(x)</m>.
+</p>
+
+<p>
+	The worst possible initial guess would be at one of the
+endpoints, so we will start there (this maximizes the term
+<m>\max(p_0-a, b - p_0)</m>, which in this case we actually want to do
+in order to generate a conservative bound). Taking <m>D</m> as the
+desired accuracy (i.e., an accuracy within <m>10^{-D}</m>), this gives,
+<me>\begin{aligned}
+k^n \max(p_0-a, b - p_0) &amp; &lt; 10^{-D}\\
+(0.551)^n \left(\frac{2}{3}\right) &amp; &lt; 10^{-D}\\
+(0.551)^n &amp; &lt; \left(\frac{3}{2}\right)10^{-D}\\
+n \log(0.551) &amp; &lt; \log\left(\frac{3}{2}\right) - D\\
+n &amp; &gt; \frac{\log\left(\frac{3}{2}\right) -
+D}{\log(0.551)}\end{aligned}</me> In the last line, the inequality has
+been reversed since we are dividing by a negative. With <m>D=4</m> this
+gives <m>n &gt; 14.77277</m> which requires <m>N=15</m> steps.
+</p>
+
+<p>
+	For the second bound, we actually need <m>p_1</m> in
+addition to <m>p_0</m>. From <m>p_0 = \frac{2}{3}</m>, we have <m>p_1 =
+2^{-1/3}</m> (so <m>|p_1-p_0| = |2^{-1/3} - \frac{1}{3}| ~\approx~
+0.4604</m>). Similarly, from <m>p_0=1</m>, we have <m>p_1 =
+\frac{1}{2}</m> (so <m>|p_1-p_0| = |\frac{1}{2} - 1| = 0.5</m>). We will
+use the second of these which is larger in value. <me>\begin{aligned}
+\frac{k^n}{1-k}|p_1-p_0| &amp; &lt; 10^{-D}\\
+\frac{(0.551)^n}{1-0.551}(0.5) &amp; &lt; 10^{-D}\\
+(0.551)^n &amp; &lt; \left(\frac{1-0.551}{0.5}\right) 10^{-D}\\
+n\log(0.551) &amp; &lt; \log\left(\frac{1-0.551}{0.5}\right) -D\\
+n &amp; &gt; \frac{\log\left(\frac{1-0.551}{0.5}\right)
+-D}{\log(0.551)}\\\end{aligned}</me> For consistency, with <m>D=4</m>
+this gives <m>n &gt; 15.63357</m> which requires <m>N=16</m> steps. We
+have to do at least <m>16</m> steps to ensure we are within the bound,
+though we may satisfy this much more quickly. Notice that this is quite
+a bit more work than our bound for the Bisection method required.
+</p>
+
+<p>
+	Consider the root-finding problem <m>f(x) =
+x^4-3x^2-3</m>. It has many different, but equivalent, fixed-point
+problems. <me>\begin{aligned}
+g_1(x) &amp; = x- f(x) = x\\
+g_2(x) &amp; = x+f(x) = x\\
+g_3(x) &amp; = \sqrt{\frac{3}{x^2-3}} = x\\
+g_4(x) &amp; = x - \frac{x^4-3x^2-3}{4x^3-6x}\end{aligned}</me>
+</p>
+
+<!-- div attr= class="center"-->
+	<figure xml:id="fig-fp-bad">
+	<image source="1_basics/bad.png"/>
+	<caption>image</caption>
+</figure><!--</div attr= class="center">-->
+
+<p>
+	A better formulation is given by <me>g_5(x) =
+\sqrt[4]{3x^2+3}</me>
+</p>
+
+<!-- div attr= class="center"-->
+	<figure xml:id="fig-fp-good">
+	<image source="1_basics/good.png"/>
+	<caption>image</caption>
+</figure><!--</div attr= class="center">-->
+
+<p>
+	Consider the root-finding problem <m>3x^2-e^x = 0</m>.
+It has a few different, but equivalent, fixed-point problems.
+<me>\begin{aligned}
+g_1(x) &amp; = \pm\sqrt{\dfrac{e^x}{3}} = x\\
+g_2(x) &amp; = \ln(3x^2) = x\\
+g_3(x) &amp; = 3x^2 - e^x + x = x\end{aligned}</me> Unfortunately these
+differ with regard to theory of fixed-point iterations. In particular,
+keep in mind
+
+<table xml:id="tab-fp-theorem">
+	<row><cell>for existence:</cell>
+	<cell>the trapping region <m>g\in[a,b]</m> for <m>x\in[a,b]</m></cell>
+</row>
+<row>
+	<cell>for uniqueness:</cell>
+	<cell> the slope criterion <m>0&lt;|g'(x)|&lt;1</m></cell>
+</row>
+</table>
+</p>
+
+<p>
+	The first function, <m>g_1(x)</m> is able to capture two
+of the three points of interest, with nicely trapped solutions and small
+derivatives on those intervals. It does fail to capture the third
+(rightmost) root, where the slope exceeds one (see Fig. <xref ref="fig-fp-g1" />). 
+Though our intervals cannot include <m>x=0</m>,
+<m>g_2(x)</m> works well for the largest root, where the derivative is
+small and the appropriate trapping region can be constructed (see
+Fig. <xref ref="fig-fp-g2" />). The simplest formulation algebraically is
+<m>g_3(x)</m>, yet this has by far the worst characteristics with
+respect to the fixed-point theory for existence and uniqueness (see
+Fig. <xref ref="fig-fp-g3" />). It is difficult to constrict suitable
+trapping regions and there are only narrow ranges for which the
+derivative is appropriately bounded in magnitude.
+</p>
+
+	<figure  xml:id="fig-fp-g1">
+	<image source="1_basics/g1.png"/>
+	<caption>Two functions that give rise to fixed-point
+problems. Dotted corresponds to the negative value of the square root
+and the solid line corresponds to the positive value. Left:
+intersections of each with the black <m>1:1</m> line indicate fixed
+points. Right: values between <m>-1</m> and <m>1</m> indicate that a
+fixed point, if it exists, is unique.</caption>
+</figure>
+
+	<figure xml:id="fig-fp-g1p">
+	<image source="1_basics/g1p.png"/>
+	<caption>Two functions that give rise to fixed-point
+problems. Dotted corresponds to the negative value of the square root
+and the solid line corresponds to the positive value. Left:
+intersections of each with the black <m>1:1</m> line indicate fixed
+points. Right: values between <m>-1</m> and <m>1</m> indicate that a
+fixed point, if it exists, is unique.</caption>
+</figure>
+
+	<figure  xml:id="fig-fp-g2">
+	<image source="1_basics/g2.png"/>
+	<caption>Left: intersections with the black <m>1:1</m>
+line indicate fixed points. Right: values between <m>-1</m> and <m>1</m>
+indicate that a fixed point, if it exists, is unique. Notice that the
+smaller the value of the fixed point, the steeper the function
+<m>g_2(x)</m>.</caption>
+</figure>
+
+	<figure  xml:id="fig-fp-g2a">
+	<image source="1_basics/g2p.png"/>
+	<caption>Left: intersections with the black <m>1:1</m>
+line indicate fixed points. Right: values between <m>-1</m> and <m>1</m>
+indicate that a fixed point, if it exists, is unique. Notice that the
+smaller the value of the fixed point, the steeper the function
+<m>g_2(x)</m>.</caption>
+</figure>
+
+	<figure  xml:id="fig-fp-g3">
+	<image source="1_basics/g3.png"/>
+	<caption>Left: intersections with the black <m>1:1</m>
+line indicate fixed points. Right: values between <m>-1</m> and <m>1</m>
+indicate that a fixed point, if it exists, is unique.</caption>
+</figure>
+
+	<figure  xml:id="fig-fp-g3p">
+	<image source="1_basics/g3p.png"/>
+	<caption>Left: intersections with the black <m>1:1</m>
+line indicate fixed points. Right: values between <m>-1</m> and <m>1</m>
+indicate that a fixed point, if it exists, is unique.</caption>
+</figure>
+
+<p>
+	Consider the fixed-point problems <m>\sin(x) = x</m>
+(below, left) and <m>\cos(x) = x</m> (below, right).
+</p>
+
+	<figure  xml:id="fig-fp-trig">
+	<image source="1_basics/fixpt_trig.png"/>
+	<caption>A trigonometric fixed-point problem.</caption>
+</figure>
+
+<p>
+	A total of <m>20</m> iterations of each problem are
+shown in the color figure above. Time is indicated in two ways: on the
+graph early steps are in dark blue and fade to yellow. Along the axis
+earlier approximations are marked by tall (also dark blue) tick marks
+and later iterations are marked by shorter (also yellow) tick marks. The
+scaling of the above-axis tick marks is nothing quantitative or
+necessarily related to the values of the approximation itself, it is
+just meant to show the progression of the iterations.
+</p>
+
+<p>
+	For two problems starting from <m>p_0=1</m>, we see the
+iterations approaching the fixed point visible on each panel of the
+graph. Solutions to the first fixed-point problem (left) converge very
+slowly, while those to the second (right) converge very quickly. Details
+of the approaches to the fixed points are interesting as well.
+Approximations converging to the true solution of <m>p=0</m> for the
+first problem decrease monotonically, while those converging to the true
+solution of the second problem oscillate.
+</p>
+
+
+	<paragraphs xml:id="challenge">
+	<title>Challenge</title>
+
+	<p>
+	For each of the above, state an associated
+rootfinding problem, an interval on which you could apply the bisection
+method, and the number of iterations it would take to approximate the
+root to an accuracy of <m>10^{-6}</m> with bisection.
+	</p>
+
+	</paragraphs>
+	</subsection>
+	</section>

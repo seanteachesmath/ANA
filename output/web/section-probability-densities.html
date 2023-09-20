@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Probability densities</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Applied Numerical Analysis">
+<meta property="book:author" content="Sean M. Laverty">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "https://pretextbook.org/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="https://pretextbook.org/js/0.3/pretext_search.js"></script><link href="https://pretextbook.org/css/0.7/pretext_search.css" rel="stylesheet" type="text/css">
+<script>js_version = 0.3</script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.3/pretext.js"></script><script>miniversion=0.1</script><script src="https://pretextbook.org/js/0.3/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/0.3/user_preferences.js"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link href="https://pretextbook.org/css/0.7/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/shell_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/setcolors.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" href="http://www.math.uco.edu" target="_blank"><img src="external/images/cover.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ana.html"><span class="title">Applied Numerical Analysis:</span> <span class="subtitle"></span></a></h1>
+<p class="byline">Sean M. Laverty</p>
+</div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<button id="closesearchresults" class="closesearchresults" onclick="document.getElementById('searchresultsplaceholder').style.display = 'none'; return false;">x</button><h2>Search Results: <span id="searchterms" class="searchterms"></span>
+</h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" aria-label="Show or hide table of contents"><span class="icon">☰</span><span class="name">Contents</span></button><a class="index-button button" href="index-1.html" title="Index"><span class="name">Index</span></a><button id="user-preferences-button" class="user-preferences-button button" title="Modify user preferences"><span id="avatarbutton" class="avatarbutton name">You!</span><div id="preferences_menu_holder" class="preferences_menu_holder hidden"><ol id="preferences_menu" class="preferences_menu" style="font-family: 'Roboto Serif', serif;">
+<li data-env="avatar" tabindex="-1">Choose avatar<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden avatar">
+<li data-val="You!" tabindex="-1">
+<span id="theYou!" class="avatarcheck">✔️</span>You!</li>
+<li data-val="😺" tabindex="-1">
+<span id="the😺" class="avatarcheck"></span>😺</li>
+<li data-val="👤" tabindex="-1">
+<span id="the👤" class="avatarcheck"></span>👤</li>
+<li data-val="👽" tabindex="-1">
+<span id="the👽" class="avatarcheck"></span>👽</li>
+<li data-val="🐶" tabindex="-1">
+<span id="the🐶" class="avatarcheck"></span>🐶</li>
+<li data-val="🐼" tabindex="-1">
+<span id="the🐼" class="avatarcheck"></span>🐼</li>
+<li data-val="🌈" tabindex="-1">
+<span id="the🌈" class="avatarcheck"></span>🌈</li>
+</ol>
+</li>
+<li data-env="fontfamily" tabindex="-1">Font family<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden fontfamily">
+<li data-val="face" data-change="OS" tabindex="-1" style="font-family: 'Open Sans'">
+<span id="theOS" class="ffcheck">✔️</span><span class="name">Open Sans</span><span class="sample">AaBbCc 123 PreTeXt</span>
+</li>
+<li data-val="face" data-change="RS" tabindex="-1" style="font-family: 'Roboto Serif'">
+<span id="theRS" class="ffcheck"></span><span class="name">Roboto Serif</span><span class="sample">AaBbCc 123 PreTeXt</span>
+</li>
+</ol>
+</li>
+<li data-env="font" tabindex="-1">Adjust font<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden fonts">
+<li>Size</li>
+<li><span id="thesize">12</span></li>
+<li data-val="size" data-change="-1" tabindex="-1" style="font-size: 80%">Smaller</li>
+<li data-val="size" data-change="1" tabindex="-1" style="font-size: 110%">Larger</li>
+<li>Width</li>
+<li><span id="thewdth">100</span></li>
+<li data-val="wdth" data-change="-5" tabindex="-1" style="font-variation-settings: 'wdth' 60">narrower</li>
+<li data-val="wdth" data-change="5" tabindex="-1" style="font-variation-settings: 'wdth' 150">wider</li>
+<li>Weight</li>
+<li><span id="thewght">400</span></li>
+<li data-val="wght" data-change="-50" tabindex="-1" style="font-weight: 200">thinner</li>
+<li data-val="wght" data-change="50" tabindex="-1" style="font-weight: 700">heavier</li>
+<li>Letter spacing</li>
+<li>
+<span id="thelspace">0</span><span class="byunits">/200</span>
+</li>
+<li data-val="lspace" data-change="-1" tabindex="-1">closer</li>
+<li data-val="lspace" data-change="1" tabindex="-1">f a r t h e r</li>
+<li>Word spacing</li>
+<li>
+<span id="thewspace">0</span><span class="byunits">/50</span>
+</li>
+<li data-val="wspace" data-change="-1" tabindex="-1">smaller gap </li>
+<li data-val="wspace" data-change="1" tabindex="-1">larger gap</li>
+<li>Line Spacing</li>
+<li>
+<span id="theheight">135</span><span class="byunits">/100</span>
+</li>
+<li data-val="height" data-change="-5" tabindex="-1" style="line-height: 1">closer<br>together</li>
+<li data-val="height" data-change="5" tabindex="-1" style="line-height: 1.75">further<br>apart</li>
+</ol>
+</li>
+<li data-env="atmosphere" tabindex="-1">Light/dark mode<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden atmosphere">
+<li data-val="default" tabindex="-1">
+<span id="thedefault" class="atmospherecheck">✔️</span>default</li>
+<li data-val="pastel" tabindex="-1">
+<span id="thepastel" class="atmospherecheck"></span>pastel</li>
+<li data-val="darktwilight" tabindex="-1">
+<span id="thedarktwilight" class="atmospherecheck"></span>twilight</li>
+<li data-val="dark" tabindex="-1">
+<span id="thedark" class="atmospherecheck"></span>dark</li>
+<li data-val="darkmidnight" tabindex="-1">
+<span id="thedarkmidnight" class="atmospherecheck"></span>midnight</li>
+</ol>
+</li>
+<li data-env="ruler" tabindex="-1">Reading ruler<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden ruler">
+<li data-val="none" tabindex="-1">
+<span id="thenone" class="rulercheck">✔️</span>none</li>
+<li data-val="underline" tabindex="-1">
+<span id="theunderline" class="rulercheck"></span>underline</li>
+<li data-val="lunderline" tabindex="-1">
+<span id="thelunderline" class="rulercheck"></span>L-underline</li>
+<li data-val="greybar" tabindex="-1">
+<span id="thegreybar" class="rulercheck"></span>grey bar</li>
+<li data-val="lightbox" tabindex="-1">
+<span id="thelightbox" class="rulercheck"></span>light box</li>
+<li data-val="sunrise" tabindex="-1">
+<span id="thesunrise" class="rulercheck"></span>sunrise</li>
+<li data-val="sunriseunderline" tabindex="-1">
+<span id="thesunriseunderline" class="rulercheck"></span>sunrise underline</li>
+<li class="moveQ">Motion by:</li>
+<li data-val="mouse" tabindex="-1">
+<span id="themouse" class="motioncheck">✔️</span>follow the mouse</li>
+<li data-val="arrow" tabindex="-1">
+<span id="thearrow" class="motioncheck"></span>up/down arrows - not yet</li>
+<li data-val="eye" tabindex="-1">
+<span id="theeye" class="motioncheck"></span>eye tracking - not yet</li>
+</ol>
+</li>
+</ol></div></button><span class="treebuttons"><a class="previous-button button" href="section-discrete-expectation.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-approximation.html" title="Up"><span class="icon">^</span><span class="name">Up</span></a><a class="next-button button" href="chap-calculus.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a></span><div class="searchbox"><div class="searchwidget">
+<input id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search" onchange="doSearch()"><button id="searchbutton" class="searchbutton" type="button" onclick="doSearch()">🔍</button>
+</div></div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\newcommand{\sfrac}[2]{{#1}/{#2}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2"><ul class="structural">
+<li>
+<div class="toc-item"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="front-colophon.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li><div class="toc-item"><a href="author-bio-SML.html" class="internal"><span class="title">Author Biography</span></a></div></li>
+<li><div class="toc-item"><a href="dedication.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li><div class="toc-item"><a href="acknowledgement.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li><div class="toc-item"><a href="preface.html" class="internal"><span class="title">Preface</span></a></div></li>
+<li>
+<div class="toc-item"><a href="contributors.html" class="internal"><span class="title">Contributors to the 0<span class="process-math">\(^\mathrm{th}\)</span> Edition</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="contributors.html#contributors-1" class="internal"><span class="title"></span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-basics.html" class="internal"><span class="codenumber">1</span> <span class="title">Counting</span></a></div>
+<ul class="structural"><li>
+<div class="toc-item"><a href="section-R-intro.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Introduction to R programming</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-R-intro.html#sub-calculator" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Calculator functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-date" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Generating data</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-functions" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Defining and using functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-basic" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Basic programming</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-less-basic" class="internal"><span class="codenumber">1.1.5</span> <span class="title">Putting it all together</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-more-advanced" class="internal"><span class="codenumber">1.1.6</span> <span class="title">Putting it all together (and more)</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-buildin" class="internal"><span class="codenumber">1.1.7</span> <span class="title">Built-in functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-challenge-arithmetic" class="internal"><span class="codenumber">1.1.8</span> <span class="title">Challenges - Arithmetic</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-root" class="internal"><span class="codenumber">1.1.9</span> <span class="title">Rootfinding</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-RMarkdown" class="internal"><span class="codenumber">1.1.10</span> <span class="title">RMarkdown</span></a></div></li>
+</ul>
+</li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-rootfinding.html" class="internal"><span class="codenumber">2</span> <span class="title">Root-finding and fixed-point problems</span></a></div>
+<ul class="structural"><li>
+<div class="toc-item"><a href="section-continuous-expectation.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Expectation of continuous random variables</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-expectation" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-1" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-moments-cont" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Moments</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-2" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-chebyshev" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Chebyshev’s Theorem</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-3" class="internal"><span class="codenumber">2.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-mgf-cont" class="internal"><span class="codenumber">2.1.7</span> <span class="title">Moment-generating functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-4" class="internal"><span class="codenumber">2.1.8</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-interpolation.html" class="internal"><span class="codenumber">3</span> <span class="title">Interpolation</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="sec-multi-cont.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Multivariate continuous densities</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-cont-multi-variable" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Multivariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-product-moments-cont" class="internal"><span class="codenumber">3.1.2</span> <span class="title">Product moments</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#exercises-5" class="internal"><span class="codenumber">3.1.3</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-conditional-expectation" class="internal"><span class="codenumber">3.1.4</span> <span class="title">Conditional expectation</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Special probability densities</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-continuous-unif" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Continuous uniform</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-6" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-exponential" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Exponential family</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-7" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-beta" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Beta distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-8" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-normal" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Normal distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-9" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-normal-approx" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Normal approximation to the binomial distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-10" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-approximation.html" class="internal"><span class="codenumber">4</span> <span class="title">Approximation</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="section-discrete-expectation.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Mathematical expectation of discrete random variables</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-expectation" class="internal"><span class="codenumber">4.1.1</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-11" class="internal"><span class="codenumber">4.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-moments" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-12" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-mgf" class="internal"><span class="codenumber">4.1.5</span> <span class="title">Moment-generating functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-13" class="internal"><span class="codenumber">4.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-product-moments" class="internal"><span class="codenumber">4.1.7</span> <span class="title">Product moments</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-14" class="internal"><span class="codenumber">4.1.8</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-moments-linear-combinations" class="internal"><span class="codenumber">4.1.9</span> <span class="title">Moments of linear combinations of random variables</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-15" class="internal"><span class="codenumber">4.1.10</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-conditional-expectation" class="internal"><span class="codenumber">4.1.11</span> <span class="title">Conditional expectation</span></a></div></li>
+</ul>
+</li>
+<li class="active">
+<div class="toc-item"><a href="section-probability-densities.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Probability densities</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-probability-densities.html#sub-single-variable-cont" class="internal"><span class="codenumber">4.2.1</span> <span class="title">Univariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-densities.html#exercises-16" class="internal"><span class="codenumber">4.2.2</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-calculus.html" class="internal"><span class="codenumber">5</span> <span class="title">Numerical calculus</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="section-special-distributions.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Special probability distributions</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-unif" class="internal"><span class="codenumber">5.1.1</span> <span class="title">Discrete uniform</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-17" class="internal"><span class="codenumber">5.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-bern-bin" class="internal"><span class="codenumber">5.1.3</span> <span class="title">Bernoulli and Binomial distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-18" class="internal"><span class="codenumber">5.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-negbin-geom" class="internal"><span class="codenumber">5.1.5</span> <span class="title">Negative Binomial and Geometric distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-19" class="internal"><span class="codenumber">5.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-hypergeom" class="internal"><span class="codenumber">5.1.7</span> <span class="title">Hypergeometric distribution</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-20" class="internal"><span class="codenumber">5.1.8</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-poisson" class="internal"><span class="codenumber">5.1.9</span> <span class="title">Poisson distribution</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-21" class="internal"><span class="codenumber">5.1.10</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-multivariate" class="internal"><span class="codenumber">5.1.11</span> <span class="title">Multivariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-22" class="internal"><span class="codenumber">5.1.12</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-probability-distributions.html" class="internal"><span class="codenumber">5.2</span> <span class="title">Probability distributions</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-probability-distributions.html#sub-single-variable-disc" class="internal"><span class="codenumber">5.2.1</span> <span class="title">Random variables and probability distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#exercises-23" class="internal"><span class="codenumber">5.2.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#sub-multi-variable" class="internal"><span class="codenumber">5.2.3</span> <span class="title">Multivariate, marginal, and conditional distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#exercises-24" class="internal"><span class="codenumber">5.2.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="appendix-def.html" class="internal"><span class="codenumber">A</span> <span class="title">Definitions</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-thm.html" class="internal"><span class="codenumber">B</span> <span class="title">Theorems</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-ex.html" class="internal"><span class="codenumber">C</span> <span class="title">Examples</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-gfdl.html" class="internal"><span class="codenumber">D</span> <span class="title">GNU Free Documentation License</span></a></div></li>
+<li><div class="toc-item"><a href="index-1.html" class="internal"><span class="title">Index</span></a></div></li>
+<li><div class="toc-item"><a href="back-colophon.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content">
+<section class="section" id="section-probability-densities"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">4.2</span> <span class="title">Probability densities</span>
+</h2>
+<section class="introduction" id="introduction-16"><div class="para" id="p-215">Some words.</div></section><section class="subsection" id="sub-single-variable-cont"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">4.2.1</span> <span class="title">Univariate distributions</span>
+</h3>
+<section class="introduction" id="introduction-17"><div class="para" id="p-216">See sections 3.4. Recommended problems: (pg89) 16, 17, 19, 20, 29*</div> <div class="para" id="p-217">Probability distributions for discrete random variables assign probability to discrete values, but for continuous random variables, probabilities are only assigned to intervals.</div></section><article class="definition definition-like" id="def-continuous-probability-density-3-2"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.2.1</span><span class="period">.</span><span class="space"> </span><span class="title">Probability density function.</span>
+</h4> <div class="para logical" id="p-218">
+<div class="para">A function with values <span class="process-math">\(f(x)\text{,}\)</span> defined over the set of all real numbers is called <em class="emphasis">a</em> <dfn class="terminology">probability density function</dfn> of the continuous random variable <span class="process-math">\(X\)</span> if and only if</div>
+<div class="displaymath process-math">
+\begin{equation*}
+P(a \le x \le b) = \int_a^b f(x)\,dx
+\end{equation*}
+</div>
+<div class="para">for any real <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> such that <span class="process-math">\(a \le b\text{.}\)</span>
+</div>
+</div></article><article class="remark remark-like" id="rmk-pdf"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">4.2.2</span><span class="period">.</span>
+</h4>
+<div class="para" id="p-219">A probability density function is often referred to as simply a density function or a PDF</div></article><div class="para logical" id="p-220">
+<div class="para">Do not assume that <span class="process-math">\(f(c)\)</span> gives <span class="process-math">\(P(X = c)\text{.}\)</span> A density is not a probability, it is a probability density. Since probabilities of continuous random variables are associated with intervals,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\int_c^c
+f(x)\,dx = 0\text{.}
+\end{equation*}
+</div>
+</div>
+<article class="remark remark-like" id="rmk-pdf-nonuniqueness"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">4.2.3</span><span class="period">.</span>
+</h4>
+<div class="para" id="p-221">The value of a PDF can be changed for some values of a random variable without changing the associated probabilities.  Notice that <a href="" class="xref" data-knowl="./knowl/def-continuous-probability-density-3-2.html" title="Definition 4.2.1: Probability density function">Definition 4.2.1</a> specifies <em class="emphasis">a</em>, not <em class="emphasis">the</em> PDF</div></article><article class="theorem theorem-like" id="thm-continuous-point"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.2.4</span><span class="period">.</span><span class="space"> </span><span class="title">probability density at a point.</span>
+</h4>
+<div class="para logical" id="p-222">
+<div class="para">If <span class="process-math">\(X\)</span> is a continuous random variable and <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span> are real numbers such that <span class="process-math">\(a \lt b\)</span> then,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+P(a \lt X \lt b) = P(a \le X \lt b) = P(a \lt X \le b) = P(a \le X
+\le b)
+\end{equation*}
+</div>
+</div></article><article class="theorem theorem-like" id="thm-continuous-conditions-3-1"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.2.5</span><span class="period">.</span><span class="space"> </span><span class="title">conditions for probability density.</span>
+</h4>
+<div class="para logical" id="p-223">
+<div class="para">A function can serve as the probability density for a continuous random variable <span class="process-math">\(X\)</span> if and only if its values, <span class="process-math">\(f(x)\text{,}\)</span> satisfy the conditions</div>
+<ol class="decimal">
+<li id="li-29"><div class="para" id="p-224">
+<span class="process-math">\(f(x) \ge 0\)</span> for each value within its domain;</div></li>
+<li id="li-30"><div class="para" id="p-225"><span class="process-math">\(\int_{-\infty}^\infty f(x)\,dx = 1\text{.}\)</span></div></li>
+</ol>
+</div></article><article class="example example-like" id="ex-exponential"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-exponential"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.2.6</span><span class="period">.</span><span class="space"> </span><span class="title">specifying an exponential probability density.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-exponential"><article class="example example-like"><div class="para logical" id="p-226">
+<div class="para">Find <span class="process-math">\(k\)</span> such that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \begin{cases}ke^{-3x},\amp \quad
+x \gt
+0\\ 0, \amp \quad \text{otherwise}\end{cases}
+\end{equation*}
+</div>
+<div class="para">can serve as the PDF for <span class="process-math">\(X\text{.}\)</span>
+</div>
+</div> <div class="para" id="p-227">Note in the definition of <span class="process-math">\(f(x)\)</span> that <span class="process-math">\(f(x) = 0\)</span> for <span class="process-math">\(x
+\le 0\text{.}\)</span>
+</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-7" id="solution-7"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-7"><div class="solution solution-like"><div class="para logical" id="p-228">
+<div class="para">The strategy is to integrate to find the total area then choose <span class="process-math">\(k\)</span> appropriately.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/thm-continuous-conditions-3-1.html">
+\begin{equation*}
+\begin{aligned}[t]
+\int_{-\infty}^\infty f(x)\,dx \amp = \int_{-\infty}^0 f(x)\,dx +
+\int_{0}^\infty f(x)\,dx \\
+\amp = \int_{-\infty}^0 0\,dx + \int_{0}^\infty ke^{-3x}\,dx \\
+\amp = 0 + \int_{0}^\infty ke^{-3x}\,dx \\
+\amp = \lim_{t\to\infty} \Big(\dfrac{k}{-3}e^{-3x}\Big|_0^t\Big) \\
+\amp = \lim_{t\to\infty} \Big(\dfrac{k}{-3}e^{-3t} - \dfrac{k}{-3}e^{0}
+\Big) \\
+\int_{-\infty}^\infty f(x)\,dx\amp = \dfrac{k}{3}
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">For <span class="process-math">\(f(x)\)</span> to satisfy <a href="" class="xref" data-knowl="./knowl/thm-continuous-conditions-3-1.html" title="Theorem 4.2.5: conditions for probability density">Theorem 4.2.5</a>, we much choose <span class="process-math">\(k=3\)</span> so that the value of the integral is <span class="process-math">\(1\text{.}\)</span>
+</div>
+</div></div></div></article></div>
+<article class="example example-like" id="ex-exponential2"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-exponential2"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.2.7</span><span class="period">.</span><span class="space"> </span><span class="title">using exponential probability density.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-exponential2"><article class="example example-like"><div class="para logical" id="p-229">
+<div class="para">Using the value of <span class="process-math">\(k\)</span> found in <a href="" class="xref" data-knowl="./knowl/ex-exponential.html" title="Example 4.2.6: specifying an exponential probability density">Example 4.2.6</a> which ensures that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/ex-exponential.html">
+\begin{equation*}
+f(x) = \begin{cases}ke^{-3x},\amp \quad x \gt 0\\
+0,
+\amp \quad \text{otherwise}\end{cases}
+\end{equation*}
+</div>
+<div class="para">can serve as the PDF for <span class="process-math">\(X\text{,}\)</span> find <span class="process-math">\(P(X \lt \sfrac{1}{2})\text{.}\)</span>
+</div>
+</div> <div class="para" id="p-230">Recall we found that <span class="process-math">\(k=3\text{.}\)</span>
+</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-8" id="solution-8"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-8"><div class="solution solution-like"><div class="para logical" id="p-231">
+<div class="para">The strategy is to integrate to find the corresponding definite integral according to <a href="" class="xref" data-knowl="./knowl/def-continuous-probability-density-3-2.html" title="Definition 4.2.1: Probability density function">Definition 4.2.1</a>.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/def-continuous-probability-density-3-2.html">
+\begin{equation*}
+\begin{aligned}[t]
+\int_{-\infty}^{\sfrac{1}{2}} f(x)\,dx \amp = \int_{-\infty}^0 0\,dx +
+\int_{0}^{\sfrac{1}{2}} 3e^{-3x}\,dx \\
+\amp = 0 + \Big(-e^{-3x}\Big|_0^{\sfrac{1}{2}}\Big) \\
+\amp = \Big(-e^{-3(\sfrac{1}{2})}\Big) - \Big(-e^{-3(0)}\Big) \\
+\amp = 1- e^{-1.5} \approx 0.7769
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">Recall, this is the area under the curve traced by the graph of <span class="process-math">\(f(x)\)</span> between <span class="process-math">\(x=0\)</span> and <span class="process-math">\(x=\sfrac{1}{2}\text{.}\)</span>
+</div>
+</div></div></div></article></div>
+<article class="example example-like" id="ex-hat"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-hat"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.2.8</span><span class="period">.</span><span class="space"> </span><span class="title">a hat-shaped probability density.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-hat"><article class="example example-like"><div class="para logical" id="p-232">
+<div class="para">Consider</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \begin{cases}x,
+\amp \quad 0 \lt x \lt 1\\
+2-x, \amp \quad 1 \le x \lt 2\\
+0, \amp \quad \text{otherwise}\\
+\end{cases}
+\end{equation*}
+</div>
+<div class="para">as the PDF for <span class="process-math">\(X\text{,}\)</span> and use it to find <span class="process-math">\(P(0 \lt X \lt 0.5)\text{,}\)</span> <span class="process-math">\(P(X=1)\text{,}\)</span> and <span class="process-math">\(P(0.5 \lt X \lt
+1.5)\text{.}\)</span>
+</div>
+</div> <a href="" data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-6" id="hint-6"><span class="type">Hint</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-6"><div class="hint solution-like"><div class="para logical" id="p-233">
+<div class="para">The strategy is to integrate to find the corresponding definite integral according to <a href="" class="xref" data-knowl="./knowl/def-continuous-probability-density-3-2.html" title="Definition 4.2.1: Probability density function">Definition 4.2.1</a>.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/def-continuous-probability-density-3-2.html">
+\begin{equation*}
+f(x) = \begin{cases}x,
+\amp \quad 0 \lt x \lt 1\\
+2-x, \amp \quad 1 \le x \lt 2\\
+0, \amp \quad \text{otherwise}\\
+\end{cases}
+\end{equation*}
+</div>
+</div></div></div></article></div>
+<article class="definition definition-like" id="def-continuous-distribution-function-3-3"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.2.9</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="p-234">
+<div class="para">If <span class="process-math">\(X\)</span> is a continuous random variable, the function given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\displaystyle F(x) = P(X \le x) = \int_{-\infty}^x f(t) \,dt \text{
+for } -\infty \lt x
+\lt \infty
+\end{equation*}
+</div>
+<div class="para">where <span class="process-math">\(f(t)\)</span> is the value of the probability density of <span class="process-math">\(X\)</span> at <span class="process-math">\(t\text{,}\)</span> is called the <dfn class="terminology">distribution function</dfn>, or the <dfn class="terminology">cumulative distribution (function)</dfn>, of <span class="process-math">\(X\text{.}\)</span>
+</div>
+</div></article><article class="exercise exercise-like" id="exer-exponential-cdf"><a href="" data-knowl="" class="id-ref exercise-knowl original" data-refid="hk-exer-exponential-cdf"><h4 class="heading">
+<span class="type">Checkpoint</span><span class="space"> </span><span class="codenumber">4.2.10</span><span class="period">.</span><span class="space"> </span><span class="title">finding an exponential cumulative distribution function.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-exer-exponential-cdf"><article class="exercise exercise-like"><div class="para logical" id="p-235">
+<div class="para">Using the value of <span class="process-math">\(k\)</span> found in <a href="" class="xref" data-knowl="./knowl/ex-exponential.html" title="Example 4.2.6: specifying an exponential probability density">Example 4.2.6</a> which ensures that</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/ex-exponential.html">
+\begin{equation*}
+f(x) = \begin{cases}ke^{-3x},\amp \quad x \gt 0\\
+0,
+\amp \quad \text{otherwise}\end{cases}
+\end{equation*}
+</div>
+<div class="para">can serve as the PDF for <span class="process-math">\(X\text{,}\)</span> find <span class="process-math">\(F(x) = P(X \lt x)\text{.}\)</span>
+</div>
+</div> <div class="para" id="p-236">Recall we found that <span class="process-math">\(k=3\text{.}\)</span>
+</div> <a href="" data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-7" id="hint-7"><span class="type">Hint</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-7"><div class="hint solution-like"><div class="para" id="p-237">Set up and find the integral in <a href="" class="xref" data-knowl="./knowl/def-continuous-distribution-function-3-3.html" title="Definition 4.2.9">Definition 4.2.9</a>.</div></div></div></article></div>
+<article class="example example-like" id="ex-hat-cdf"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-hat-cdf"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.2.11</span><span class="period">.</span><span class="space"> </span><span class="title">cumulative distribution for a hat-shaped probability density.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-hat-cdf"><article class="example example-like"><div class="para logical" id="p-238">
+<div class="para">Find <span class="process-math">\(F(x)\)</span> for</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \begin{cases}x,
+\amp \quad 0 \lt x \lt 1\\
+2-x, \amp \quad 1 \le x \lt 2\\
+0, \amp \quad \text{otherwise}\\
+\end{cases}
+\end{equation*}
+</div>
+</div> <a href="" data-knowl="" class="id-ref hint-knowl original" data-refid="hk-hint-8" id="hint-8"><span class="type">Hint</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-hint-8"><div class="hint solution-like"><div class="para logical" id="p-239">
+<div class="para">Set up and find the integral in <a href="" class="xref" data-knowl="./knowl/def-continuous-distribution-function-3-3.html" title="Definition 4.2.9">Definition 4.2.9</a>.</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/def-continuous-distribution-function-3-3.html">
+\begin{equation*}
+f(x) = \begin{cases}
+x, \amp \quad 0 \lt x \lt 1\\
+2-x, \amp \quad 1 \le x \lt 2\\
+0, \amp \quad \text{otherwise}\\
+\end{cases}
+\end{equation*}
+</div>
+</div></div></div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-9" id="solution-9"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-9"><div class="solution solution-like"><div class="para logical" id="p-240">
+<div class="para">For <span class="process-math">\(x \lt 0\text{,}\)</span> <span class="process-math">\(F(x) = 0\)</span> (no area has yet been accumulated). Now things get interesting.  For <span class="process-math">\(0 \le x \lt 1\text{,}\)</span> we integrate <span class="process-math">\(f(t)\)</span> to a variable limit of integration <span class="process-math">\(x\text{.}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+\int_0^x t\,dt \amp = \Big(\dfrac{t^2}{2}\Big)\Big|_0^x\\
+\amp = \Big(\dfrac{x^2}{2} - \dfrac{0^2}{2}\Big)\\
+\int_0^x t\,dt \amp = \dfrac{x^2}{2}
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">For <span class="process-math">\(1 \le x \lt 2\text{,}\)</span> we integrate <span class="process-math">\(f(t)\)</span> to a variable limit of integration <span class="process-math">\(x\text{.}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+\int_1^x 2-t\,dt \amp = \Big(2t-\dfrac{t^2}{2}\Big)\Big|_1^x\\
+\amp = \Big(\Big(2x - \dfrac{x^2}{2}\Big) - \Big(2(1) -
+\dfrac{1^2}{2}\Big)\Big)\\
+\int_1^x 2-t\,dt \amp = 2x - \dfrac{x^2}{2} - \dfrac{3}{2}
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">It is important here to remember that in writing <span class="process-math">\(F(x)\)</span> for points in <span class="process-math">\(1 \le x \lt 2\text{,}\)</span> the complete area from <span class="process-math">\(0 \le x \lt 1\)</span> has already been accumulated in full. Beyond <span class="process-math">\(x = 2\text{,}\)</span> all area under <span class="process-math">\(f(x)\)</span> has been accumulated. In other words for a point in <span class="process-math">\(1 \le x \lt 2\text{,}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t] 
+\int_0^x f(t)\,dt \amp = \int_0^1 t\,dt + \int_1^x 2-t\,dt\\
+\amp = \dfrac{1}{2} + 2x - \dfrac{x^2}{2} - \dfrac{3}{2}\\
+\amp = 1 + 2x - \dfrac{x^2}{2}
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">With this in mind we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+F(x) = \begin{cases}
+0,\amp \quad x \lt 0\\
+\dfrac{x^2}{2}, \amp \quad 0 \le x \lt 1\\
+1 + 2x - \dfrac{x^2}{2}, \amp \quad 1 \le x
+\lt 2\\
+1, \amp \quad 2 \le x
+\end{cases}
+\end{equation*}
+</div>
+</div></div></div></article></div>
+<div class="para" id="p-241">The considerations made in calculating the formula for <span class="process-math">\(F(x)\)</span> in the interval <span class="process-math">\(1 \le x\)</span> have tremendous implications for how we approach jointly-distributed random variables in <a href="sec-multi-cont.html" class="internal" title="Section 3.1: Multivariate continuous densities">Section 3.1</a>, let this serve as a <em class="alert">warning</em>.</div>
+<div class="para" id="p-242">You will find tools for visualization at the following <a class="external" href="https://buddy.uco.edu/shiny/slaverty/mathstat/pdf_cdf/" target="_blank">link</a><a href="" data-knowl="" class="id-ref fn-knowl original" data-refid="hk-fn-1" id="fn-1"><sup> 1 </sup></a>.</div>
+<article class="theorem theorem-like" id="thm-continuous-th-3-2"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.2.12</span><span class="period">.</span><span class="space"> </span><span class="title">distribution function (continuous).</span>
+</h4>
+<div class="para logical" id="p-243">
+<div class="para">The values <span class="process-math">\(F(x)\)</span> of the distribution function of a continuous random variable <span class="process-math">\(X\)</span> satisfy the conditions</div>
+<ol class="decimal">
+<li id="li-31"><div class="para" id="p-derived-li-31">
+<span class="process-math">\(F(-\infty) = 0\)</span> and <span class="process-math">\(F(\infty) = 1\)</span> (more carefully stated as <span class="process-math">\(\displaystyle\lim_{x\to-\infty}F(x) = 0\)</span> and <span class="process-math">\(\displaystyle\lim_{x\to\infty}
+F(x) = 1\)</span>);</div></li>
+<li id="li-32"><div class="para" id="p-derived-li-32">if <span class="process-math">\(a \le b\text{,}\)</span> then <span class="process-math">\(F(a) \le F(b)\)</span> for any real numbers <span class="process-math">\(a\)</span> and <span class="process-math">\(b\)</span>
+</div></li>
+</ol>
+</div></article><div class="para" id="p-244">Given a cumulative distribution function of a continuous random variable, the construction of a probability density function, is much easier than the construction of a probability mass function, from its cumulative distribution function. For continuous random variables we will assume that the function <span class="process-math">\(f(x)\)</span> is continuous and also differentiable every but perhaps at a finite set of values.</div>
+<article class="theorem theorem-like" id="thm-pdf-cdf"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.2.13</span><span class="period">.</span><span class="space"> </span><span class="title">density from distribution function.</span>
+</h4>
+<div class="para logical" id="p-245">
+<div class="para">If <span class="process-math">\(f(x)\)</span> and <span class="process-math">\(F(x)\)</span> are the values of the PDF and CDF of <span class="process-math">\(X\)</span> at <span class="process-math">\(x\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+P(a \lt X \lt b) = F(b) - F(a)
+\end{equation*}
+</div>
+<div class="para">for any real constants <span class="process-math">\(a \lt
+b\)</span> and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \dfrac{dF}{dx}
+\end{equation*}
+</div>
+<div class="para">where the derivative exists.</div>
+</div></article><article class="remark remark-like" id="rmk-pdf-cdf"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">4.2.14</span><span class="period">.</span><span class="space"> </span><span class="title">density from distribution function.</span>
+</h4> <div class="para" id="p-246">Remember that if <span class="process-math">\(F(x)\)</span> is a piecewise function, we would expect <span class="process-math">\(f(x)\)</span> to be piecewise as well.  Additionally, we need to be careful at the locations where the definition of <span class="process-math">\(F(x)\)</span> changes, which is where <span class="process-math">\(f(x)\)</span> is likely to change definition as well.</div></article><article class="example example-like" id="ex-F-to-f"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-F-to-f"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.2.15</span><span class="period">.</span><span class="space"> </span><span class="title">a ramp-shaped cumulative distribution.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-F-to-f"><article class="example example-like"><div class="para logical" id="p-247">
+<div class="para">Consider</div>
+<div class="displaymath process-math">
+\begin{equation*}
+F(x) = \begin{cases}0, \amp \quad x \lt -1\\\dfrac{x+1}{2},
+\amp \quad -1 \le x \lt 1\\ 1, \amp \quad 1 \le x\end{cases}\text{.}
+\end{equation*}
+</div>
+<div class="para">Find the probability density function <span class="process-math">\(f(x)\text{.}\)</span> Notice that <span class="process-math">\(F(x)\)</span> is not differentiable at <span class="process-math">\(x = \pm 1\)</span> where the graph displays corners.</div>
+</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-10" id="solution-10"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-10"><div class="solution solution-like">
+<div class="para logical" id="p-248">
+<div class="para">For <span class="process-math">\(x \lt -1\text{,}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \dfrac{d}{dx}\Big(0\Big) = 0\text{.}
+\end{equation*}
+</div>
+<div class="para">For <span class="process-math">\(-1 \le x \lt 1\text{,}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) =
+\dfrac{d}{dx}\Big(\dfrac{x+1}{2}\Big) = \sfrac{1}{2}\text{.}
+\end{equation*}
+</div>
+<div class="para">For <span class="process-math">\(1 \le x\text{,}\)</span>
+</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \dfrac{d}{dx}\Big(1\Big) = 0\text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="p-249">
+<div class="para">Based on the work above,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \begin{cases}0, \amp \quad x \lt
+-1\\\sfrac{1}{2}, \amp \quad -1 \le x \lt 1\\ 0, \amp \quad 1 \le
+x\end{cases}\text{.}
+\end{equation*}
+</div>
+</div> <div class="para logical" id="p-250">
+<div class="para">Since the value of the function at a single point, such as an endpoint,does not affect the value of probabilities, we will adopt the convention of specifying the non-zero part of the density on an open interval.  This means we take <span class="process-math">\(f(-1)=f(1)=0\text{.}\)</span> Thus we have,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) = \begin{cases}\sfrac{1}{2}, \amp \quad -1 \lt x \lt 1\\ 0,
+\amp \quad
+\text{otherwise}\end{cases}\text{.}
+\end{equation*}
+</div>
+</div>
+</div></div></article></div></section><section class="exercises" id="exercises-16"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">4.2.2</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-27"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 3.20.</span>
+</h4>
+<div class="para logical" id="p-251">
+<div class="para">The probability density of the random variable <span class="process-math">\(Y\)</span> is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(y) = \begin{cases} \dfrac{1}{8}(y+1), \amp \quad 2 \lt y \lt 4\\
+0, \amp \quad \text{elsewhere}\end{cases}
+\end{equation*}
+</div>
+</div> <div class="para" id="p-252">Find <span class="process-math">\(P(Y \lt 3.2)\)</span> and <span class="process-math">\(P(2.9 \lt Y \lt 3.2)\text{.}\)</span>
+</div></article></section></section><div class="hidden-content tex2jax_ignore" id="hk-fn-1"><div class="fn"><code class="code-inline tex2jax_ignore">buddy.uco.edu/shiny/slaverty/mathstat/pdf_cdf/</code></div></div>
+</div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="section-discrete-expectation.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon">^</span><span class="name">Top</span></a><a class="next-button button" href="chap-calculus.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

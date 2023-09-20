@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<html lang="en-US" dir="ltr">
+<head xmlns:og="http://ogp.me/ns#" xmlns:book="https://ogp.me/ns/book#">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Mathematical expectation of discrete random variables</title>
+<meta name="Keywords" content="Authored in PreTeXt">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta property="og:type" content="book">
+<meta property="book:title" content="Applied Numerical Analysis">
+<meta property="book:author" content="Sean M. Laverty">
+<script>
+var runestoneMathReady = new Promise((resolve) => window.rsMathReady = resolve);
+window.MathJax = {
+  "tex": {
+    "inlineMath": [
+      [
+        "\\(",
+        "\\)"
+      ]
+    ],
+    "tags": "none",
+    "tagSide": "right",
+    "tagIndent": ".8em",
+    "packages": {
+      "[+]": [
+        "base",
+        "extpfeil",
+        "ams",
+        "amscd",
+        "color",
+        "newcommand",
+        "knowl"
+      ]
+    }
+  },
+  "options": {
+    "ignoreHtmlClass": "tex2jax_ignore|ignore-math",
+    "processHtmlClass": "process-math"
+  },
+  "chtml": {
+    "scale": 0.98,
+    "mtextInheritFont": true
+  },
+  "loader": {
+    "load": [
+      "input/asciimath",
+      "[tex]/extpfeil",
+      "[tex]/amscd",
+      "[tex]/color",
+      "[tex]/newcommand",
+      "[pretext]/mathjaxknowl3.js"
+    ],
+    "paths": {
+      "pretext": "https://pretextbook.org/js/lib"
+    }
+  },
+  "startup": {
+    pageReady() {
+      return MathJax.startup.defaultPageReady().then(function () {
+      console.log("in ready function");
+      rsMathReady();
+      }
+    )}
+  }
+};
+</script><script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.9/lunr.min.js" integrity="sha512-4xUl/d6D6THrAnXAwGajXkoWaeMNwEKK4iNfq5DotEbLPAfk6FSxSP3ydNxqDgCw1c/0Z1Jg6L8h2j+++9BZmg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><script src="lunr-pretext-search-index.js" async=""></script><script src="https://pretextbook.org/js/0.3/pretext_search.js"></script><link href="https://pretextbook.org/css/0.7/pretext_search.css" rel="stylesheet" type="text/css">
+<script>js_version = 0.3</script><script src="https://pretextbook.org/js/lib/jquery.min.js"></script><script src="https://pretextbook.org/js/lib/jquery.sticky.js"></script><script src="https://pretextbook.org/js/lib/jquery.espy.min.js"></script><script src="https://pretextbook.org/js/0.3/pretext.js"></script><script>miniversion=0.1</script><script src="https://pretextbook.org/js/0.3/pretext_add_on.js?x=1"></script><script src="https://pretextbook.org/js/0.3/user_preferences.js"></script><script src="https://pretextbook.org/js/lib/knowl.js"></script><!--knowl.js code controls Sage Cells within knowls--><script>sagecellEvalName='Evaluate (Sage)';
+</script><link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&amp;family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&amp;family=Tinos:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/dejavu-serif" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Serif:opsz,wdth,wght@8..144,50..150,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wdth,wght@75..100,300..800&amp;display=swap" rel="stylesheet">
+<link href="https://pretextbook.org/css/0.7/pretext.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/pretext_add_on.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/shell_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/banner_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/navbar_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/toc_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/knowls_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/style_default.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/colors_blue_red.css" rel="stylesheet" type="text/css">
+<link href="https://pretextbook.org/css/0.7/setcolors.css" rel="stylesheet" type="text/css">
+</head>
+<body class="pretext book ignore-math">
+<a class="assistive" href="#ptx-content">Skip to main content</a><header id="ptx-masthead" class="ptx-masthead"><div class="ptx-banner">
+<a id="logo-link" class="logo-link" href="http://www.math.uco.edu" target="_blank"><img src="external/images/cover.png" alt="Logo image"></a><div class="title-container">
+<h1 class="heading"><a href="ana.html"><span class="title">Applied Numerical Analysis:</span> <span class="subtitle"></span></a></h1>
+<p class="byline">Sean M. Laverty</p>
+</div>
+<div id="searchresultsplaceholder" class="searchresultsplaceholder" style="display: none">
+<button id="closesearchresults" class="closesearchresults" onclick="document.getElementById('searchresultsplaceholder').style.display = 'none'; return false;">x</button><h2>Search Results: <span id="searchterms" class="searchterms"></span>
+</h2>
+<div id="searchempty" class="searchempty"><span>No results.</span></div>
+<ol id="searchresults" class="searchresults"></ol>
+</div>
+</div></header><nav id="ptx-navbar" class="ptx-navbar navbar"><button class="toc-toggle button" aria-label="Show or hide table of contents"><span class="icon">☰</span><span class="name">Contents</span></button><a class="index-button button" href="index-1.html" title="Index"><span class="name">Index</span></a><button id="user-preferences-button" class="user-preferences-button button" title="Modify user preferences"><span id="avatarbutton" class="avatarbutton name">You!</span><div id="preferences_menu_holder" class="preferences_menu_holder hidden"><ol id="preferences_menu" class="preferences_menu" style="font-family: 'Roboto Serif', serif;">
+<li data-env="avatar" tabindex="-1">Choose avatar<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden avatar">
+<li data-val="You!" tabindex="-1">
+<span id="theYou!" class="avatarcheck">✔️</span>You!</li>
+<li data-val="😺" tabindex="-1">
+<span id="the😺" class="avatarcheck"></span>😺</li>
+<li data-val="👤" tabindex="-1">
+<span id="the👤" class="avatarcheck"></span>👤</li>
+<li data-val="👽" tabindex="-1">
+<span id="the👽" class="avatarcheck"></span>👽</li>
+<li data-val="🐶" tabindex="-1">
+<span id="the🐶" class="avatarcheck"></span>🐶</li>
+<li data-val="🐼" tabindex="-1">
+<span id="the🐼" class="avatarcheck"></span>🐼</li>
+<li data-val="🌈" tabindex="-1">
+<span id="the🌈" class="avatarcheck"></span>🌈</li>
+</ol>
+</li>
+<li data-env="fontfamily" tabindex="-1">Font family<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden fontfamily">
+<li data-val="face" data-change="OS" tabindex="-1" style="font-family: 'Open Sans'">
+<span id="theOS" class="ffcheck">✔️</span><span class="name">Open Sans</span><span class="sample">AaBbCc 123 PreTeXt</span>
+</li>
+<li data-val="face" data-change="RS" tabindex="-1" style="font-family: 'Roboto Serif'">
+<span id="theRS" class="ffcheck"></span><span class="name">Roboto Serif</span><span class="sample">AaBbCc 123 PreTeXt</span>
+</li>
+</ol>
+</li>
+<li data-env="font" tabindex="-1">Adjust font<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden fonts">
+<li>Size</li>
+<li><span id="thesize">12</span></li>
+<li data-val="size" data-change="-1" tabindex="-1" style="font-size: 80%">Smaller</li>
+<li data-val="size" data-change="1" tabindex="-1" style="font-size: 110%">Larger</li>
+<li>Width</li>
+<li><span id="thewdth">100</span></li>
+<li data-val="wdth" data-change="-5" tabindex="-1" style="font-variation-settings: 'wdth' 60">narrower</li>
+<li data-val="wdth" data-change="5" tabindex="-1" style="font-variation-settings: 'wdth' 150">wider</li>
+<li>Weight</li>
+<li><span id="thewght">400</span></li>
+<li data-val="wght" data-change="-50" tabindex="-1" style="font-weight: 200">thinner</li>
+<li data-val="wght" data-change="50" tabindex="-1" style="font-weight: 700">heavier</li>
+<li>Letter spacing</li>
+<li>
+<span id="thelspace">0</span><span class="byunits">/200</span>
+</li>
+<li data-val="lspace" data-change="-1" tabindex="-1">closer</li>
+<li data-val="lspace" data-change="1" tabindex="-1">f a r t h e r</li>
+<li>Word spacing</li>
+<li>
+<span id="thewspace">0</span><span class="byunits">/50</span>
+</li>
+<li data-val="wspace" data-change="-1" tabindex="-1">smaller gap </li>
+<li data-val="wspace" data-change="1" tabindex="-1">larger gap</li>
+<li>Line Spacing</li>
+<li>
+<span id="theheight">135</span><span class="byunits">/100</span>
+</li>
+<li data-val="height" data-change="-5" tabindex="-1" style="line-height: 1">closer<br>together</li>
+<li data-val="height" data-change="5" tabindex="-1" style="line-height: 1.75">further<br>apart</li>
+</ol>
+</li>
+<li data-env="atmosphere" tabindex="-1">Light/dark mode<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden atmosphere">
+<li data-val="default" tabindex="-1">
+<span id="thedefault" class="atmospherecheck">✔️</span>default</li>
+<li data-val="pastel" tabindex="-1">
+<span id="thepastel" class="atmospherecheck"></span>pastel</li>
+<li data-val="darktwilight" tabindex="-1">
+<span id="thedarktwilight" class="atmospherecheck"></span>twilight</li>
+<li data-val="dark" tabindex="-1">
+<span id="thedark" class="atmospherecheck"></span>dark</li>
+<li data-val="darkmidnight" tabindex="-1">
+<span id="thedarkmidnight" class="atmospherecheck"></span>midnight</li>
+</ol>
+</li>
+<li data-env="ruler" tabindex="-1">Reading ruler<div class="wrap_to_submenu"><span class="to_submenu">▻</span></div>
+<ol class="hidden ruler">
+<li data-val="none" tabindex="-1">
+<span id="thenone" class="rulercheck">✔️</span>none</li>
+<li data-val="underline" tabindex="-1">
+<span id="theunderline" class="rulercheck"></span>underline</li>
+<li data-val="lunderline" tabindex="-1">
+<span id="thelunderline" class="rulercheck"></span>L-underline</li>
+<li data-val="greybar" tabindex="-1">
+<span id="thegreybar" class="rulercheck"></span>grey bar</li>
+<li data-val="lightbox" tabindex="-1">
+<span id="thelightbox" class="rulercheck"></span>light box</li>
+<li data-val="sunrise" tabindex="-1">
+<span id="thesunrise" class="rulercheck"></span>sunrise</li>
+<li data-val="sunriseunderline" tabindex="-1">
+<span id="thesunriseunderline" class="rulercheck"></span>sunrise underline</li>
+<li class="moveQ">Motion by:</li>
+<li data-val="mouse" tabindex="-1">
+<span id="themouse" class="motioncheck">✔️</span>follow the mouse</li>
+<li data-val="arrow" tabindex="-1">
+<span id="thearrow" class="motioncheck"></span>up/down arrows - not yet</li>
+<li data-val="eye" tabindex="-1">
+<span id="theeye" class="motioncheck"></span>eye tracking - not yet</li>
+</ol>
+</li>
+</ol></div></button><span class="treebuttons"><a class="previous-button button" href="chap-approximation.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="up-button button" href="chap-approximation.html" title="Up"><span class="icon">^</span><span class="name">Up</span></a><a class="next-button button" href="section-probability-densities.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a></span><div class="searchbox"><div class="searchwidget">
+<input id="ptxsearch" class="ptxsearch" type="text" name="terms" placeholder="Search" onchange="doSearch()"><button id="searchbutton" class="searchbutton" type="button" onclick="doSearch()">🔍</button>
+</div></div></nav><div id="latex-macros" class="hidden-content process-math" style="display:none"><span class="process-math">\(
+\newcommand{\lt}{&lt;}
+\newcommand{\gt}{&gt;}
+\newcommand{\amp}{&amp;}
+\definecolor{fillinmathshade}{gray}{0.9}
+\newcommand{\fillinmath}[1]{\mathchoice{\colorbox{fillinmathshade}{$\displaystyle     \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\textstyle        \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptstyle      \phantom{\,#1\,}$}}{\colorbox{fillinmathshade}{$\scriptscriptstyle\phantom{\,#1\,}$}}}
+\newcommand{\sfrac}[2]{{#1}/{#2}}
+\)</span></div>
+<div class="ptx-page">
+<div id="ptx-sidebar" class="ptx-sidebar"><nav id="ptx-toc" class="ptx-toc depth2"><ul class="structural">
+<li>
+<div class="toc-item"><a href="frontmatter.html" class="internal"><span class="title">Front Matter</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="front-colophon.html" class="internal"><span class="title">Colophon</span></a></div></li>
+<li><div class="toc-item"><a href="author-bio-SML.html" class="internal"><span class="title">Author Biography</span></a></div></li>
+<li><div class="toc-item"><a href="dedication.html" class="internal"><span class="title">Dedication</span></a></div></li>
+<li><div class="toc-item"><a href="acknowledgement.html" class="internal"><span class="title">Acknowledgements</span></a></div></li>
+<li><div class="toc-item"><a href="preface.html" class="internal"><span class="title">Preface</span></a></div></li>
+<li>
+<div class="toc-item"><a href="contributors.html" class="internal"><span class="title">Contributors to the 0<span class="process-math">\(^\mathrm{th}\)</span> Edition</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="contributors.html#contributors-1" class="internal"><span class="title"></span></a></div></li></ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-basics.html" class="internal"><span class="codenumber">1</span> <span class="title">Counting</span></a></div>
+<ul class="structural"><li>
+<div class="toc-item"><a href="section-R-intro.html" class="internal"><span class="codenumber">1.1</span> <span class="title">Introduction to R programming</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-R-intro.html#sub-calculator" class="internal"><span class="codenumber">1.1.1</span> <span class="title">Calculator functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-date" class="internal"><span class="codenumber">1.1.2</span> <span class="title">Generating data</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-functions" class="internal"><span class="codenumber">1.1.3</span> <span class="title">Defining and using functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-basic" class="internal"><span class="codenumber">1.1.4</span> <span class="title">Basic programming</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-less-basic" class="internal"><span class="codenumber">1.1.5</span> <span class="title">Putting it all together</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-more-advanced" class="internal"><span class="codenumber">1.1.6</span> <span class="title">Putting it all together (and more)</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-buildin" class="internal"><span class="codenumber">1.1.7</span> <span class="title">Built-in functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-challenge-arithmetic" class="internal"><span class="codenumber">1.1.8</span> <span class="title">Challenges - Arithmetic</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-root" class="internal"><span class="codenumber">1.1.9</span> <span class="title">Rootfinding</span></a></div></li>
+<li><div class="toc-item"><a href="section-R-intro.html#sub-RMarkdown" class="internal"><span class="codenumber">1.1.10</span> <span class="title">RMarkdown</span></a></div></li>
+</ul>
+</li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-rootfinding.html" class="internal"><span class="codenumber">2</span> <span class="title">Root-finding and fixed-point problems</span></a></div>
+<ul class="structural"><li>
+<div class="toc-item"><a href="section-continuous-expectation.html" class="internal"><span class="codenumber">2.1</span> <span class="title">Expectation of continuous random variables</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-expectation" class="internal"><span class="codenumber">2.1.1</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-1" class="internal"><span class="codenumber">2.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-moments-cont" class="internal"><span class="codenumber">2.1.3</span> <span class="title">Moments</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-2" class="internal"><span class="codenumber">2.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-chebyshev" class="internal"><span class="codenumber">2.1.5</span> <span class="title">Chebyshev’s Theorem</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-3" class="internal"><span class="codenumber">2.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#sub-mgf-cont" class="internal"><span class="codenumber">2.1.7</span> <span class="title">Moment-generating functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-continuous-expectation.html#exercises-4" class="internal"><span class="codenumber">2.1.8</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-interpolation.html" class="internal"><span class="codenumber">3</span> <span class="title">Interpolation</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="sec-multi-cont.html" class="internal"><span class="codenumber">3.1</span> <span class="title">Multivariate continuous densities</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-cont-multi-variable" class="internal"><span class="codenumber">3.1.1</span> <span class="title">Multivariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-product-moments-cont" class="internal"><span class="codenumber">3.1.2</span> <span class="title">Product moments</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#exercises-5" class="internal"><span class="codenumber">3.1.3</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="sec-multi-cont.html#sub-conditional-expectation" class="internal"><span class="codenumber">3.1.4</span> <span class="title">Conditional expectation</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html" class="internal"><span class="codenumber">3.2</span> <span class="title">Special probability densities</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-continuous-unif" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Continuous uniform</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-6" class="internal"><span class="codenumber">3.2.1</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-exponential" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Exponential family</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-7" class="internal"><span class="codenumber">3.2.2</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-beta" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Beta distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-8" class="internal"><span class="codenumber">3.2.3</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-normal" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Normal distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-9" class="internal"><span class="codenumber">3.2.4</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-special-densities.html#sub-normal-approx" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Normal approximation to the binomial distribution</span></a></div>
+<ul class="structural"><li><div class="toc-item"><a href="section-special-densities.html#exercises-10" class="internal"><span class="codenumber">3.2.5</span> <span class="title">Exercises</span></a></div></li></ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-approximation.html" class="internal"><span class="codenumber">4</span> <span class="title">Approximation</span></a></div>
+<ul class="structural">
+<li class="active">
+<div class="toc-item"><a href="section-discrete-expectation.html" class="internal"><span class="codenumber">4.1</span> <span class="title">Mathematical expectation of discrete random variables</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-expectation" class="internal"><span class="codenumber">4.1.1</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-11" class="internal"><span class="codenumber">4.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-moments" class="internal"><span class="codenumber">4.1.3</span> <span class="title">Expected value</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-12" class="internal"><span class="codenumber">4.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-mgf" class="internal"><span class="codenumber">4.1.5</span> <span class="title">Moment-generating functions</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-13" class="internal"><span class="codenumber">4.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-product-moments" class="internal"><span class="codenumber">4.1.7</span> <span class="title">Product moments</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-14" class="internal"><span class="codenumber">4.1.8</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-moments-linear-combinations" class="internal"><span class="codenumber">4.1.9</span> <span class="title">Moments of linear combinations of random variables</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#exercises-15" class="internal"><span class="codenumber">4.1.10</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-discrete-expectation.html#sub-conditional-expectation" class="internal"><span class="codenumber">4.1.11</span> <span class="title">Conditional expectation</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-probability-densities.html" class="internal"><span class="codenumber">4.2</span> <span class="title">Probability densities</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-probability-densities.html#sub-single-variable-cont" class="internal"><span class="codenumber">4.2.1</span> <span class="title">Univariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-densities.html#exercises-16" class="internal"><span class="codenumber">4.2.2</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="chap-calculus.html" class="internal"><span class="codenumber">5</span> <span class="title">Numerical calculus</span></a></div>
+<ul class="structural">
+<li>
+<div class="toc-item"><a href="section-special-distributions.html" class="internal"><span class="codenumber">5.1</span> <span class="title">Special probability distributions</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-unif" class="internal"><span class="codenumber">5.1.1</span> <span class="title">Discrete uniform</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-17" class="internal"><span class="codenumber">5.1.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-bern-bin" class="internal"><span class="codenumber">5.1.3</span> <span class="title">Bernoulli and Binomial distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-18" class="internal"><span class="codenumber">5.1.4</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-negbin-geom" class="internal"><span class="codenumber">5.1.5</span> <span class="title">Negative Binomial and Geometric distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-19" class="internal"><span class="codenumber">5.1.6</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-hypergeom" class="internal"><span class="codenumber">5.1.7</span> <span class="title">Hypergeometric distribution</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-20" class="internal"><span class="codenumber">5.1.8</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-poisson" class="internal"><span class="codenumber">5.1.9</span> <span class="title">Poisson distribution</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-21" class="internal"><span class="codenumber">5.1.10</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#sub-discrete-multivariate" class="internal"><span class="codenumber">5.1.11</span> <span class="title">Multivariate distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-special-distributions.html#exercises-22" class="internal"><span class="codenumber">5.1.12</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="section-probability-distributions.html" class="internal"><span class="codenumber">5.2</span> <span class="title">Probability distributions</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="section-probability-distributions.html#sub-single-variable-disc" class="internal"><span class="codenumber">5.2.1</span> <span class="title">Random variables and probability distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#exercises-23" class="internal"><span class="codenumber">5.2.2</span> <span class="title">Exercises</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#sub-multi-variable" class="internal"><span class="codenumber">5.2.3</span> <span class="title">Multivariate, marginal, and conditional distributions</span></a></div></li>
+<li><div class="toc-item"><a href="section-probability-distributions.html#exercises-24" class="internal"><span class="codenumber">5.2.4</span> <span class="title">Exercises</span></a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<div class="toc-item"><a href="backmatter.html" class="internal"><span class="title">Back Matter</span></a></div>
+<ul class="structural">
+<li><div class="toc-item"><a href="appendix-def.html" class="internal"><span class="codenumber">A</span> <span class="title">Definitions</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-thm.html" class="internal"><span class="codenumber">B</span> <span class="title">Theorems</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-ex.html" class="internal"><span class="codenumber">C</span> <span class="title">Examples</span></a></div></li>
+<li><div class="toc-item"><a href="appendix-gfdl.html" class="internal"><span class="codenumber">D</span> <span class="title">GNU Free Documentation License</span></a></div></li>
+<li><div class="toc-item"><a href="index-1.html" class="internal"><span class="title">Index</span></a></div></li>
+<li><div class="toc-item"><a href="back-colophon.html" class="internal"><span class="title">Colophon</span></a></div></li>
+</ul>
+</li>
+</ul></nav></div>
+<main class="ptx-main"><div id="ptx-content" class="ptx-content"><section class="section" id="section-discrete-expectation"><h2 class="heading hide-type">
+<span class="type">Section</span> <span class="codenumber">4.1</span> <span class="title">Mathematical expectation of discrete random variables</span>
+</h2>
+<section class="introduction" id="introduction-14"><div class="para" id="p-149">This is the start of Chapter 4 in Freund’s Mathematical Statistics. In the first pass we will study the major topics of this chapter with a focus on those applying to discrete random variables.</div></section><section class="subsection" id="sub-expectation"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">4.1.1</span> <span class="title">Expected value</span>
+</h3>
+<div class="para" id="p-150">See section 4.1 - 4.2. Recommended problems: (pg 136) 7, 9, 10, 11, (pg 161) 60</div>
+<article class="definition definition-like" id="def-expected-value-4-1"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.1</span><span class="period">.</span><span class="space"> </span><span class="title">expected value.</span>
+</h4> <div class="para logical" id="p-151">
+<div class="para">If <span class="process-math">\(X\)</span> is a discrete random variable and <span class="process-math">\(\displaystyle f(x)\)</span> is the value of its probability distribution at <span class="process-math">\(X\text{,}\)</span> the <dfn class="terminology">expected value</dfn> of <span class="process-math">\(X\)</span> is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+E[X] = \sum_x x\cdot f(x)
+\end{equation*}
+</div>
+</div></article><article class="theorem theorem-like" id="thm-expected-value-function-random-variable-4-1"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.2</span><span class="period">.</span><span class="space"> </span><span class="title">expected value of a function of a random variable.</span>
+</h4>
+<div class="para logical" id="p-152">
+<div class="para">If <span class="process-math">\(X\)</span> is a discrete random variable and <span class="process-math">\(\displaystyle f(x)\)</span> is the value of its probability distribution at <span class="process-math">\(X\text{,}\)</span> the expected value of <span class="process-math">\(\displaystyle
+g(X)\)</span> is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+E[g(X)] = \sum_x g(x)\cdot f(x)
+\end{equation*}
+</div>
+</div></article><article class="theorem theorem-like" id="thm-4-2"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.3</span><span class="period">.</span><span class="space"> </span><span class="title">expectation of a linear function.</span>
+</h4>
+<div class="para" id="p-153">If <span class="process-math">\(\displaystyle a\)</span> and <span class="process-math">\(\displaystyle b\)</span> are constants, then <span class="process-math">\(\displaystyle E[aX +b] = aE[X]+b\text{.}\)</span>
+</div></article><article class="corollary theorem-like" id="cor-4-1"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">4.1.4</span><span class="period">.</span>
+</h4>
+<div class="para" id="p-154">If a is a constant, then <span class="process-math">\(\displaystyle E[aX] = aE[X]\text{.}\)</span>
+</div></article><article class="corollary theorem-like" id="cor-4-2"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">4.1.5</span><span class="period">.</span>
+</h4>
+<div class="para" id="p-155">If b is a constant, then <span class="process-math">\(\displaystyle E[b] = b\text{.}\)</span>
+</div></article><article class="theorem theorem-like" id="thm-expected-value-joint-random-variables-4-4"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.6</span><span class="period">.</span><span class="space"> </span><span class="title">expected value of joint random variables.</span>
+</h4>
+<div class="para logical" id="p-156">
+<div class="para">If <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> are discrete random variables and <span class="process-math">\(\displaystyle f(x, y)\)</span> is the value of their joint probability distribution at <span class="process-math">\(\displaystyle (x, y)\text{,}\)</span> the expected value of <span class="process-math">\(\displaystyle g(X, Y)\)</span> is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+E[g(X, Y)] = \sum_x \sum_y g(x, y)\cdot f(x,y)
+\end{equation*}
+</div>
+</div></article><article class="theorem theorem-like" id="thm-4-5"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.7</span><span class="period">.</span><span class="space"> </span><span class="title">expected value of a linear combination of random variables.</span>
+</h4>
+<div class="para logical" id="p-157">
+<div class="para">If <span class="process-math">\(\displaystyle c_1, c_2, \dots, c_n\)</span> are constants, then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+E\left[\sum_{i=1}^n c_i g_i(X_1, X_2, \dots, X_k)\right] =
+\sum_{i=1}^n c_i E\left[g_i(X_1, X_2, \dots, X_k)\right]
+\end{equation*}
+</div>
+</div></article></section><section class="exercises" id="exercises-11"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">4.1.2</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-18"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 4.9.</span>
+</h4>
+<div class="para logical" id="p-158">
+<div class="para">Suppose that <span class="process-math">\(X\)</span> takes on values <span class="process-math">\(0, 1, 2, 3\)</span> with probabilities <span class="process-math">\(\dfrac{1}{125}, \dfrac{12}{125}, \dfrac{48}{125},
+\dfrac{64}{125}\)</span>
+</div>
+<ol class="lower-alpha">
+<li id="li-18"><div class="para" id="p-159">Find <span class="process-math">\(E[X]\)</span> and <span class="process-math">\(E[X^2]\)</span>
+</div></li>
+<li id="li-19"><div class="para" id="p-160">Determine the value of <span class="process-math">\(E[(3X + 2)^2]\)</span>
+</div></li>
+</ol>
+</div></article></section><section class="subsection" id="sub-moments"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">4.1.3</span> <span class="title">Expected value</span>
+</h3>
+<div class="para" id="p-161">See section 4.3. Recommended problems: 4.3 (pg 146) 20, 22, 23, 31, 33, 34, 40, (pg 162) 69, 73, 75</div>
+<article class="definition definition-like" id="def-moments-about-origin-4-2"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.8</span><span class="period">.</span><span class="space"> </span><span class="title">moments about the origin.</span>
+</h4> <div class="para logical" id="p-162">
+<div class="para">The <span class="process-math">\(\displaystyle r^\text{th}\)</span> <dfn class="terminology">moment about the origin</dfn> of a random variable <span class="process-math">\(X\text{,}\)</span> denoted by <span class="process-math">\(\displaystyle \mu_r'\text{,}\)</span> is the expected value of <span class="process-math">\(\displaystyle
+(X)^r\text{;}\)</span> symbolically</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu_r'=E[(X)^r] = \sum_x x^r\cdot f(x)
+\end{equation*}
+</div>
+<div class="para">for <span class="process-math">\(\displaystyle r =
+0,1,2, \dots\)</span> when <span class="process-math">\(X\)</span> is discrete.</div>
+</div></article><article class="definition definition-like" id="def-mean-4-3"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.9</span><span class="period">.</span><span class="space"> </span><span class="title">mean of a discrete random variable.</span>
+</h4> <span class="process-math">\(\displaystyle \mu_1'\)</span> is called the <dfn class="terminology">mean</dfn> of the distribution of <span class="process-math">\(X\text{,}\)</span> or simply the <dfn class="terminology">mean</dfn> of <span class="process-math">\(X\text{;}\)</span> and it is denoted by <span class="process-math">\(\displaystyle
+\mu\text{.}\)</span></article><article class="definition definition-like" id="def-moments-about-mean-4-4"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.10</span><span class="period">.</span><span class="space"> </span><span class="title">moments about the mean.</span>
+</h4> <div class="para logical" id="p-163">
+<div class="para">The <span class="process-math">\(\displaystyle r^\text{th}\)</span> <dfn class="terminology">moment about the mean</dfn> of a random variable <span class="process-math">\(X\text{,}\)</span> denoted by <span class="process-math">\(\displaystyle \mu_r\text{,}\)</span> is the expected value of <span class="process-math">\(\displaystyle
+(X-\mu)^r\text{;}\)</span> symbolically</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu_r=E[(X-\mu)^r] = \sum_x (x-\mu)^r\cdot f(x)
+\end{equation*}
+</div>
+<div class="para">for <span class="process-math">\(\displaystyle r =
+0,1,2, \dots\)</span> when <span class="process-math">\(X\)</span> is discrete.</div>
+</div></article><div class="para" id="p-164">Now, you could imagine in some cases the moments being difficult to calculate as sums. We sometimes take the approach of building what are called moment-generating functions. These are mathematical functions whose purpose is to generate the moments of a distribution that we might need.</div></section><section class="exercises" id="exercises-12"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">4.1.4</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-19"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 4.18.</span>
+</h4>
+<div class="para" id="p-165">Find <span class="process-math">\(\mu\text{,}\)</span> <span class="process-math">\(\mu_2'\text{,}\)</span> and <span class="process-math">\(\sigma^2\)</span> for the random variable <span class="process-math">\(X\)</span> that has probability distribution <span class="process-math">\(f(x) = 0.5 \text{
+for } x= \pm 2\text{.}\)</span>
+</div></article></section><section class="subsection" id="sub-mgf"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">4.1.5</span> <span class="title">Moment-generating functions</span>
+</h3>
+<div class="para" id="p-166">See section 4.5.</div>
+<article class="definition definition-like" id="def-mgf-4-6"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.11</span><span class="period">.</span><span class="space"> </span><span class="title">moment-generating function.</span>
+</h4> <div class="para logical" id="p-167">
+<div class="para">The <dfn class="terminology">moment-generating function</dfn> of a random variable <span class="process-math">\(X\text{,}\)</span> where it exists, is given by</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\displaystyle
+M_X(t) = E[e^{tX}] = \sum_x e^{tx}\cdot f(x)
+\end{equation*}
+</div>
+<div class="para">when <span class="process-math">\(X\)</span> is discrete.</div>
+</div></article><div class="para" id="p-168">Notce that a moment-generating function <span class="process-math">\(\displaystyle M_X(t)\)</span> itself is a function of the variable <span class="process-math">\(\displaystyle t\)</span> not <span class="process-math">\(X\text{.}\)</span> As it turns out, we are most interested in values of the function at or near <span class="process-math">\(\displaystyle t=0\text{.}\)</span>
+</div>
+<article class="example example-like" id="ex-maclaurin"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-maclaurin"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.1.12</span><span class="period">.</span><span class="space"> </span><span class="title">moment-generating function via Taylor series.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-maclaurin"><article class="example example-like"><div class="para logical" id="p-169">
+<div class="para">Recall that the Maclaurin series (Taylor series around zero) for <span class="process-math">\(\displaystyle e^{tx}\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+e^{tx} = 1 + tx +
+\frac{1}{2!}\left(tx\right)^2 + \frac{1}{3!}\left(tx\right)^3 + \cdots +
+\frac{1}{r!}\left(tx\right)^r + \cdots
+\end{equation*}
+</div>
+<div class="para">This means (in the discrete case), that</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+M_X(t) \amp = \sum_x e^{tx} f(x)\\
+\amp = \sum_x \left(1 + tx + \frac{1}{2!}(tx)^2 +
+\frac{1}{3!}\left(tx\right)^3 + \cdots + \frac{1}{r!}\left(tx\right)^r +
+\cdots\right) f(x)\\
+\amp = \sum_x (f(x) + txf(x) + \frac{t^2}{2!}x^2f(x) +
+\frac{t^3}{3!}x^3f(x) + \cdots + \frac{t^r}{r!}x^rf(x) + \cdots)\\
+\amp = \sum_xf(x) + t\sum_x xf(x) + \frac{t^2}{2!}\sum_x x^2f(x) +
+\frac{t^3}{3!}\sum_x x^3f(x) + \cdots + \frac{t^r}{r!}\sum_x x^rf(x) +
+\cdots
+\end{aligned}
+\end{equation*}
+</div>
+<div class="para">Looking closely, at</div>
+<div class="displaymath process-math">
+\begin{equation*}
+M_X(t) = \sum_xf(x) + \left(\sum_x xf(x)\right)t
++ \left(\sum_x x^2f(x)\right)\frac{t^2}{2!} + \left(\sum_x
+x^3f(x)\right)\frac{t^3}{3!} + \cdots + \left(\sum_x
+x^rf(x)\right)\frac{t^r}{r!} + \cdots
+\end{equation*}
+</div>
+<div class="para">coefficients of the terms <span class="process-math">\(\displaystyle \dfrac{t^r}{r!}\)</span> are the moments about the origin <span class="process-math">\(\displaystyle \mu_r' = \sum_x x^r f(x)\)</span>
+</div>
+</div></article></div>
+<article class="example example-like" id="ex-three-cards-mgf"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-three-cards-mgf"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.1.13</span><span class="period">.</span><span class="space"> </span><span class="title">moment-generating function for three cards.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-three-cards-mgf"><article class="example example-like"><div class="para logical" id="p-170">
+<div class="para">Recall the probability distribution <span class="process-math">\(f(x) = P(X = x) =
+\dfrac{{3\choose x}}{8} \text{ for } x = 0, 1, 2, 3\)</span> (this was used earlier to determine the probabilities of <span class="process-math">\(x\)</span> heads on three flips of a coin).</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}[t]
+M_X(t) \amp = \sum_x e^{tx} f(x)\\
+\amp = 1 \cdot \frac{1}{8} + e^{t} \cdot \frac{3}{8}+ e^{2t} \cdot
+\frac{3}{8} + e^{3t} \cdot \frac{1}{8}\\
+\amp = \frac{1}{8} \left(1 + 3e^{t} + 3e^{2t} + e^{3t}\right)\\
+M_X(t) \amp = \frac{1}{8} (1+e^t)^3\\
+\end{aligned}
+\end{equation*}
+</div>
+</div></article></div>
+<article class="theorem theorem-like" id="thm-4-9"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.14</span><span class="period">.</span><span class="space"> </span><span class="title">moments via differentiation.</span>
+</h4>
+<div class="para logical" id="p-171">
+<div class="para">The <span class="process-math">\(r^\text{th}\)</span> moment about the origin, <span class="process-math">\(\mu_r'\text{,}\)</span> can be written</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\displaystyle \mu_r' = \dfrac{d^rM_X(t)}{dt^r}\Big|_{t=0}
+\end{equation*}
+</div>
+</div></article><article class="example example-like" id="ex-three-cards-mgf2"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-three-cards-mgf2"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.1.15</span><span class="period">.</span><span class="space"> </span><span class="title">moment-generating function for three cards, via differentiation.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-three-cards-mgf2"><article class="example example-like"><div class="para logical" id="p-172">
+<div class="para">Referencing Example <a href="" class="xref" data-knowl="./knowl/ex-three-cards-mgf.html" title="Example 4.1.13: moment-generating function for three cards">Example 4.1.13</a>, the mean of the random variable, given by <span class="process-math">\(\mu_1'\text{,}\)</span> whose MGF is <span class="process-math">\(M_X(t) =
+\frac{1}{8} (1+e^t)^3\)</span> is found as follows</div>
+<div class="displaymath process-math" data-contains-math-knowls="./knowl/ex-three-cards-mgf.html">
+\begin{equation*}
+\begin{aligned}[t]
+\mu_1' \amp = \left(\dfrac{d}{dt}\left(\frac{1}{8}
+(1+e^t)^3\right)\right)\Big|_{t=0}\\
+\amp = \left(\frac{3}{8} (1+e^t)^2e^t\right)\Big|_{t=0}\\
+\amp = \left(\frac{3}{8} (2)^2\right)\\
+\mu_1' \amp = \frac{3}{2}
+\end{aligned}
+\end{equation*}
+</div>
+</div></article></div>
+<div class="para" id="p-173">So, <em class="emphasis">given</em> a moment-generating function, a relatively simple application of calculus allows us to replace a more tedious calculation of the moment from its definition.</div>
+<article class="theorem theorem-like" id="thm-4-10"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.16</span><span class="period">.</span><span class="space"> </span><span class="title">moment-generating function of functions of a random variable.</span>
+</h4>
+<div class="para logical" id="p-174">
+<div class="para">If <span class="process-math">\(\displaystyle a\)</span> and <span class="process-math">\(\displaystyle b\)</span> are constants, then</div>
+<ol class="decimal">
+<li id="li-20"><div class="para" id="p-derived-li-20"><span class="process-math">\(\displaystyle M_{X+a}(t) = E[e^{(X+a)t}] = e^{at} \cdot
+M_X(t)\text{;}\)</span></div></li>
+<li id="li-21"><div class="para" id="p-derived-li-21"><span class="process-math">\(\displaystyle M_{bX}(t) = E[e^{bXt}] = M_X(bt)\text{;}\)</span></div></li>
+<li id="li-22"><div class="para" id="p-derived-li-22"><span class="process-math">\(\displaystyle M_{\frac{X+a}{b}}(t) =
+E\left[e^{\left(\frac{X+a}{b}\right)t}\right] = e^{(a/b)t} \cdot
+M_X\left(\frac{t}{b}\right)\text{;}\)</span></div></li>
+</ol>
+</div></article><div class="para" id="p-175">The rules in <a href="" class="xref" data-knowl="./knowl/thm-4-10.html" title="Theorem 4.1.16: moment-generating function of functions of a random variable">Theorem 4.1.16</a> allow us to calculate moment-generating functions of simple functions of a random variable.</div></section><section class="exercises" id="exercises-13"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">4.1.6</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-20"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 4.33.</span>
+</h4>
+<div class="para logical" id="p-176">
+<div class="para">Find the moment-generating function of the discrete random variable <span class="process-math">\(X\)</span> that has the probability distribution</div>
+<div class="displaymath process-math">
+\begin{equation*}
+f(x) =
+2\left(\dfrac{1}{3}\right)^x \text{ for } x = 1, 2, 3, \dots
+\end{equation*}
+</div>
+<div class="para">and use it to determine the values of <span class="process-math">\(\mu_1'\)</span> and <span class="process-math">\(\mu_2'\text{.}\)</span>
+</div>
+</div></article><article class="exercise exercise-like" id="exercise-21"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 4.40.</span>
+</h4>
+<div class="para" id="p-177">Given the moment-generating function <span class="process-math">\(X_X(t) = e^{3t+8t^2}\text{,}\)</span> find the moment generating function of the random variable <span class="process-math">\(Z =
+\dfrac{1}{4}\left(X-3\right)\)</span> and use it to determine the mean and variance of <span class="process-math">\(Z\text{.}\)</span>
+</div></article></section><section class="subsection" id="sub-product-moments"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">4.1.7</span> <span class="title">Product moments</span>
+</h3>
+<div class="para" id="p-178">See section 4.6.</div>
+<article class="definition definition-like" id="def-product-moments-origin-4-7"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.17</span><span class="period">.</span><span class="space"> </span><span class="title">product moments about the origin.</span>
+</h4> <div class="para logical" id="p-179">
+<div class="para">The <dfn class="terminology"><span class="process-math">\(\displaystyle r^\text{th}\)</span> and <span class="process-math">\(\displaystyle
+s^\text{th}\)</span> product moment about the origin</dfn> of the random variables <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\text{,}\)</span> denoted by <span class="process-math">\(\displaystyle \mu_{r,s}\text{,}\)</span> is the expected value of <span class="process-math">\(\displaystyle X^rY^s\text{;}\)</span> symbolically</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu_{r,s}'=E[X^rY^s] = \sum_x\sum_y x^r y^s\cdot f(x, y)
+\end{equation*}
+</div>
+<div class="para">
+<span class="process-math">\(\displaystyle r = 0,1,2, \dots\)</span> and <span class="process-math">\(\displaystyle s = 0,1,2,
+\dots\)</span> when <span class="process-math">\(X\)</span> and Y are discrete.</div>
+</div></article><div class="para" id="p-180">Special cases of product moments are <span class="process-math">\(\displaystyle \mu_{1,0}' =
+E[X^1Y^0] = E[X] = \mu_X\)</span> and <span class="process-math">\(\displaystyle \mu_{0,1}' = E[X^0Y^1]
+= E[Y] = \mu_Y\text{.}\)</span>
+</div>
+<div class="para logical" id="p-181">
+<div class="para">As complicated as the definitions of the product moments may be, they lead to a way to define and calculate the very important concept of covariance.</div>
+<ul class="disc">
+<li id="li-23"><div class="para" id="p-derived-li-23">If we have a high probability of large <span class="process-math">\(X\)</span> paired with large <span class="process-math">\(Y\)</span> and small <span class="process-math">\(\displaystyle
+X\)</span> paired with small <span class="process-math">\(Y\text{,}\)</span> <span class="process-math">\(\displaystyle
+\operatorname{cov}(X,Y) \gt 0\)</span>
+</div></li>
+<li id="li-24"><div class="para" id="p-derived-li-24">If we have a high probability of large <span class="process-math">\(X\)</span> paired with small <span class="process-math">\(Y\)</span> and small <span class="process-math">\(\displaystyle
+X\)</span> paired with large <span class="process-math">\(Y\text{,}\)</span> <span class="process-math">\(\displaystyle
+\operatorname{cov}(X,Y) \lt 0\)</span>
+</div></li>
+</ul>
+</div>
+<article class="definition definition-like" id="def-product-moments-mean-4-8"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.18</span><span class="period">.</span><span class="space"> </span><span class="title">product moments about the mean.</span>
+</h4> <div class="para logical" id="p-182">
+<div class="para">The <dfn class="terminology"><span class="process-math">\(\displaystyle r^\text{th}\)</span> and <span class="process-math">\(\displaystyle
+s^\text{th}\)</span> product moment about the mean</dfn> of the random variables <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\text{,}\)</span> denoted by <span class="process-math">\(\displaystyle \mu_{r,s}'\text{,}\)</span> is the expected value of <span class="process-math">\(\displaystyle (X-\mu_X)^r(Y-\mu_Y)^s\text{;}\)</span> symbolically</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu_{r,s}=E[(X-\mu_X)^r(Y-\mu_Y)^s] = \sum_x\sum_y (x-\mu_X)^r
+(y-\mu_Y)^s\cdot f(x, y)
+\end{equation*}
+</div>
+<div class="para">
+<span class="process-math">\(\displaystyle r = 0,1,2, \dots\)</span> and <span class="process-math">\(\displaystyle s = 0,1,2, \dots\)</span> when <span class="process-math">\(X\)</span> and Y are discrete.</div>
+</div></article><article class="definition definition-like" id="def-covariance-4-9"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.19</span><span class="period">.</span><span class="space"> </span><span class="title">covariance.</span>
+</h4> <div class="para" id="p-183">
+<span class="process-math">\(\displaystyle \mu_{1,1}\)</span> is called the <dfn class="terminology">covariance</dfn> of <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\text{,}\)</span> and it is denoted by <span class="process-math">\(\displaystyle \sigma_{XY}\)</span> or <span class="process-math">\(\displaystyle
+\operatorname{cov}(X, Y)\text{,}\)</span> or <span class="process-math">\(\displaystyle C(X, Y)\text{.}\)</span>
+</div></article><article class="theorem theorem-like" id="thm-4-11"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.20</span><span class="period">.</span><span class="space"> </span><span class="title">covariance from moments about the origin.</span>
+</h4>
+<div class="para" id="p-184"><span class="process-math">\(\displaystyle \sigma_{XY} = \mu_{1,1}' - \mu_X \mu_Y\)</span></div></article><article class="theorem theorem-like" id="thm-4-12"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.21</span><span class="period">.</span><span class="space"> </span><span class="title">independence and covariance.</span>
+</h4>
+<div class="para logical" id="p-185">
+<div class="para">If <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> are independent, then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\displaystyle E[XY] = E[X]\cdot E[Y]
+\end{equation*}
+</div>
+<div class="para">and <span class="process-math">\(\displaystyle \sigma_{XY} = 0\text{.}\)</span>
+</div>
+</div></article><article class="remark remark-like" id="rmrk-4-12"><h4 class="heading">
+<span class="type">Remark</span><span class="space"> </span><span class="codenumber">4.1.22</span><span class="period">.</span>
+</h4>In terms of moments,<div class="displaymath process-math">
+\begin{equation*}
+\displaystyle\mu_{1,1}' = \mu_{1,0}'\cdot \mu_{0,1}'
+\end{equation*}
+</div></article><article class="theorem theorem-like" id="thm-4-13"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.23</span><span class="period">.</span><span class="space"> </span><span class="title">product moments of independent random variables.</span>
+</h4>
+<div class="para" id="p-186">If <span class="process-math">\(\displaystyle X_1, X_2, \dots, X_n\)</span> are independent, then <span class="process-math">\(\displaystyle E[X_1X_2\cdots X_n] = E[X_1]\cdot
+E[X_2]\cdot\cdots\cdot E[X_n]\text{.}\)</span>
+</div></article><div class="para" id="p-187">Independence means covariance is zero, but covariances of zero does not mean independence.</div></section><section class="exercises" id="exercises-14"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">4.1.8</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-22"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 4.41.</span>
+</h4>
+<div class="para" id="p-188">If <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> have the joint probability distribution <span class="process-math">\(f(x, y) = \dfrac{1}{4}\)</span> for <span class="process-math">\((-3, -5)\text{,}\)</span>  <span class="process-math">\((-1, -1)\text{,}\)</span> <span class="process-math">\((1, 1)\text{,}\)</span>  <span class="process-math">\((3, 5)\text{,}\)</span> find <span class="process-math">\(\operatorname{cov}(X, Y)\text{.}\)</span>
+</div></article><article class="exercise exercise-like" id="exercise-23"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 4.45.</span>
+</h4>
+<div class="para logical" id="p-189">
+<div class="para">If <span class="process-math">\(X\)</span> and <span class="process-math">\(Y\)</span> have the joint probability distribution <span class="process-math">\(f(-1, 0) = 0\text{,}\)</span>  <span class="process-math">\(f(-1, 1) = \dfrac{1}{4}\text{,}\)</span> <span class="process-math">\(f(0, 0) = \dfrac{1}{6}\text{,}\)</span> <span class="process-math">\(f(1, 0) = \dfrac{1}{12}\text{,}\)</span> <span class="process-math">\(f(1,
+1) = \dfrac{1}{2}\)</span> show that</div>
+<ol class="lower-alpha">
+<li id="li-25"><div class="para" id="p-190"><span class="process-math">\(\operatorname{cov}(X, Y) = 0\text{;}\)</span></div></li>
+<li id="li-26"><div class="para" id="p-191">the two random variables are not independent.</div></li>
+</ol>
+</div></article></section><section class="subsection" id="sub-moments-linear-combinations"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">4.1.9</span> <span class="title">Moments of linear combinations of random variables</span>
+</h3>
+<section class="introduction" id="introduction-15"><div class="para" id="p-192">See section 4.7. Recommended problems: 4.7-8 (pg 158) 48, 49, 57</div></section><article class="theorem theorem-like" id="thm-4-14"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.24</span><span class="period">.</span><span class="space"> </span><span class="title">variance.</span>
+</h4>
+<div class="para logical" id="p-193">
+<div class="para">If <span class="process-math">\(\displaystyle X_1, X_2, \dots, X_n\)</span> are random variables and <span class="process-math">\(\displaystyle Y = \sum_{i=1}^n a_iX_i\)</span> where <span class="process-math">\(\displaystyle
+a_1, a_2, \dots, a_n\)</span> are constants, then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+E[Y] = \sum_{i=1}^n
+a_iE[X_i]
+\end{equation*}
+</div>
+<div class="para">and</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{var}[Y] = \sum_{i=1}^n a_i^2
+\operatorname{var}[X_i] + 2 \mathop{\sum \sum}_{i \lt j} a_i
+a_j\operatorname{cov}[X_i,X_j]\text{.}
+\end{equation*}
+</div>
+</div></article><article class="corollary theorem-like" id="cor-4-3"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">4.1.25</span><span class="period">.</span><span class="space"> </span><span class="title">variance of independent random variables.</span>
+</h4>
+<div class="para logical" id="p-194">
+<div class="para">If <span class="process-math">\(\displaystyle X_1, X_2, \dots, X_n\)</span> are independent random variables and <span class="process-math">\(\displaystyle Y = \sum_{i=1}^n a_iX_i\)</span> where <span class="process-math">\(\displaystyle a_1, a_2, \dots, a_n\)</span> are constants, then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{var}[Y] = \sum_{i=1}^n
+a_i^2\operatorname{var}[X_i]
+\end{equation*}
+</div>
+</div></article><article class="example example-like" id="ex-var-covar"><a href="" data-knowl="" class="id-ref example-knowl original" data-refid="hk-ex-var-covar"><h4 class="heading">
+<span class="type">Example</span><span class="space"> </span><span class="codenumber">4.1.26</span><span class="period">.</span><span class="space"> </span><span class="title">covariances of linear combinations.</span>
+</h4></a></article><div class="hidden-content tex2jax_ignore" id="hk-ex-var-covar"><article class="example example-like"><div class="para" id="p-195">Consider three random variables <span class="process-math">\(X\text{,}\)</span> <span class="process-math">\(Y\text{,}\)</span> and <span class="process-math">\(Z\)</span> with <span class="process-math">\(\mu_X = 2\text{,}\)</span> with <span class="process-math">\(\mu_Y = -3\text{,}\)</span> with <span class="process-math">\(\mu_Z = 4\text{;}\)</span> with <span class="process-math">\(\sigma_X^2 = 1\text{,}\)</span> <span class="process-math">\(\sigma_Y^2 = 5\text{,}\)</span> <span class="process-math">\(\sigma_Z^2 =
+2\text{;}\)</span> and <span class="process-math">\(\operatorname{cov}(X, Y) = -2\text{,}\)</span> <span class="process-math">\(\operatorname{cov}(X, Z) =
+-1\text{,}\)</span> and <span class="process-math">\(\operatorname{cov}(Y, Z) = 1\text{.}\)</span>
+</div> <div class="para" id="p-196">Find <span class="process-math">\(\mu_W\)</span> and <span class="process-math">\(\operatorname{var}(W) = \sigma_W^2\)</span> for <span class="process-math">\(W = 3X-Y+2Z\text{.}\)</span>
+</div> <a href="" data-knowl="" class="id-ref solution-knowl original" data-refid="hk-solution-6" id="solution-6"><span class="type">Solution</span><span class="period">.</span></a><div class="hidden-content tex2jax_ignore" id="hk-solution-6"><div class="solution solution-like">
+<div class="para" id="p-197">First, <span class="process-math">\(\mu_W = (3)\mu_X + (-1)\mu_Y + (2)\mu_Z = 17\text{.}\)</span>
+</div> <div class="para logical" id="p-198">
+<div class="para">We could apply the theorem directly, but we can do this more directly with linear algebra. The idea is that we can picture the linear combination <span class="process-math">\(W = 3X-Y+2Z\)</span> as</div>
+<div class="displaymath process-math">
+\begin{equation*}
+W =
+\left[\begin{array}{ccc}3 \amp -1 \amp
+2\end{array}\right]\cdot\left[\begin{array}{c}X \\Y\\
+Z\end{array}\right] = (3)X + (-1)Y + (2)Z
+\end{equation*}
+</div>
+</div> <div class="para logical" id="p-199">
+<div class="para">Let <span class="process-math">\(a\)</span> be the row vector <span class="process-math">\(a = \left[\begin{array}{ccc}3 \amp -1
+\amp 2\end{array}\right]\text{,}\)</span> its transpose be the column vector <span class="process-math">\(a^T\text{,}\)</span> and the matrix <span class="process-math">\(\Sigma\)</span> be defined as follows,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\Sigma = \left[\begin{array}{ccc}
+1 \amp -2 \amp -1\\
+-2 \amp 5 \amp 1\\
+-1 \amp 1 \amp 2
+\end{array}\right]
+\end{equation*}
+</div>
+</div> <div class="para" id="p-200">This approach can be justified by expanding the sums in <a href="" class="xref" data-knowl="./knowl/thm-4-14.html" title="Theorem 4.1.24: variance">Theorem 4.1.24</a> with a sum of 2 random variables.</div> <div class="para logical" id="p-201">
+<div class="para">We can calculate the variance of <span class="process-math">\(W\)</span> by <span class="process-math">\(\operatorname{var}(W)
+= a\Sigma a^T\text{.}\)</span> Specifically,</div>
+<div class="displaymath process-math">
+\begin{equation*}
+a \Sigma a^T = \left[\begin{array}{ccc}3 \amp -1 \amp
+2\end{array}\right]\cdot\left[\begin{array}{ccc}
+1 \amp -2 \amp -1\\
+-2 \amp 5 \amp 1\\
+-1 \amp 1 \amp 2
+\end{array}\right]\cdot\left[\begin{array}{c}3 \\-1\\
+2\end{array}\right]
+\end{equation*}
+</div>
+</div> <div class="para" id="p-202">Notice <span class="process-math">\(Sigma\)</span> is symmetric and that the covariances lie in order along the main diagonal and the variances off-diagonal.</div> <div class="para logical" id="p-203">
+<div class="para">Multiplying the square matrix and column vector first, we have</div>
+<div class="displaymath process-math">
+\begin{equation*}
+a \Sigma a^T = \left[\begin{array}{ccc}3 \amp -1 \amp
+2\end{array}\right]\cdot\left[\begin{array}{c}3 \\-9\\
+0\end{array}\right]
+\end{equation*}
+</div>
+</div> <div class="para" id="p-204">And finally, <span class="process-math">\(a \Sigma a^T = 18\text{.}\)</span>
+</div>
+</div></div></article></div>
+<article class="theorem theorem-like" id="thm-4-15"><h4 class="heading">
+<span class="type">Theorem</span><span class="space"> </span><span class="codenumber">4.1.27</span><span class="period">.</span><span class="space"> </span><span class="title">covariance of two linear combinations.</span>
+</h4>
+<div class="para logical" id="p-205">
+<div class="para">If <span class="process-math">\(\displaystyle X_1, X_2, \dots, X_n\)</span> are random variables and <span class="process-math">\(\displaystyle Y_1 = \sum_{i=1}^n a_i X_i \text{ and } Y_2 =
+\sum_{i=1}^n b_iX_i\)</span> where <span class="process-math">\(\displaystyle a_1, a_2, \dots, a_n,
+b_1, b_2, \dots, b_n\)</span> are constants, then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{cov}[Y_1,
+Y_2] = \sum_{i=1}^n a_i b_i\operatorname{var}[X_i] + \mathop{\sum
+\sum}_{i \lt j} (a_ib_j + a_jb_i)\operatorname{cov}[X_i,X_j]\text{.}
+\end{equation*}
+</div>
+</div></article><article class="corollary theorem-like" id="cor-4-3b"><h4 class="heading">
+<span class="type">Corollary</span><span class="space"> </span><span class="codenumber">4.1.28</span><span class="period">.</span>
+</h4>
+<div class="para logical" id="p-206">
+<div class="para">If <span class="process-math">\(\displaystyle X_1, X_2, \dots, X_n\)</span> are independent random variables and <span class="process-math">\(\displaystyle Y_1 = \sum_{i=1}^n a_iX_i \text{ and } Y_2 =
+\sum_{i=1}^n b_iX_i\text{,}\)</span> then</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\operatorname{cov}[Y_1, Y_2] =
+\sum_{i=1}^n a_i b_i\operatorname{var}[X_i]
+\end{equation*}
+</div>
+</div></article><a href="" class="xref" data-knowl="./knowl/ex-var-covar.html" title="Example 4.1.26: covariances of linear combinations">Example 4.1.26</a><span class="process-math">\(a\Sigma a^T\)</span><span class="process-math">\(a \Sigma b^T\)</span><span class="process-math">\(b\)</span></section><section class="exercises" id="exercises-15"><h3 class="heading hide-type">
+<span class="type">Exercises</span> <span class="codenumber">4.1.10</span> <span class="title">Exercises</span>
+</h3>
+<article class="exercise exercise-like" id="exercise-24"><h4 class="heading">
+<span class="codenumber">1<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 4.48.</span>
+</h4>
+<div class="para logical" id="p-207">
+<div class="para">If <span class="process-math">\(X_1\text{,}\)</span> <span class="process-math">\(X_2\text{,}\)</span> <span class="process-math">\(X_3\)</span> are independent and have the means <span class="process-math">\(4, 9, 3\)</span> and the variances <span class="process-math">\(3, 7, 5\text{,}\)</span> find the mean and variance of  show that</div>
+<ol class="lower-alpha">
+<li id="li-27"><div class="para" id="p-208"><span class="process-math">\(Y = 2X_1 - 3X_2 + 4X_3\text{;}\)</span></div></li>
+<li id="li-28"><div class="para" id="p-209"><span class="process-math">\(Z = X_1 + 2X_2 -X_3\text{.}\)</span></div></li>
+</ol>
+</div></article><article class="exercise exercise-like" id="exercise-25"><h4 class="heading">
+<span class="codenumber">2<span class="period">.</span></span><span class="space"> </span><span class="title">Problem 4.49.</span>
+</h4>
+<div class="para" id="p-210">Repeat both parts of the previous exercise after dropping the assumption of independence and using instead that <span class="process-math">\(\operatorname{cov}(X_1, X_2) = 1\text{,}\)</span> <span class="process-math">\(\operatorname{cov}(X_2, X_3)
+= -2\text{,}\)</span> <span class="process-math">\(\operatorname{cov}(X_1, X_3) = -3\text{.}\)</span>
+</div></article></section><section class="subsection" id="sub-conditional-expectation"><h3 class="heading hide-type">
+<span class="type">Subsection</span> <span class="codenumber">4.1.11</span> <span class="title">Conditional expectation</span>
+</h3>
+<div class="para" id="p-211">See section 4.8.</div>
+<article class="definition definition-like" id="def-conditional-expectation-4-10"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.29</span><span class="period">.</span><span class="space"> </span><span class="title">conditional expectation.</span>
+</h4> <div class="para logical" id="p-212">
+<div class="para">If <span class="process-math">\(X\)</span> is a discrete random variable and <span class="process-math">\(\displaystyle f(x|y)\)</span> is the value of the conditional probability distribution of <span class="process-math">\(X\)</span> given <span class="process-math">\(\displaystyle Y = y\)</span> at <span class="process-math">\(X\text{,}\)</span> the <dfn class="terminology">conditional expectation</dfn> of <span class="process-math">\(\displaystyle u(X)\)</span> given <span class="process-math">\(\displaystyle Y = y\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+E[u(X)|y] = \sum_x u(x)\cdot f(x|y)
+\end{equation*}
+</div>
+<div class="para">and the <dfn class="terminology">conditional expectation</dfn> of <span class="process-math">\(\displaystyle v(Y)\)</span> given <span class="process-math">\(\displaystyle X
+= x\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+E[v(Y)|x] = \sum_y v(y)\cdot w(y|x)
+\end{equation*}
+</div>
+</div></article><article class="definition definition-like" id="def-conditional-mean"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.30</span><span class="period">.</span><span class="space"> </span><span class="title">conditional mean.</span>
+</h4> <div class="para logical" id="p-213">
+<div class="para">If <span class="process-math">\(X\)</span> is a discrete random variable and <span class="process-math">\(\displaystyle f(x|y)\)</span> is the value of the conditional probability distribution of <span class="process-math">\(X\)</span> given <span class="process-math">\(\displaystyle Y = y\)</span> at <span class="process-math">\(X\text{,}\)</span> the <dfn class="terminology">conditional mean</dfn> of <span class="process-math">\(\displaystyle u(X) = X\)</span> given <span class="process-math">\(\displaystyle Y = y\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\mu_{X|y} = E[X|y] = \sum_x x\cdot f(x|y)
+\end{equation*}
+</div>
+<div class="para">and the <dfn class="terminology">conditional mean</dfn> of <span class="process-math">\(\displaystyle v(Y) = Y\)</span> given <span class="process-math">\(\displaystyle X = x\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\displaystyle \mu_{Y|x} = E[Y|x] = \sum_y y\cdot w(y|x)
+\end{equation*}
+</div>
+</div></article><article class="definition definition-like" id="def-conditional-variance"><h4 class="heading">
+<span class="type">Definition</span><span class="space"> </span><span class="codenumber">4.1.31</span><span class="period">.</span><span class="space"> </span><span class="title">conditional variance.</span>
+</h4> <div class="para logical" id="p-214">
+<div class="para">If <span class="process-math">\(X\)</span> is a discrete random variable and <span class="process-math">\(\displaystyle f(x|y)\)</span> is the value of the conditional probability distribution of <span class="process-math">\(X\)</span> given <span class="process-math">\(\displaystyle Y = y\)</span> at <span class="process-math">\(X\text{,}\)</span> the <dfn class="terminology">conditional variance</dfn> of <span class="process-math">\(X\)</span> given <span class="process-math">\(\displaystyle Y = y\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\sigma^2_{X|y} = E[(X-\mu_{X|y})^2|y] = E[X^2]-\mu^2_{X|y}
+\end{equation*}
+</div>
+<div class="para">and the <dfn class="terminology">conditional expectation</dfn> of <span class="process-math">\(Y\)</span> given <span class="process-math">\(\displaystyle X = x\)</span> is</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\displaystyle\sigma^2_{Y|x} = E[(Y-\mu_{Y|x})^2|y] =
+E[Y^2]-\mu^2_{Y|x}
+\end{equation*}
+</div>
+</div></article></section></section></div>
+<div class="ptx-content-footer">
+<a class="previous-button button" href="chap-approximation.html" title="Previous"><span class="icon">&lt;</span><span class="name">Prev</span></a><a class="top-button button" href="#" title="Top"><span class="icon">^</span><span class="name">Top</span></a><a class="next-button button" href="section-probability-densities.html" title="Next"><span class="name">Next</span><span class="icon">&gt;</span></a>
+</div></main>
+</div>
+<div id="ptx-page-footer" class="ptx-page-footer">
+<a class="pretext-link" href="https://pretextbook.org" title="PreTeXt"><div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="338 3000 8772 6866"><g style="stroke-width:.025in; stroke:black; fill:none"><polyline points="472,3590 472,9732 " style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round; "></polyline><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,9448 A 4660 4660  0  0  1  8598  9259"></path><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4488,9685 A 4228 4228  0  0  0   472  9732"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:butt;" d="M 4724,3590 A 4241 4241  0  0  1  8598  3496"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,3496  A 4241 4241  0  0  1  4724  3590"></path><path style="stroke:#000000;stroke-width:126;stroke-linecap:round;" d="M 850,9259  A 4507 4507  0  0  1  4724  9448"></path><polyline points="5385,4299 4062,8125" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8598,3496 8598,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="850,3496 850,9259" style="stroke:#000000;stroke-width:126; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="4960,9685 4488,9685" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="3070,4582 1889,6141 3070,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="6418,4582 7600,6141 6418,7700" style="stroke:#000000;stroke-width:300; stroke-linejoin:miter; stroke-linecap:round;"></polyline><polyline points="8976,3590 8976,9732" style="stroke:#000000;stroke-width:174; stroke-linejoin:miter; stroke-linecap:round;"></polyline><path style="stroke:#000000;stroke-width:174;stroke-linecap:butt;" d="M 4960,9685 A 4228 4228  0  0  1  8976  9732"></path></g></svg></div></a><a class="runestone-link" href="https://runestone.academy" title="Runestone Academy"><img class="logo" src="https://runestone.academy/runestone/static/images/RAIcon_cropped.png"></a><a class="mathjax-link" href="https://www.mathjax.org" title="MathJax"><img class="logo" src="https://www.mathjax.org/badge/badge-square-2.png"></a>
+</div>
+</body>
+</html>

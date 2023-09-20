@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<section xml:id="lagrange-interpolation">
+	<title>Lagrange interpolation</title>
+
+	<p>
+	Below are <m>L_k(x) = L_{7, k}(x)</m> for <m>8</m>
+equally spaced points <m>x_0 = -1, \dots, x_7 = 1</m> on <m>[-1, 1]</m>.
+	</p>
+
+	<figure xml:id="fig-lagrange-li">
+	<image source="2_interpolation/Li.png"/>
+	<caption>image</caption>
+</figure>
+
+	<p>
+	Considering the function <me>f(x) =
+x^3e^{-1.1x}\sin(x)</me> we show the approximation <me>P(x) = P_7(x) =
+\sum_{k=0}^7 f(x_k)L_k(x)</me> (along with the function) on the left and
+the error on the right.
+	</p>
+
+	<figure xml:id="fig-lagrange-fP">
+	<image source="2_interpolation/fP.png"/>
+	<caption>image</caption>
+</figure>
+
+	</section>

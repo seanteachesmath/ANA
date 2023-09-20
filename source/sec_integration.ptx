@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+	<section xml:id="numerical-integration-monte-carlo">
+	<title>Numerical integration (Monte Carlo)</title>
+
+<p>
+	<em>This section may be imperfect, but reflects the main
+idea.</em>
+</p>
+
+<p>
+	Though not emphasized here, the techniques that follow
+are most useful in higher dimensional integrals. We can integrate
+<m>f(x) = x^2</m> using the Fundamental Theorem of Calculus,
+<me>\int_0^2 x^2\,dx = \left.\left(\dfrac{x^3}{3}\right)\right|_0^2 =
+\dfrac{2^3}{3} - \dfrac{0^3}{3} = \dfrac{8}{3}</me> From the Mean Value
+Theorem for Integrals we have that <me>\hat{f} = \dfrac{1}{2-0}\int_0^2
+x^2\,dx = \dfrac{1}{2}\cdot \dfrac{8}{3} = \dfrac{4}{3}</me> The shaded
+region on the left panel (Fig <xref ref="fig-integration" />) shows the area
+under the curve. The area on the right is the same size, but bounded by
+a constant function whose value is <m>\hat{f}</m>.
+</p>
+
+	<figure xml:id="fig-integration">
+	<image source="5_integration/intro.png"/>
+	<caption>Left: Traditional calculus interpretation of
+the area under the curve. Right: Average value of a function defined by
+equal area.</caption>
+</figure>
+
+<p>
+	One scheme of Monte Carlo integration uses function
+values at randomly chosen points to calculate areas which are then
+averaged. Here <me>\int_a^b f(x)\,dx \approx \dfrac{1}{N}\sum_{i=1}^{N}
+\underbrace{(b-a)f(x_i)}_\text{\(i\)th area} =
+(b-a)\underbrace{\dfrac{1}{N}\sum_{i=1}^{N} f(x_i)}_\text{average
+height}</me> Fig <xref ref="fig-integration-rect" /> (left panel) shows 5 of the
+100 random rectangle regions. The shaded area on the right panel
+corresponds to the region whose height is the average of the random
+function values. Notice that this height very closely compares with the
+average value of the function, thus the areas of the regions are
+similar.
+</p>
+
+	<figure xml:id="fig-integration-rect">
+	<image source="5_integration/rectangles.png"/>
+	<caption>Dashed line indicates <m>\hat{f}</m> from
+traditional calculus. Left: 5 sample rectangles (shaded). Right: Average
+area and function height by random sampling.</caption>
+</figure>
+
+<p>
+	An alternate scheme (Fig <xref ref="fig-integration-mc1" />,
+left) plots points in the plane and considers the fraction of points
+that fall below the curve (i.e., ‘the acceptance region‘). This fraction
+is multiplied by the total area of the region (easier to calculate since
+the shape is likely square). Though this is easier to program than the
+notation might suggest, consider the indicator function <me>I(i) =
+\begin{cases}1, \quad y_i &lt; f(x_i)\\0,
+\quad\text{otherwise}\end{cases}</me> and take <me>\int_a^b f(x)\,dx
+\approx(f_{max}-f_{min})(b-a)\dfrac{1}{N} \sum_{i=1}^N I(i)</me>
+</p>
+
+	<figure xml:id="fig-integration-mc1">
+	<image source="5_integration/rejection.png"/>
+	<caption>Left: Accepted points fall below the graph of
+the function. Right: Comparison of rectangle method and rejection method
+for ten different trials of each.</caption>
+</figure>
+
+<figure xml:id="fig-integration-mc2">
+	<image source="5_integration/Ns.png"/>
+	<caption>Left: Accepted points fall below the graph of
+the function. Right: Comparison of rectangle method and rejection method
+for ten different trials of each.</caption>
+</figure>
+	</section>

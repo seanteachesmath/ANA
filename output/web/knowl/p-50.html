@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<h3 class="heading"><span class="type">Paragraph</span></h3>
+<div class="para logical">
+<div class="para"> Once the <span class="process-math">\(c_j\)</span>’s have been solved, the <span class="process-math">\(b_j\)</span>’s and <span class="process-math">\(d_j\)</span>’s can be specified <em class="emphasis">in reverse order</em> from <span class="process-math">\(j=n-1,n-2,\dots,0\)</span> (see Alg. 3.4 (Step 6) or Alg. 3.5 (Step 7)).</div>
+<div class="displaymath process-math">
+\begin{equation*}
+\begin{aligned}
+b_j &amp; = \dfrac{a_{j+1} - a_j}{h_j} - \dfrac{h_j(c_{j+1} +
+2c_j)}{3}\\
+d_j &amp; = \dfrac{c_{j+1} - c_j}{3h_j}\end{aligned}
+\end{equation*}
+</div>
+<div class="para">Notice that <span class="process-math">\(c_n\)</span> (from <span class="process-math">\(\mathbf{x}\)</span>) is used in the calculation of <span class="process-math">\(d_{n-1}\text{,}\)</span> but is never actually used in a spline. Regardless of the boundary condition, the calculated coefficients will appear in the spline of the form</div>
+<div class="displaymath process-math">
+\begin{equation*}
+S(t) = \left\{\begin{alignedat}{2}
+&amp;\phantom{a_j + b_j(x-x_j) + } \cdots \phantom{(x-x_j)^2 +
+d_j(x-x_j)^3}, &amp;&amp;\cdots\\
+S_j(t) &amp;= a_j + b_j(x-x_j) + c_j(x-x_j)^2 + d_j(x-x_j)^3, \quad
+&amp;&amp;x_j\leq x &lt; x_{j+1}\\
+&amp;\phantom{a_j + b_j(x-x_j) + } \cdots \phantom{(x-x_j)^2 +
+d_j(x-x_j)^3}, &amp;&amp;\cdots\\
+\end{alignedat}\right.
+\end{equation*}
+</div>
+<div class="para">Note that <span class="process-math">\(x_0=a\)</span> and <span class="process-math">\(x_n=b\text{.}\)</span>
+</div>
+</div>
+<span class="incontext"><a href="cubic-spline-interpolation.html#p-50" class="internal">in-context</a></span>
+</body>
+</html>

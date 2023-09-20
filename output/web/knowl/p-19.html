@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+<!--********************************************-->
+<!--*       Generated from PreTeXt source      *-->
+<!--*                                          *-->
+<!--*         https://pretextbook.org          *-->
+<!--*                                          *-->
+<!--********************************************-->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="robots" content="noindex, nofollow">
+</head>
+<body class="ignore-math">
+<h4 class="heading"><span class="type">Paragraph</span></h4>
+<div class="para logical">
+<div class="para">R has a variety of built-in commands for our current and future needs. We want to build these capabilities ourselves, but it is good to know about what is available.</div>
+<pre class="code-display tex2jax_ignore">
+g &lt;- function(x) f(x) - 4
+
+plot(g, xlim=c(0, 20))
+abline(h=0, lty=3)
+abline(v=0, lty=3)
+
+uniroot(g, lower=0, upper = 20) ## based on bisection
+root &lt;- uniroot(g, lower=0, upper = 20)$root
+?uniroot
+</pre>
+</div>
+<span class="incontext"><a href="section-R-intro.html#p-19" class="internal">in-context</a></span>
+</body>
+</html>
