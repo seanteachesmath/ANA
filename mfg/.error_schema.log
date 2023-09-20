@@ -1,4 +1,0 @@
-/Users/seanlaverty/GitHub/mfg/source/mfg.ptx:16:0:ERROR:RELAXNGV:RELAXNG_ERR_EXTRACONTENT: Element author has extra content: personname
-/Users/seanlaverty/GitHub/mfg/source/mfg.ptx:31:0:ERROR:RELAXNGV:RELAXNG_ERR_ELEMWRONG: Did not expect element subtitle there
-/Users/seanlaverty/GitHub/mfg/source/mfg.ptx:29:0:ERROR:RELAXNGV:RELAXNG_ERR_CONTENTVALID: Element book failed to validate content
-/Users/seanlaverty/GitHub/mfg/source/mfg.ptx:25:0:ERROR:RELAXNGV:RELAXNG_ERR_ELEMNAME: Expecting element docinfo, got pretext
